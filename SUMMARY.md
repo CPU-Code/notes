@@ -10,3 +10,6 @@
 
 * [Android底层软硬件结合开发概述](android/summary.md)
 
+## 操作系统 <a id="operating_system"></a>
+
+* [操作系统的运行机制](operating_system/operat_mechanism.md)
