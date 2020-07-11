@@ -1,0 +1,46 @@
+{
+    "root": "./",
+    "title": "我的博客",
+    "author": "cpucode",
+    "description": "cpucode 的 CSDN 博客",
+    "language": "zh-hans",
+    "copyright": "All Rights Reserved",
+    "plugins": [
+        "theme-code@0.0.20",
+        "-sharing",
+        "-lunr", 
+        "-search",
+        "search-pro",
+        "splitter",
+        "tbfed-pagefooter",
+        "expandable-chapters-small",
+        "github",
+        "-sharing-plus",
+        "code",
+        "-copy-code-button",
+        "anchor-navigation-ex",
+        "edit-link"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy Iron 2018",
+            "modify_label": "修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "expandable-chapters":{},
+        "theme-default": {
+            "showLevel": false
+        },
+        "github": {
+            "url": "https://github.com/Iron-YeHong"
+        },
+        "anchor-navigation-ex":{
+            "showLevel": false
+        },
+        "edit-link": {
+            "base": "https://github.com/Iron-YeHong",
+            "label": ""
+        }
+    }
+
+}
