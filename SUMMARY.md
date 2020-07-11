@@ -1,6 +1,6 @@
 # Table of contents
 
-* [note](README.md)
+* [Linux](README.md)
 * [Untitled](untitled-2.md)
 * [Untitled](untitled-1/README.md)
   * [BCJKANDFD](untitled-1/bcjkandfd/README.md)
@@ -20,5 +20,5 @@
 
 ---
 
-* [heieme](untitled.md)
+* [heieme](heieme.md)
 

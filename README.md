@@ -2,7 +2,7 @@
 description: DDD
 ---
 
-# note
+# Linux
 
 学习笔记
 
