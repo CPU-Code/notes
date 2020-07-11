@@ -1,5 +1,14 @@
-# Android底层软硬件结合开发概述
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-11 16:18:27
+ * @LastEditTime: 2020-07-11 18:24:50
+ * @FilePath: \note\android\summary.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+--> 
 
+# Android底层软硬件结合开发概述
 
 
 ### Android底层软硬件结合开发概述
