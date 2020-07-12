@@ -1,6 +1,25 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-11 20:36:18
+ * @LastEditTime: 2020-07-12 21:10:43
+ * @FilePath: \note\linux_kernel_0_12\computer_composition.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
 
 
 # 微型计算机组成结构
+
+ * @Author: cpu_code
+ * @Date: 2020-07-11 20:36:18
+ * @LastEditTime: 2020-07-12 21:09:37
+ * @FilePath: \note\linux_kernel_0_12\computer_composition.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 任何一个系统都可认为由**四个基本部分**组成  
 

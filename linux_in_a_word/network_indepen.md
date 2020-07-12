@@ -1,6 +1,24 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-11 22:00:53
+ * @LastEditTime: 2020-07-12 21:09:45
+ * @FilePath: \note\linux_in_a_word\network_indepen.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
+
 # 网络无关
 
-------------------
+ * @Author: cpu_code
+ * @Date: 2020-07-12 14:09:20
+ * @LastEditTime: 2020-07-12 21:08:35
+ * @FilePath: \note\android_bottom\smart_pointer.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 
 

@@ -1,14 +1,24 @@
 <!--
  * @Author: cpu_code
  * @Date: 2020-07-11 16:18:27
- * @LastEditTime: 2020-07-11 18:24:50
- * @FilePath: \note\android\summary.md
+ * @LastEditTime: 2020-07-12 21:08:49
+ * @FilePath: \note\android_bottom\summary.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
  * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
 
 # Android底层软硬件结合开发概述
+
+ * @Author: cpu_code
+ * @Date: 2020-07-11 16:18:27
+ * @LastEditTime: 2020-07-12 21:08:41
+ * @FilePath: \note\android_bottom\summary.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 
 ### Android底层软硬件结合开发概述

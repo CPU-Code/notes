@@ -1,20 +1,24 @@
 <!--
  * @Author: cpu_code
  * @Date: 2020-07-11 16:10:23
- * @LastEditTime: 2020-07-11 18:24:28
- * @FilePath: \note\linux\linux_driver.md
+ * @LastEditTime: 2020-07-12 21:08:12
+ * @FilePath: \note\linux_driver\linux_driver.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
  * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
+
 # Linux驱动开发
 
-* @Author: cpu\_code
-* @Date: 2020-06-27 16:43:33
-* @LastEditTime: 2020-06-29 20:39:03
-* @FilePath: \md\Linux\Linux设备驱动开发详解.md
-* @Gitee: [https://gitee.com/cpu\_code](https://gitee.com/cpu_code)
-* @CSDN: [https://blog.csdn.net/qq\_44226094](https://blog.csdn.net/qq_44226094)
+ * @Author: cpu_code
+ * @Date: 2020-07-11 16:10:23
+ * @LastEditTime: 2020-07-12 21:08:01
+ * @FilePath: \note\linux_driver\linux_driver.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 文件目录 :
 

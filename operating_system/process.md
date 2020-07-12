@@ -1,17 +1,29 @@
 <!--
  * @Author: cpu_code
  * @Date: 2020-07-11 17:26:29
- * @LastEditTime: 2020-07-11 18:24:43
+ * @LastEditTime: 2020-07-12 21:10:01
  * @FilePath: \note\operating_system\process.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
  * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
+
 
 
 -----------------------------
 
 # 进程的 概念、 组成、特征
+
+ * @Author: cpu_code
+ * @Date: 2020-07-11 17:26:29
+ * @LastEditTime: 2020-07-12 21:09:52
+ * @FilePath: \note\operating_system\process.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+
 
 ```mermaid
 graph LR;

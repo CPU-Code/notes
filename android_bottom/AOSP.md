@@ -1,6 +1,25 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-12 15:14:55
+ * @LastEditTime: 2020-07-12 21:08:32
+ * @FilePath: \note\android_bottom\AOSP.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
 
 
 # AOSP源码开发
+
+ * @Author: cpu_code
+ * @Date: 2020-07-11 16:18:27
+ * @LastEditTime: 2020-07-12 21:08:41
+ * @FilePath: \note\android_bottom\summary.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 android源码之前分为四层  :
 

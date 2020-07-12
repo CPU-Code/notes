@@ -1,6 +1,25 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-12 14:09:20
+ * @LastEditTime: 2020-07-12 21:08:35
+ * @FilePath: \note\android_bottom\smart_pointer.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
 
 
 # 智能指针
+
+ * @Author: cpu_code
+ * @Date: 2020-07-12 14:09:20
+ * @LastEditTime: 2020-07-12 21:08:35
+ * @FilePath: \note\android_bottom\smart_pointer.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 在`Android`系统的应用程序框架层中， 有一部分代码是使用C++语言开发  .
 

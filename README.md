@@ -1,12 +1,14 @@
 <!--
  * @Author: cpu_code
  * @Date: 2020-07-11 14:40:09
- * @LastEditTime: 2020-07-12 20:48:41
+ * @LastEditTime: 2020-07-12 21:07:31
  * @FilePath: \note\README.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
  * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
+
 
 # 目录
 
@@ -18,7 +20,7 @@ Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
 
 CSDN: [https://blog.csdn.net/qq_44226094]( https://blog.csdn.net/qq_44226094)
 
-gitbook地址 : [https://923992029.gitbook.io/note](https://923992029.gitbook.io/note)
+gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
 
 ## 介绍
 

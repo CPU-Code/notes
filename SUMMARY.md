@@ -1,12 +1,12 @@
 <!--
-
  * @Author: cpu_code
  * @Date: 2020-07-11 14:40:09
- * @LastEditTime: 2020-07-12 20:48:58
+ * @LastEditTime: 2020-07-12 21:10:20
  * @FilePath: \note\SUMMARY.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
  * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
 
 # Table of contents
@@ -17,7 +17,7 @@
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
 
-* [Linux驱动开发](linux/linux_driver.md)
+* [Linux驱动开发](linux_driver/linux_driver.md)
 
 ## 安卓底层开发 <a id="android_bottom"></a>
 
