@@ -21,6 +21,8 @@
 
 ## 安卓底层开发 <a id="android_bottom"></a>
 
+* [硬件抽象层](android_bottom/hardware_abstraction_layer.md)
+
 * [智能指针](android_bottom/smart_pointer.md)
 
 * [AOSP源码开发](android_bottom/AOSP.md)

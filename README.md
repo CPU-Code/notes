@@ -9,7 +9,6 @@
  * @Gitbook: https://923992029.gitbook.io/cpucode/
 --> 
 
-
 # 目录
 
 Author: cpu_code
@@ -24,7 +23,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 ## 介绍
 
-个人学习笔记 , 涵盖C , C++, Linux驱动, Linux内核, 嵌入式, 数据结构, 算法, QT, Android安卓,音视频, 物联网 , 正在逐步更新 ,  使用的`typora`编辑 ,  大家可以使用 `typora` 打开查看 ,  床图为 `gitee`
+个人学习笔记 , 涵盖C , C++, Linux驱动, Linux内核, 嵌入式, 数据结构, 算法, QT, Android安卓, 音视频, 物联网 , 正在逐步更新 ,  使用的`typora`编辑 ,  大家可以使用 `typora` 打开查看 ,  床图为 `gitee`
 
 
 
@@ -39,6 +38,8 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [Linux驱动开发](linux/linux_driver.md)
 
 ## 安卓底层开发 <a id="android_bottom"></a>
+
+* [硬件抽象层](android_bottom/hardware_abstraction_layer.md)
 
 * [智能指针](android_bottom/smart_pointer.md)
 
