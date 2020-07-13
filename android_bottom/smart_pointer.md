@@ -783,7 +783,7 @@ void RefBase::weakref_type::decWeak(const void* id)
         
         if (impl->mStrong == INITIAL_STRONG_VALUE)
         {
-            // 对象从来没有被强指针引用过， 那么在该对象的弱引用计数值等于0时
+            // 对象从来没有被强指针引用过， 那么在该对象的弱引用计数值 == 0时
             // 将该对象释放掉
             delete impl->mBase;
         }
@@ -816,13 +816,193 @@ void RefBase::weakref_type::decWeak(const void* id)
 
 
 
+对对象的生命周期控制方式作一个小结  : 
+
+如果一个对象的**生命周期控制标志值** ==  `0`， 那么只要它的**强引用**计数值 == `0`， 系统就会自动**释放**这个对象  
+
+如果一个对象的**生命周期控制标志值** ==  `OBJECT_LIFETIME_WEAK`， 那么只有当它的**强引用**计数值 和 **弱引用**计数值都 == 0， 系统才会自动**释放**这个对象。
+
+如果一个对象的**生命周期控制标志值**被设置为 `OBJECT_LIFETIME_FOREVER`， 那么系统就**永远不会自动释放**这个对象， 它需要由开发人员来**手动地释放**。  
 
 
 
+--------------------------
 
 
 
 ### 弱指针的实现原理分析
+
+如果一个类的对象支持使用**弱指针**， 那么这个类就必须要从`RefBase`类继承下来， 因为`RefBase`类提供了**弱引用**计数器。   
+
+**弱指针**类`wp`的实现  :
+
+```c++
+// frameworks\base\include\utils\RefBase.h
+
+// wp类是一个模块类， 模板参数T表示对象的实际类型， 它必须是从RefBase类继承下来的
+template <typename T>
+class wp
+{
+public:
+    typedef typename RefBase::weakref_type weakref_type;
+    
+    inline wp() : m_ptr(0) { }
+
+    wp(T* other);
+    wp(const wp<T>& other);
+    wp(const sp<T>& other);
+    template<typename U> wp(U* other);
+    template<typename U> wp(const sp<U>& other);
+    template<typename U> wp(const wp<U>& other);
+
+    ~wp();
+    
+    // Assignment
+
+    wp& operator = (T* other);
+    wp& operator = (const wp<T>& other);
+    wp& operator = (const sp<T>& other);
+    
+    template<typename U> wp& operator = (U* other);
+    template<typename U> wp& operator = (const wp<U>& other);
+    template<typename U> wp& operator = (const sp<U>& other);
+    
+    void set_object_and_refs(T* other, weakref_type* refs);
+
+    // promotion to sp
+    // 将这个弱指针升级为强指针
+    // 升级成功，就说明该弱指针所引用的对象还没有被销毁， 可以正常使用
+    sp<T> promote() const;
+
+    // Reset
+    
+    void clear();
+
+    // Accessors
+    
+    inline  weakref_type* get_refs() const { return m_refs; }
+    
+    inline  T* unsafe_get() const { return m_ptr; }
+
+    // Operators
+
+    COMPARE_WEAK(==)
+    COMPARE_WEAK(!=)
+    COMPARE_WEAK(>)
+    COMPARE_WEAK(<)
+    COMPARE_WEAK(<=)
+    COMPARE_WEAK(>=)
+
+    inline bool operator == (const wp<T>& o) const 
+    {
+        return (m_ptr == o.m_ptr) && (m_refs == o.m_refs);
+    }
+    template<typename U>
+    inline bool operator == (const wp<U>& o) const 
+    {
+        return m_ptr == o.m_ptr;
+    }
+
+    inline bool operator > (const wp<T>& o) const 
+    {
+        return (m_ptr == o.m_ptr) ? (m_refs > o.m_refs) : (m_ptr > o.m_ptr);
+    }
+    template<typename U>
+    inline bool operator > (const wp<U>& o) const 
+    {
+        return (m_ptr == o.m_ptr) ? (m_refs > o.m_refs) : (m_ptr > o.m_ptr);
+    }
+
+    inline bool operator < (const wp<T>& o) const 
+    {
+        return (m_ptr == o.m_ptr) ? (m_refs < o.m_refs) : (m_ptr < o.m_ptr);
+    }
+    template<typename U>
+    inline bool operator < (const wp<U>& o) const 
+    {
+        return (m_ptr == o.m_ptr) ? (m_refs < o.m_refs) : (m_ptr < o.m_ptr);
+    }
+    
+    inline bool operator != (const wp<T>& o) const 
+    { 
+        return m_refs != o.m_refs; 
+    }
+    template<typename U> inline bool operator != (const wp<U>& o) const 
+    { 
+        return !operator == (o); 
+    }
+    
+    inline bool operator <= (const wp<T>& o) const 
+    { 
+        return !operator > (o); 
+    }
+    template<typename U> inline bool operator <= (const wp<U>& o) const 
+    { 
+        return !operator > (o); 
+    }
+    
+    inline bool operator >= (const wp<T>& o) const 
+    { 
+        return !operator < (o); 
+    }
+    template<typename U> inline bool operator >= (const wp<U>& o) const 
+    { 
+        return !operator < (o); 
+    }
+
+private:
+    template<typename Y> friend class sp;
+    template<typename Y> friend class wp;
+
+    // 指向它所引用的对象
+    T*              m_ptr;
+    // 维护对象的弱引用计数
+    weakref_type*   m_refs;
+};
+```
+
+
+
+wp类的构造函数的实现  :
+
+```c++
+// frameworks\base\include\utils\RefBase.h
+
+// 模块参数T是一个继承了RefBase类的子类
+template<typename T>
+wp<T>::wp(T* other)
+    : m_ptr(other)
+{
+    if (other) 
+    {
+        // 调用 RefBase 类的成员函数 createWeak 来增加对象的弱引用计数
+        m_refs = other->createWeak(this);
+    }
+}
+```
+
+
+
+```c++
+// frameworks\base\libs\utils\RefBase.cpp
+
+// 将它的成员变量mRefs所指向的一个 weakref_impl 对象返回给调用者
+RefBase::weakref_type* RefBase::createWeak(const void* id) const
+{
+    // RefBase类的成员变量 mRefs 指向的是一个 weakref_impl 对象
+    // 加实际引用对象的弱引用计数
+    mRefs->incWeak(id);
+    return mRefs;
+}
+```
+
+
+
+wp类的析构函数的实现  :
+
+
+
+
 
 
 
@@ -832,7 +1012,17 @@ void RefBase::weakref_type::decWeak(const void* id)
 
 ### 应用实例分析
 
+在external目录下建立一个C++应用程序weightpointer来说明强指针和弱指针的使用方法  
 
+目录结构  :
+
+```shell
+~/Android
+	external
+		weightpointer
+			weightpointer.cpp
+			Android.mk
+```
 
 
 
