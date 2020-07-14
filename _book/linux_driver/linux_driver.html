@@ -1,0 +1,1037 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Linux驱动开发 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../android_bottom/hardware_abstraction_layer.html" />
+    
+    
+    <link rel="prev" href="character_device_driver.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux驱动开发</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="character_device_driver.html">
+            
+                <a href="character_device_driver.html">
+            
+                    
+                    字符设备驱动开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="linux_driver.html">
+            
+                <a href="linux_driver.html">
+            
+                    
+                    Linux驱动开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">安卓底层开发</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../android_bottom/hardware_abstraction_layer.html">
+            
+                <a href="../android_bottom/hardware_abstraction_layer.html">
+            
+                    
+                    硬件抽象层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../android_bottom/smart_pointer.html">
+            
+                <a href="../android_bottom/smart_pointer.html">
+            
+                    
+                    智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../android_bottom/AOSP.html">
+            
+                <a href="../android_bottom/AOSP.html">
+            
+                    
+                    AOSP源码开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../android_bottom/summary.html">
+            
+                <a href="../android_bottom/summary.html">
+            
+                    
+                    Android底层软硬件结合开发概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">操作系统</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../operating_system/operat_mechanism.html">
+            
+                <a href="../operating_system/operat_mechanism.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../operating_system/process.html">
+            
+                <a href="../operating_system/process.html">
+            
+                    
+                    进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">linux一句话</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../linux_in_a_word/network_indepen.html">
+            
+                <a href="../linux_in_a_word/network_indepen.html">
+            
+                    
+                    与网络无关的Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux内核0.12</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../linux_kernel_0_12/computer_composition.html">
+            
+                <a href="../linux_kernel_0_12/computer_composition.html">
+            
+                    
+                    微型计算机组成结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Linux驱动开发</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <!--
+ * @Author: cpu_code
+ * @Date: 2020-07-11 16:10:23
+ * @LastEditTime: 2020-07-12 21:08:12
+ * @FilePath: \note\linux_driver\linux_driver.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
+<h1 id="linux&#x9A71;&#x52A8;&#x5F00;&#x53D1;">Linux&#x9A71;&#x52A8;&#x5F00;&#x53D1;</h1>
+<ul>
+<li>@Author: cpu_code</li>
+<li>@Date: 2020-07-11 16:10:23</li>
+<li>@LastEditTime: 2020-07-12 21:08:01</li>
+<li>@FilePath: \note\linux_driver\linux_driver.md</li>
+<li>@Gitee: <a href="https://gitee.com/cpu_code" target="_blank">https://gitee.com/cpu_code</a></li>
+<li>@Github: <a href="https://github.com/CPU-Code" target="_blank">https://github.com/CPU-Code</a></li>
+<li>@CSDN: <a href="https://blog.csdn.net/qq_44226094" target="_blank">https://blog.csdn.net/qq_44226094</a></li>
+<li>@Gitbook: <a href="https://923992029.gitbook.io/cpucode/" target="_blank">https://923992029.gitbook.io/cpucode/</a></li>
+</ul>
+<p>&#x6587;&#x4EF6;&#x76EE;&#x5F55; :</p>
+<h2 id="&#x7C89;&#x4E1D;&#x4E0D;&#x591F;w"><a href="https://blog.csdn.net/qq_44226094" target="_blank">&#x7C89;&#x4E1D;&#x4E0D;&#x591F;W</a></h2>
+<h2 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x5F00;&#x53D1;&#x8BE6;&#x89E3;-&#x5B8B;&#x5B9D;&#x534E;-&#x7B14;&#x8BB0;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x5F00;&#x53D1;&#x8BE6;&#x89E3;( &#x5B8B;&#x5B9D;&#x534E; )&#x7B14;&#x8BB0;</h2>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x6982;&#x8FF0;&#x53CA;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x6982;&#x8FF0;&#x53CA;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;</h3>
+<h4 id="&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x4F5C;&#x7528;">&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x4F5C;&#x7528;</h4>
+<p>&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x63D0;&#x4F9B;&#x4E86;&#x786C;&#x4EF6;&#x548C;&#x5E94;&#x7528;&#x8F6F;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x7EBD;&#x5E26;</p>
+<p>&#x5E94;&#x7528;&#x8F6F;&#x4EF6;&#x65F6;&#x53EA;&#x9700; &#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x8F6F;&#x4EF6;&#x7684;&#x5E94;&#x7528;&#x7F16;&#x7A0B;&#x63A5;&#x53E3;&#xFF08;API&#xFF09; &#x5C31;&#x53EF;&#x8BA9;&#x786C;&#x4EF6;&#x53BB;&#x5B8C;&#x6210;&#x8981;&#x6C42;&#x7684;&#x5DE5;&#x4F5C;</p>
+<h4 id="&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h4>
+<p>&#x4E0D;&#x662F;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x90FD;&#x4E00;&#x5B9A;&#x8981;&#x6709;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+<p>&#x5FAA;&#x73AF; &#x5BF9;&#x8BBE;&#x5907;&#x4E2D;&#x65AD;&#x7684;&#x68C0;&#x6D4B; &#x6216; &#x5BF9;&#x8BBE;&#x5907;&#x7684;&#x8F6E;&#x8BE2;</p>
+<pre><code class="lang-text"> //&#x5355;&#x4EFB;&#x52A1;&#x8F6F;&#x4EF6;&#x67B6;&#x6784;
+ int main(int argc, char* argv[])
+ {
+     while(1)
+     {
+         /*&#x6709;&#x4E32;&#x53E3;&#x4E2D;&#x65AD;*/
+         if(serialInt == 1)
+         {
+             ProcessSerialInt(); /* &#x5904;&#x7406;&#x4E32;&#x53E3;&#x4E2D;&#x65AD; */
+             serialInt = 0;  /* &#x4E2D;&#x65AD;&#x6807;&#x5FD7;&#x53D8;&#x91CF;&#x6E05;0 */
+         }
+         /* &#x6709;&#x6309;&#x952E;&#x4E2D;&#x65AD; */
+         if(keyInt == 1)
+         {
+             ProcessKeyInt(); /* &#x5904;&#x7406;&#x6309;&#x952E;&#x4E2D;&#x65AD; */
+             keyInt = 0; /* &#x4E2D;&#x65AD;&#x6807;&#x5FD7;&#x53D8;&#x91CF;&#x6E05;0 */
+         }
+
+         status = CheckXXX();
+         switch (status)
+         {
+             //...
+         }
+         //...
+     }
+ }
+</code></pre>
+<pre><code class="lang-text"> //&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x60C5;&#x51B5;&#x4E0B;&#x4E32;&#x53E3;&#x7684;&#x9A71;&#x52A8;
+ /**********************
+  * serial.h
+  **********************/
+ extern void SerialInit(void);
+ extern void SerialSend(const char buf*, int count);
+ extern void SerialRecv(char buf*, int count);
+ &#x200B;
+ /**********************
+  * serial.c&#x6587;&#x4EF6;
+  **********************/
+ &#x200B;
+  /* &#x521D;&#x59CB;&#x5316;&#x4E32;&#x53E3; */
+ void SerialInit(void)
+ {
+     //...
+ }
+ &#x200B;
+ /* &#x4E32;&#x53E3;&#x53D1;&#x9001; */
+ void SerialSend(const char *buf, int count)
+ {
+     //...
+ }
+ &#x200B;
+  /* &#x4E32;&#x53E3;&#x63A5;&#x6536; */
+ void SerialRecv(char *buf, int count)
+ {
+     //...
+ }
+ &#x200B;
+ /* &#x4E32;&#x53E3;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570; */
+ void SerialIsr(void)
+ {
+     //...
+     serialInt = 1;
+ }
+</code></pre>
+<p>&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x786C;&#x4EF6;&#x3001; &#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x548C;&#x5E94;&#x7528;&#x8F6F;&#x4EF6;&#x7684;&#x5173;&#x7CFB; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627171455.png" alt="&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x786C;&#x4EF6;&#x3001; &#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x548C;&#x5E94;&#x7528;&#x8F6F;&#x4EF6;&#x7684;&#x5173;&#x7CFB;"></p>
+<p>&#x9A71;&#x52A8;&#x4E0E;&#x5E94;&#x7528;&#x9AD8;&#x8026;&#x5408;&#x7684;&#x4E0D;&#x5408;&#x7406;&#x8BBE;&#x8BA1; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627172554.png" alt="image-20200627172554374"></p>
+<p>&#x5E94;&#x7528;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x786C;&#x4EF6;&#x7684;&#x4E0D;&#x5408;&#x7406;&#x8BBE;&#x8BA1;:</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627172626.png" alt="image-20200627172626039"></p>
+<h4 id="&#x6709;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">&#x6709;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h4>
+<p>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF; &#x628A;&#x5355;&#x4E00;&#x7684;&#x201C; &#x9A71;&#x4F7F;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x884C;&#x52A8; &#x201D;&#x53D8;&#x6210;&#x4E86;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5185;&#x4E0E;&#x786C;&#x4EF6;&#x4EA4;&#x4E92;&#x7684;&#x6A21;&#x5757;&#xFF0C; &#x8BBE;&#x4E3A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;API&#xFF0C; &#x7ED9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x63D0;&#x4F9B;&#x63A5;&#x53E3;</p>
+<p>&#x786C;&#x4EF6;&#x3001;&#x9A71;&#x52A8;&#x3001;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5173;&#x7CFB; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627172851.png" alt="image-20200627172833099"></p>
+<p>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236; :</p>
+<p>MMU&#x7684;32&#x4F4D;&#x5904;&#x7406;&#x5668; , &#x53EF;&#x4EE5;&#x8BA9; &#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x90FD;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x5730;&#x8BBF;&#x95EE; 4GB &#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;</p>
+<p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C06;&#x53EF;&#x4F7F;&#x7528;<strong>&#x7EDF;&#x4E00;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</strong>&#x63A5;&#x53E3;&#x6765;&#x8BBF;&#x95EE;&#x5404;&#x79CD;&#x8BBE;&#x5907;</p>
+<h4 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h4>
+<p><strong>&#x8BBE;&#x5907;&#x7684;&#x5206;&#x7C7B;&#x53CA;&#x7279;&#x70B9;</strong></p>
+<p>&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x7684;&#x786C;&#x4EF6;&#x4E3B;&#x8981;&#x7531; CPU&#x3001; &#x5B58;&#x50A8;&#x5668; &#x548C; &#x5916;&#x8BBE;&#x7EC4;&#x6210;</p>
+<p>&#x4E00;&#x822C;&#x7684;&#x5904;&#x7406;&#x5668;&#x90FD;&#x96C6;&#x6210;&#x4E86;UART&#x3001;I2C&#x63A7;&#x5236;&#x5668;&#x3001; SPI&#x63A7;&#x5236;&#x5668;&#x3001; USB&#x63A7;&#x5236;&#x5668;&#x3001; SDRAM&#x63A7;&#x5236;&#x5668;&#x7B49;&#xFF0C; &#x6709;&#x7684;&#x5904;&#x7406;&#x5668;&#x8FD8;&#x96C6;&#x6210;&#x4E86;GPU&#xFF08;&#x56FE;&#x5F62;&#x5904;&#x7406;&#x5668;&#xFF09; &#x3001; &#x89C6;&#x9891;&#x7F16;&#x89E3;&#x7801;&#x5668;</p>
+<p>Linux&#x5C06; &#x5B58;&#x50A8;&#x5668; &#x548C; &#x5916;&#x8BBE; &#x5206;&#x4E3A;3&#x4E2A;&#x57FA;&#x7840;&#x5927;&#x7C7B; :</p>
+<p><strong>&#x5B57;&#x7B26;&#x8BBE;&#x5907;</strong> : &#x4EE5;&#x4E32;&#x884C;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x7684;&#x8BBE;&#x5907;&#xFF0C; &#x5982;&#x89E6;&#x6478;&#x5C4F;&#x3001; &#x78C1;&#x5E26;&#x9A71;&#x52A8;&#x5668;&#x3001; &#x9F20;&#x6807;&#x7B49;&#x3002;</p>
+<p><strong>&#x5757;&#x8BBE;&#x5907;</strong> : &#x6309;&#x4EFB;&#x610F;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C; &#x4EE5;&#x5757;&#x4E3A;&#x5355;&#x4F4D;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x786C;&#x76D8;&#x3001; eMMC&#x7B49;</p>
+<p>&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x64CD;&#x4F5C;&#x63A5;&#x53E3; <code>open()</code> &#x3001; <code>close()</code> &#x3001;<code>read()</code> &#x3001; <code>write()</code> &#x7B49;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;</p>
+<p><strong>&#x7F51;&#x7EDC;&#x8BBE;&#x5907;</strong> : &#x9762;&#x5411;&#x6570;&#x636E;&#x5305;&#x7684; &#x63A5;&#x6536; &#x548C; &#x53D1;&#x9001; , &#x4F7F;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x63A5;&#x53E3;</p>
+<p><strong>Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E0E;&#x6574;&#x4E2A;&#x8F6F;&#x786C;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5173;&#x7CFB;</strong></p>
+<p>&#x5B57;&#x7B26;&#x8BBE;&#x5907; &#x4E0E; &#x5757;&#x8BBE;&#x5907;&#x90FD; &#x88AB;&#x6620;&#x5C04;&#x5230; Linux&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#xFF0C; &#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x63A5;&#x53E3; <code>open()</code> &#x3001; <code>write()</code> &#x3001;<code>read()</code>&#x3001; <code>close()</code> &#x7B49; &#x5373;&#x53EF;&#x8BBF;&#x95EE; &#x5B57;&#x7B26;&#x8BBE;&#x5907; &#x548C; &#x5757;&#x8BBE;&#x5907;</p>
+<p>Linux&#x7684;&#x5757;&#x8BBE;&#x5907;&#x6709;&#x4E24;&#x79CD;&#x8BBF;&#x95EE;&#x65B9;&#x6CD5; :</p>
+<p>&#x7C7B;&#x4F3C; dd&#x547D;&#x4EE4;&#x5BF9;&#x5E94;&#x7684;&#x539F;&#x59CB;&#x5757;&#x8BBE;&#x5907;&#xFF0C; &#x5982;&#x201C; /dev/sdb1 &#x201D;&#x7B49;</p>
+<p>&#x5757;&#x8BBE;&#x5907;&#x4E0A;&#x5EFA;&#x7ACB;FAT&#x3001;EXT4&#x3001; BTRFS&#x7B49;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C; &#x7136;&#x540E;&#x4EE5;&#x6587;&#x4EF6;&#x8DEF;&#x5F84; , &#x5982;&#x201C; /home/barry/hello.txt &#x201D;&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;</p>
+<p>&#x5728;Linux&#x4E2D;&#xFF0C; &#x5BF9; NOR&#x3001; NAND &#x7B49;&#x63D0;&#x4F9B;&#x4E86;&#x72EC;&#x7ACB;&#x7684;&#x5185;&#x5B58;&#x6280;&#x672F;&#x8BBE;&#x5907;&#xFF08;Memory Technology Device&#xFF0C; <strong>MTD</strong>&#xFF09; &#x5B50;&#x7CFB;&#x7EDF;&#xFF0C; &#x53EF;&#x4EE5;&#x8FD0;&#x884C;YAFFS2&#x3001; JFFS2&#x3001;UBIFS&#x7B49;&#x5177;&#x5907; &#x64E6;&#x9664; &#x548C; &#x8D1F;&#x8F7D;&#x5747;&#x8861; &#x80FD;&#x529B;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E0E;&#x6574;&#x4E2A;&#x8F6F;&#x786C;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5173;&#x7CFB; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627175736.png" alt="image-20200627175735717"></p>
+<p>C&#x5E93;&#x51FD;&#x6570;&#x662F;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#x800C;&#x5B9E;&#x73B0;&#xFF0C; &#x5982;C&#x5E93;&#x51FD;&#x6570; <code>fopen()</code> &#x3001; <code>fwrite()</code> &#x3001; <code>fread()</code> &#x3001; <code>fclose()</code> &#x5206;&#x522B;&#x4F1A;&#x8C03;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;API <code>open()</code> &#x3001; <code>write()</code> &#x3001; <code>read()</code> &#x3001; <code>close()</code></p>
+<p>&#x4E3A;&#x4E86;&#x4EE3;&#x7801;&#x53EF;&#x79FB;&#x690D;&#x6027;&#x7684;&#x76EE;&#x7684; , &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6700;&#x597D;&#x4F7F;&#x7528;C&#x5E93;&#x51FD;&#x6570;</p>
+<p><strong>Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x91CD;&#x70B9;&#x3001; &#x96BE;&#x70B9;</strong></p>
+<p> &#x61C2;&#x5F97;SRAM&#x3001;Flash&#x3001; SDRAM&#x3001; &#x78C1;&#x76D8;&#x7684;&#x8BFB;&#x5199;&#x65B9;&#x5F0F;&#xFF0C; UART&#x3001; I2C&#x3001; USB&#x7B49;&#x8BBE;&#x5907;&#x7684;&#x63A5;&#x53E3;&#x4EE5;&#x53CA;&#x8F6E;&#x8BE2;&#x3001; &#x4E2D;&#x65AD;&#x3001; DMA&#x7684;&#x539F;&#x7406;&#xFF0C; PCI&#x603B;&#x7EBF;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x4EE5;&#x53CA;CPU&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5355;&#x5143;&#xFF08;MMU&#xFF09;</p>
+<p>&#x8FD0;&#x7528;C&#x8BED;&#x8A00;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x3001; &#x6307;&#x9488;&#x3001; &#x51FD;&#x6570;&#x6307;&#x9488;&#x53CA;&#x5185;&#x5B58;&#x52A8;&#x6001;&#x7533;&#x8BF7;&#x548C;&#x91CA;&#x653E;&#x7B49;</p>
+<p>&#x6709;&#x4E00;&#x5B9A;&#x7684;Linux&#x5185;&#x6838;&#x57FA;&#x7840;&#xFF0C;&#x81F3;&#x5C11;&#x8981;&#x660E;&#x767D;&#x9A71;&#x52A8;&#x4E0E;&#x5185;&#x6838;&#x7684;&#x63A5;&#x53E3;&#x3002; &#x5C24;&#x5176;&#x662F;&#x5BF9;&#x4E8E;&#x5757;&#x8BBE;&#x5907;&#x3001; &#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x3001; Flash&#x8BBE;&#x5907;&#x3001; &#x4E32;&#x53E3;&#x8BBE;&#x5907;&#x7B49;&#x590D;&#x6742;&#x8BBE;&#x5907;</p>
+<p>&#x6709; &#x591A;&#x4EFB;&#x52A1;&#x5E76;&#x53D1;&#x63A7;&#x5236; &#x548C; &#x540C;&#x6B65; &#x7684;&#x57FA;&#x7840;&#xFF0C; &#x56E0;&#x4E3A;&#x5728;&#x9A71;&#x52A8;&#x4E2D;&#x6709;&#x5927;&#x91CF;&#x7684;&#x81EA;&#x65CB;&#x9501;&#x3001; &#x4E92;&#x65A5;&#x3001; &#x4FE1;&#x53F7;&#x91CF;&#x3001; &#x7B49;&#x5F85;&#x961F;&#x5217;&#x7B49; &#x5E76;&#x53D1;&#x4E0E;&#x540C;&#x6B65;&#x673A;&#x5236;</p>
+<h4 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;</h4>
+<p><strong>PC&#x4E0A;&#x7684;Linux&#x73AF;&#x5883;</strong></p>
+<p><strong>QEMU&#x5B9E;&#x9A8C;&#x5E73;&#x53F0;</strong></p>
+<p><strong>&#x6E90;&#x4EE3;&#x7801;&#x9605;&#x8BFB;&#x548C;&#x7F16;&#x8F91;</strong></p>
+<p><a href="http://lxr.free-electrons.com" target="_blank">http://lxr.free-electrons.com</a>&#x3001; <a href="%20http:/lxr.oss.org.cn">http://lxr.oss.org.cn/</a> , &#x8FD9;&#x6837;&#x7684;&#x7F51;&#x7AD9;&#x63D0;&#x4F9B;&#x4E86;Linux&#x5185;&#x6838;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x4EA4;&#x53C9;&#x7D22;&#x5F15;</p>
+<p>Linux&#x4E3B;&#x673A;&#x4E0A;&#x9605;&#x8BFB;&#x548C;&#x7F16;&#x8F91;Linux&#x6E90;&#x7801;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x5F0F;&#x662F; <code>vim</code> + <code>cscope</code>&#x6216;&#x8005; <code>vim</code>+ <code>ctags</code>&#xFF0C; <code>vim</code> &#x662F;&#x4E00;&#x4E2A;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF0C; &#x800C; <code>cscope</code> &#x548C; <code>ctags</code> &#x5219;&#x53EF;&#x5EFA;&#x7ACB;&#x4EE3;&#x7801;&#x7D22;&#x5F15;</p>
+<p> vscode&#x4F7F;&#x7528;</p>
+<h4 id="&#x8BBE;&#x5907;&#x9A71;&#x52A8;hello-world&#xFF1A;-led&#x9A71;&#x52A8;">&#x8BBE;&#x5907;&#x9A71;&#x52A8;Hello World&#xFF1A; LED&#x9A71;&#x52A8;</h4>
+<p><strong>&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;LED&#x9A71;&#x52A8;</strong></p>
+<p>GPIO&#x4E00;&#x822C;&#x7531; &#x4E24;&#x7EC4;&#x5BC4;&#x5B58;&#x5668;&#x63A7;&#x5236;&#xFF0C; &#x4E00;&#x7EC4;<strong>&#x63A7;&#x5236;&#x5BC4;&#x5B58;&#x5668;</strong> &#x548C; &#x4E00;&#x7EC4;<strong>&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;</strong></p>
+<p><strong>&#x63A7;&#x5236;&#x5BC4;&#x5B58;&#x5668;</strong>&#x53EF;&#x8BBE;&#x7F6E; <code>GPIO</code> &#x53E3;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x4E3A; <strong>&#x8F93;&#x5165;</strong> &#x6216; <strong>&#x8F93;&#x51FA;</strong> &#x3002;</p>
+<p>&#x5F53;&#x5F15;&#x811A;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x8F93;&#x51FA;&#x65F6;&#xFF0C; &#x5411; <strong>&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;</strong> &#x7684;&#x5BF9;&#x5E94;&#x4F4D;&#x5199;&#x5165; 1 &#x548C; 0 &#x4F1A;&#x5206;&#x522B;&#x5728;&#x5F15;&#x811A;&#x4E0A;&#x4EA7;&#x751F; &#x9AD8;&#x7535;&#x5E73;&#x548C; &#x4F4E;&#x7535;&#x5E73;</p>
+<p>&#x5F53;&#x5F15;&#x811A;&#x8BBE;&#x7F6E;&#x4E3A;&#x8F93;&#x5165;&#x65F6;&#xFF0C; &#x8BFB;&#x53D6; <strong>&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;</strong> &#x7684;&#x5BF9;&#x5E94;&#x4F4D;&#x53EF;&#x83B7;&#x5F97;&#x5F15;&#x811A;&#x4E0A;&#x7684;&#x7535;&#x5E73;&#x4E3A; &#x9AD8; &#x6216; &#x4F4E;</p>
+<p>&#x5982;&#xFF1A;</p>
+<p>&#x5728;&#x3000;<code>GPIO_REG_CTRL</code>&#x3000;&#x7269;&#x7406;&#x5730;&#x5740;&#x4E2D;<strong>&#x63A7;&#x5236;&#x5BC4;&#x5B58;&#x5668;</strong>&#x5904;&#x7684;&#x7B2C; <code>n</code> &#x4F4D;&#x5199;&#x5165; <code>1</code> &#x53EF;&#x8BBE;&#x7F6E; <code>GPIO</code> &#x53E3;&#x4E3A;&#x8F93;&#x51FA;&#xFF0C;</p>
+<p>&#x5728;&#x5730;&#x5740; <code>GPIO_REG_DATA</code> &#x7269;&#x7406;&#x5730;&#x5740;&#x4E2D;<strong>&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;</strong>&#x7684;&#x7B2C; <code>n</code> &#x4F4D;&#x5199;&#x5165;<code>1</code> &#x6216; <code>0</code> &#x53EF;&#x5728;&#x5F15;&#x811A;&#x4E0A;&#x4EA7;&#x751F; &#x9AD8; &#x6216; &#x4F4E;&#x7535;&#x5E73;&#xFF0E;</p>
+<pre><code class="lang-text"> //&#x65E0;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;LED&#x9A71;&#x52A8;
+ //&#x542F;&#x52A8;&#x786C;&#x4EF6;MMU&#x540E;&#xFF0C;&#x5C06;&#x5BC4;&#x5B58;&#x5668;&#x7684; &#x7269;&#x7406;&#x5730;&#x5740; &#x8F6C;&#x5316;&#x4E3A; &#x865A;&#x62DF;&#x5730;&#x5740;
+ #define reg_gpio_ctrl *(volatile int *)(ToVirtual(GPIO_REG_CTRL))
+ #define reg_gpio_data *(volatile int *)(ToVirtual(GPIO_REG_DATA))
+ &#x200B;
+ /* &#x521D;&#x59CB;&#x5316;LED */
+ void LightInit(void)
+ {
+     reg_gpio_ctrl |= (1 &lt;&lt; n); /* &#x8BBE;&#x7F6E;GPIO&#x4E3A;&#x8F93;&#x51FA; */
+ }
+ &#x200B;
+ /* &#x70B9;&#x4EAE;LED */
+ void LightOn(void)
+ {
+     reg_gpio_data |= (1 &lt;&lt; n); /* &#x5728;GPIO&#x4E0A;&#x8F93;&#x51FA;&#x9AD8;&#x7535;&#x5E73; */
+ }
+ &#x200B;
+ /* &#x7184;&#x706D;LED */
+ void LightOff(void)
+ {
+     reg_gpio_data &amp;= &#xFF5E;(1 &lt;&lt; n); /* &#x5728;GPIO&#x4E0A;&#x8F93;&#x51FA;&#x4F4E;&#x7535;&#x5E73; */
+ }
+</code></pre>
+<p><strong>Linux&#x4E0B;&#x7684;LED&#x9A71;&#x52A8;</strong></p>
+<p>&#x5185;&#x6838;&#x4E2D;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x63D0;&#x4F9B;sysfs&#x8282;&#x70B9;&#x7684;GPIO LED&#x9A71;&#x52A8;&#xFF0C; &#x4F4D;&#x4E8E; <code>drivers/leds/leds-gpio.c</code> &#x4E2D;</p>
+<pre><code class="lang-text"> #include //.../* &#x5305;&#x542B;&#x5185;&#x6838;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x5934;&#x6587;&#x4EF6; */
+ &#x200B;
+ /* &#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53; */
+ struct light_dev 
+ {
+     struct cdev cdev;    /* &#x5B57;&#x7B26;&#x8BBE;&#x5907;cdev&#x7ED3;&#x6784;&#x4F53; */
+     unsigned char vaule; /* LED&#x4EAE;&#x65F6;&#x4E3A;1&#xFF0C; &#x7184;&#x706D;&#x65F6;&#x4E3A;0&#xFF0C; &#x7528;&#x6237;&#x53EF;&#x8BFB;&#x5199;&#x6B64;&#x503C; */
+ };
+ &#x200B;
+ struct light_dev *light_devp;
+ int light_major = LIGHT_MAJOR;
+ /* &#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x51FD;&#x6570; */
+ int light_open(struct inode *inode, struct file *filp)
+ {
+     struct light_dev *dev;
+
+     /* &#x83B7;&#x5F97;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488; */
+     dev = container_of(inode-&gt;i_cdev, struct light_dev, cdev);
+     /* &#x8BA9;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#x4F5C;&#x4E3A;&#x8BBE;&#x5907;&#x7684;&#x79C1;&#x6709;&#x4FE1;&#x606F; */
+     filp-&gt;private_data = dev;
+
+     return 0;
+ }
+ &#x200B;
+ int light_release(struct inode *inode, struct file *filp)
+ {
+     return 0;
+ }
+ &#x200B;
+ /* &#x8BFB;&#x5199;&#x8BBE;&#x5907;:&#x53EF;&#x4EE5;&#x4E0D;&#x9700;&#x8981; */
+ ssize_t light_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
+ {
+     struct light_dev *dev = filp-&gt;private_data; /* &#x83B7;&#x5F97;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53; */
+
+     if(copy_to_user(buf, &amp;(dev-&gt;value), 1))
+     {
+         return -EFAULT;
+     }
+
+     return 1;
+ }
+ &#x200B;
+ ssize_t light_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)
+ {
+     struct light_dev *dev = filp-&gt;private_data;
+
+     if(copy_from_user(&amp;(dev-&gt;value), buf, 1))
+     {
+         return -EFAULT;
+     }
+
+     /* &#x6839;&#x636E;&#x5199;&#x5165;&#x7684;&#x503C;&#x70B9;&#x4EAE;&#x548C;&#x7184;&#x706D;LED */
+     if(dev-&gt;value == 1)
+     {
+         light_on();
+     }
+     else
+     {
+         light_off()
+     }
+
+     return 1;
+ }
+ &#x200B;
+ /* ioctl&#x51FD;&#x6570; */
+ int light_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ {
+     struct light_dev *dev = filp-&gt;private_data;
+
+     switch(cmd) 
+     {
+         case LIGHT_ON:
+             dev-&gt;value = 1;
+             light_on();
+             break;
+
+         case LIGHT_OFF:
+             dev-&gt;value = 0;
+             light_off();
+             break;
+ &#x200B;
+         default:
+             /* &#x4E0D;&#x80FD;&#x652F;&#x6301;&#x7684;&#x547D;&#x4EE4; */
+             return -ENOTTY;
+     }
+
+     return 0;
+ }
+ &#x200B;
+ struct file_operations light_fops = {
+     .owner = THIS_MODULE,
+     .read = light_read,
+     .write = light_write,
+     .unlocked_ioct1 = light_ioctl,
+     .open = light_open,
+     .release = light_release,
+ };
+ &#x200B;
+ /* &#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x8BBE;&#x5907;cdev&#x7ED3;&#x6784;&#x4F53; */
+ static void light_setup_cdev(struct light_dev *dev, int index)
+ {
+     int err;
+     int devno = MKDEV(light_major, index);
+
+     cdev_init(&amp;dev-&gt;cdev, &amp;light_fops);
+     dev-&gt;cdev.owner = THIS_MODULE;
+     dev-&gt;cdev.ops = &amp;light_fops;
+
+     err = cdev_add(&amp;dev-&gt;cdev, devno, 1);
+     if(err)
+     {
+         printk(KERN_NOTICE &quot;Error %d adding LED%d&quot;, err, index);
+     }
+ }
+ &#x200B;
+ /* &#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x51FD;&#x6570; */
+ int light_init(void)
+ {
+     int result;
+     dev_t dev = MKDEV(light_major, 0);
+     /* &#x7533;&#x8BF7;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x53F7; */
+     if(light_major)
+     {
+         //&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6CE8;&#x518C;
+         result = register_chrdev_region(dev, 1, &quot;LED&quot;);
+     }
+     else
+     {
+         // &#x5206;&#x914D;
+         result = alloc_chrdev_region(&amp;dev, 0, 1, &quot;LED&quot;);
+         light_major = MAJOR(dev);
+     }
+
+     if((result &lt; 0)
+     {
+         return result;
+     }
+
+     /* &#x5206;&#x914D;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5185;&#x5B58; */
+     light_devp = kmalloc(sizeof(struct light_dev), GFP_KERNEL);
+     if(!light_devp)
+     {
+         result = -ENOMEM;
+         goto fail_malloc;
+     }
+
+
+ fail_malloc:
+     unregister_chrdev_region(dev, light_devp);
+     return result;
+ }
+
+ /* &#x6A21;&#x5757;&#x5378;&#x8F7D;&#x51FD;&#x6570; */
+ void light_cleanup(void)
+ {
+     /* &#x5220;&#x9664;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53; */
+     cdev_del(&amp;light_devp-&gt;cdev);
+     /* &#x91CA;&#x653E;&#x5728;light_init&#x4E2D;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58; */
+     kfree(light_devp);
+     /* &#x5220;&#x9664;&#x5B57;&#x7B26;&#x8BBE;&#x5907; */
+     unregister_chrdev_region(MKDEV(light_major, 0), 1); 
+ }
+ &#x200B;
+ MODULE_AUTHOR(&quot;cpucode&quot;);
+ MODULE_LICENSE(&quot;GPL&quot;);
+</code></pre>
+<h3 id="&#x9A71;&#x52A8;&#x8BBE;&#x8BA1;&#x7684;&#x786C;&#x4EF6;&#x57FA;&#x7840;">&#x9A71;&#x52A8;&#x8BBE;&#x8BA1;&#x7684;&#x786C;&#x4EF6;&#x57FA;&#x7840;</h3>
+<h4 id="&#x5904;&#x7406;&#x5668;">&#x5904;&#x7406;&#x5668;</h4>
+<p><strong>&#x901A;&#x7528;&#x5904;&#x7406;&#x5668;</strong></p>
+<p>&#x5F88;&#x591A;&#x7684;&#x901A;&#x7528;&#x5904;&#x7406;&#x5668;&#xFF08;GPP&#xFF09; &#x91C7;&#x7528;SoC&#xFF08;&#x7247;&#x4E0A;&#x7CFB;&#x7EDF;&#xFF09; &#x7684;&#x82AF;&#x7247;&#x8BBE;&#x8BA1;&#x65B9;&#x6CD5;&#xFF0C; &#x96C6;&#x6210;&#x4E86;&#x5404;&#x79CD;&#x529F;&#x80FD;&#x6A21;&#x5757;&#xFF0C; &#x6BCF;&#x4E00;&#x79CD;&#x529F;&#x80FD;&#x90FD;&#x662F;&#x7531;<strong>&#x786C;&#x4EF6;&#x63CF;&#x8FF0;&#x8BED;&#x8A00;</strong>&#x8BBE;&#x8BA1;&#x7A0B;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x5728;SoC&#x5185;&#x7531;&#x7535;&#x8DEF;&#x5B9E;&#x73B0;&#x7684;</p>
+<p>ARM SoC&#x8303;&#x4F8B;&#xFF1A; Snapdragon 810 :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627232036.png" alt="image-20200627232016367"></p>
+<p>ARM&#x79FB;&#x52A8;&#x5904;&#x7406;&#x82AF;&#x7247;&#x4F9B;&#x5E94;&#x5546;&#x5305;&#x62EC; &#x9AD8;&#x901A;&#xFF08;Qualcomm&#xFF09; &#x3001; &#x4E09;&#x661F;&#xFF08;Samsung&#xFF09; &#x3001; &#x82F1;&#x4F1F;&#x8FBE;&#xFF08;Nvidia&#xFF09; &#x3001; &#x7F8E;&#x6EE1;&#xFF08;Marvell&#xFF09; &#x3001; &#x8054;&#x53D1;&#x79D1;&#xFF08;MTK&#xFF09; &#x3001; &#x6D77;&#x601D;&#xFF08;HiSilicon&#xFF09; &#x3001; &#x5C55;&#x8BAF;&#xFF08;Spreadtrum&#xFF09; &#x7B49;</p>
+<p>&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5668;&#x7684;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x7C7B; :</p>
+<p><strong>&#x51AF;&#xB7;&#x8BFA;&#x4F9D;&#x66FC;</strong>&#x7ED3;&#x6784;( &#x666E;&#x6797;&#x65AF;&#x987F;&#x7ED3;&#x6784; )&#xFF0C;&#x5C06;<strong>&#x7A0B;&#x5E8F;&#x6307;&#x4EE4;&#x5B58;&#x50A8;&#x5668;</strong>&#x548C;<strong>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5668;</strong>&#x5408;&#x5E76;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x5B58;&#x50A8;&#x5668;&#x7ED3;&#x6784; , &#x7A0B;&#x5E8F;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x7684;<strong>&#x5BBD;&#x5EA6;&#x76F8;&#x540C;</strong>&#x3002; &#x5982; : Intel&#x516C;&#x53F8;&#x7684;&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5668;</p>
+<p><strong>&#x54C8;&#x4F5B;</strong>&#x7ED3;&#x6784; , &#x5C06; <strong>&#x7A0B;&#x5E8F;&#x6307;&#x4EE4;</strong> &#x548C; <strong>&#x6570;&#x636E;</strong> &#x5206;&#x5F00;&#x5B58;&#x50A8;&#xFF0C; &#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x662F;<strong>&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5BBD;&#x5EA6;</strong> &#x5982; : Cortex A&#x7CFB;&#x5217;</p>
+<p>&#x54C8;&#x4F5B;&#x7ED3;&#x6784;&#x8FD8;&#x91C7;&#x7528;&#x4E86;&#x72EC;&#x7ACB;&#x7684;<strong>&#x7A0B;&#x5E8F;&#x603B;&#x7EBF;</strong>&#x548C;<strong>&#x6570;&#x636E;&#x603B;&#x7EBF;</strong>&#xFF0C; &#x5206;&#x522B;&#x4E3A;<strong>CPU</strong> &#x4E0E; &#x6BCF;&#x4E2A;<strong>&#x5B58;&#x50A8;&#x5668;</strong>&#x4E4B;&#x95F4;&#x7684;<strong>&#x4E13;&#x7528;&#x901A;&#x4FE1;&#x8DEF;&#x5F84;</strong>&#xFF0C; &#x63D0;&#x9AD8;&#x4E86;&#x6267;&#x884C;&#x6548;&#x7387;</p>
+<p>&#x51AF;&#xB7; &#x8BFA;&#x4F9D;&#x66FC;&#x7ED3;&#x6784; &#x4E0E; &#x54C8;&#x4F5B;&#x7ED3;&#x6784; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627232523.png" alt="image-20200627232522881"></p>
+<p>&#x6539;&#x8FDB;&#x7684;&#x54C8;&#x4F5B;&#x67B6;&#x6784;&#xFF0C; &#x6709;&#x72EC;&#x7ACB;&#x7684;<strong>&#x5730;&#x5740;&#x603B;&#x7EBF;</strong>&#x548C;<strong>&#x6570;&#x636E;&#x603B;&#x7EBF;</strong> , &#x4E24;&#x6761;&#x603B;&#x7EBF;&#x7531; <strong>&#x7A0B;&#x5E8F;&#x5B58;&#x50A8;&#x5668;</strong> &#x548C; <strong>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5668;</strong> &#x5206;&#x65F6;&#x5171;&#x7528;</p>
+<p>&#x6539;&#x8FDB;&#x7684;&#x54C8;&#x4F5B;&#x7ED3;&#x6784;&#x5BF9; &#x7A0B;&#x5E8F; &#x548C; &#x6570;&#x636E;&#xFF0C; &#x4F7F;&#x7528;<strong>&#x516C;&#x7528;&#x6570;&#x636E;&#x603B;&#x7EBF;</strong>&#x6765;&#x5B8C;&#x6210; &#x7A0B;&#x5E8F;&#x5B58;&#x50A8;&#x6A21;&#x5757; &#x6216; &#x6570;&#x636E;&#x5B58;&#x50A8;&#x6A21;&#x5757; &#x4E0E; CPU &#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C; &#x516C;&#x7528;&#x7684;&#x5730;&#x5740;&#x603B;&#x7EBF;&#x6765;&#x5BFB;&#x5740; &#x7A0B;&#x5E8F; &#x548C; &#x6570;&#x636E;</p>
+<p>&#x6539;&#x8FDB;&#x7684;&#x54C8;&#x4F5B;&#x7ED3;&#x6784; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200627232605.png" alt="image-20200627232605530"></p>
+<p><strong>&#x6307;&#x4EE4;&#x96C6;</strong>&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x8BB2;&#xFF0C; &#x4E2D;&#x592E;&#x5904;&#x7406;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x7C7B; : RISC&#xFF08;&#x7CBE;&#x7B80;&#x6307;&#x4EE4;&#x96C6;&#x8BA1;&#x7B97;&#x673A;&#xFF09; &#x548C;CISC&#xFF08;&#x590D;&#x6742;&#x6307;&#x4EE4;&#x96C6;&#x8BA1;&#x7B97;&#x673A;&#xFF09;</p>
+<p>CSIC &#x5F3A;&#x8C03;&#x589E;&#x5F3A;&#x6307;&#x4EE4;&#x7684;&#x80FD;&#x529B;&#x3001; &#x51CF;&#x5C11;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x7684;&#x6570;&#x91CF;&#xFF0C; &#x4F46; &#x6307;&#x4EE4;&#x590D;&#x6742;&#xFF0C; &#x6307;&#x4EE4;&#x5468;&#x671F;&#x957F;&#xFF1B;</p>
+<p>&#x800C;RISC&#x5F3A;&#x8C03;&#x5C3D;&#x91CF;&#x51CF;&#x5C11;&#x6307;&#x4EE4;&#x96C6;&#x3001; &#x6307;&#x4EE4;&#x5355;&#x5468;&#x671F;&#x6267;&#x884C;&#xFF0C; &#x4F46; &#x76EE;&#x6807;&#x4EE3;&#x7801;&#x4F1A;&#x66F4;&#x5927;</p>
+<p><strong>&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5668;</strong></p>
+<p>&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5668;&#xFF08;DSP&#xFF09; &#x9488;&#x5BF9;&#x901A;&#x4FE1;&#x3001; &#x56FE;&#x50CF;&#x3001; &#x8BED;&#x97F3;&#x548C;&#x89C6;&#x9891;&#x5904;&#x7406;&#x7B49;&#x9886;&#x57DF;&#x7684;&#x7B97;&#x6CD5;&#x800C;&#x8BBE;&#x8BA1;</p>
+<p><strong>DSP</strong>&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF0C; <strong>&#x5B9A;&#x70B9;DSP</strong>&#xFF0C; <strong>&#x6D6E;&#x70B9;DSP</strong>&#x3002;</p>
+<p>&#x6D6E;&#x70B9;DSP&#x7684;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x7528;<strong>&#x786C;&#x4EF6;</strong>&#x6765;&#x5B9E;&#x73B0;&#xFF0C; &#x53EF;&#x4EE5;&#x5728;&#x5355;&#x5468;&#x671F;&#x5185;&#x5B8C;&#x6210;&#xFF0C; &#x56E0;&#x6B64;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x5904;&#x7406;&#x901F;&#x5EA6;&#x9AD8;&#x4E8E;&#x5B9A;&#x70B9;DSP&#x3002;</p>
+<p>&#x800C;&#x5B9A;&#x70B9;DSP&#x53EA;&#x80FD;&#x7528;&#x5B9A;&#x70B9;&#x8FD0;&#x7B97;<strong>&#x6A21;&#x62DF;</strong>&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;</p>
+<p><strong>&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x5668;</strong>&#x5668;&#x4EF6;&#x5185;&#x90E8;&#x901A;&#x5E38;&#x7531; n&#x4E2A;<strong>&#x5FAE;&#x7801;&#x5904;&#x7406;&#x5668;</strong> &#x548C; n&#x4E2A;<strong>&#x786C;&#x4EF6;&#x534F;&#x5904;&#x7406;&#x5668;</strong> &#x7EC4;&#x6210;&#xFF0C; &#x591A;&#x4E2A;&#x5FAE;&#x7801;&#x5904;&#x7406;&#x5668;&#x5728;&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x5668;&#x5185;&#x90E8;<strong>&#x5E76;&#x884C;&#x5904;&#x7406;</strong>&#xFF0C; &#x901A;&#x8FC7;<strong>&#x9884;&#x5148;&#x7F16;&#x5236;</strong>&#x7684;&#x5FAE;&#x7801;&#x6765;&#x63A7;&#x5236;&#x5904;&#x7406;&#x6D41;&#x7A0B;</p>
+<p>&#x5904;&#x7406;&#x5668;&#x5206;&#x7C7B; :</p>
+<pre><code class="lang-text">&#x5904;&#x7406;&#x5668;&#x6309;&#x5E94;&#x7528;&#x9886;&#x57DF;&#x5206;&#x7C7B;&#x878D;&#x5408;,&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x63A7;&#x5236;&#x5668;_DSC_&#x901A;&#x7528;&#x5904;&#x7406;&#x5668;_GPP_&#x5FAE;&#x63A7;&#x5236;&#x5668;_MCU_&#x7B80;&#x79F0;&#x5355;&#x7247;&#x673A;&#x5FAE;&#x5904;&#x7406;&#x5668;__MPU&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5668;_DSP_&#x5B9A;&#x70B9;DSP&#x6D6E;&#x70B9;DSP&#x4E13;&#x95E8;&#x5904;&#x7406;&#x5668;_ASO_&#x53CA;ASIC&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x5668;&#x97F3;&#x89C6;&#x9891;&#x7F16;&#x89E3;&#x7801;&#x5668;&#x6309;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x5206;&#x7C7B;&#x51AF;&#x8BFA;&#x4F9D;&#x66FC;&#x7ED3;&#x6784;&#x54C8;&#x4F5B;&#x7ED3;&#x6784;&#x6309;&#x6307;&#x4EE4;&#x96C6;&#x5206;&#x7C7B;RISCCSIC
+</code></pre>
+<p>MCU &#x5904;&#x7406;&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#x548C;&#x7528;&#x6237;&#x7684;&#x6309;&#x952E;&#x8F93;&#x5165;&#x5E76;&#x8FD0;&#x884C;<strong>&#x591A;&#x4EFB;&#x52A1;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</strong></p>
+<p>DSP&#x8FDB;&#x884C;&#x97F3;&#x89C6;&#x9891;&#x7F16;&#x89E3;&#x7801;</p>
+<p>&#x5C04;&#x9891;&#x65B9;&#x9762;&#x5219;&#x91C7;&#x7528;ASIC</p>
+<h4 id="&#x5B58;&#x50A8;&#x5668;">&#x5B58;&#x50A8;&#x5668;</h4>
+<p>&#x5B58;&#x50A8;&#x5668;&#x4E3B;&#x8981;&#x53EF;&#x5206;&#x7C7B;&#x4E3A;<strong>&#x53EA;&#x8BFB;</strong>&#x50A8;&#x5B58;&#x5668;&#xFF08;ROM&#xFF09; &#x3001; <strong>&#x95EA;&#x5B58;</strong>&#xFF08;Flash&#xFF09; &#x3001; <strong>&#x968F;&#x673A;</strong>&#x5B58;&#x53D6;&#x5B58;&#x50A8;&#x5668;&#xFF08;RAM&#xFF09; &#x3001; <strong>&#x5149;/&#x78C1;&#x4ECB;&#x8D28;</strong>&#x50A8;&#x5B58;&#x5668;&#x3002;</p>
+<p>ROM&#x53EF;&#x7EC6;&#x5206;&#x4E3A; <strong>&#x4E0D;&#x53EF;&#x7F16;&#x7A0B;</strong>ROM&#x3001; <strong>&#x53EF;&#x7F16;&#x7A0B;</strong>ROM&#xFF08;PROM&#xFF09; &#x3001; <strong>&#x53EF;&#x64E6;&#x9664;&#x53EF;&#x7F16;&#x7A0B;</strong>ROM&#xFF08;EPROM&#xFF09; &#x548C;<strong>&#x7535;&#x53EF;&#x64E6;&#x9664;&#x53EF;&#x7F16;&#x7A0B;</strong>ROM&#xFF08;E2PROM&#xFF09; &#xFF0C; E2PROM&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x7528;&#x8F6F;&#x4EF6;&#x6765;&#x64E6;&#x5199;</p>
+<p>Flash&#x95EA;&#x5B58;&#x6280;&#x672F;&#x4E24;&#x79CD;&#x4E3B;&#x8981;&#x7684;&#x662F; <strong>NOR</strong>&#xFF08;&#x6216;&#x975E;&#xFF09; &#x548C; <strong>NAND</strong>&#xFF08;&#x4E0E;&#x975E;&#xFF09;</p>
+<p>NOR Flash&#x7684;&#x7279;&#x70B9;&#x662F;&#x53EF;&#x82AF;&#x7247;&#x5185;&#x6267;&#x884C;&#xFF08;eXecute InPlace&#xFF0C; XIP&#xFF09; &#xFF0C; &#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;NOR&#x5185;&#x8FD0;&#x884C;</p>
+<p>NAND Flash&#x4EE5; <strong>&#x5757;&#x65B9;&#x5F0F;</strong>&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C; &#x4E0D;&#x652F;&#x6301;&#x82AF;&#x7247;&#x5185;&#x6267;&#x884C;</p>
+<p>&#x5178;&#x578B;&#x7684;&#x7C7B;SRAM&#x63A5;&#x53E3; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628100348.png" alt="image-20200628100348132"></p>
+<p>&#x516C;&#x5171;&#x95EA;&#x5B58;&#x63A5;&#x53E3;&#xFF08;Common Flash Interface&#xFF0C; CFI&#xFF09; &#x662F;&#x4E00;&#x4E2A;&#x4ECE;NOR Flash&#x5668;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x516C;&#x5F00;&#x3001; &#x6807;&#x51C6;&#x63A5;&#x53E3;</p>
+<p>&#x5982; &#x82AF;&#x7247;&#x4E0D;&#x652F;&#x6301;CFI&#xFF0C; &#x53EF;&#x4F7F;&#x7528;JEDEC&#xFF08;Joint Electron Device EngineeringCouncil&#xFF0C; &#x7535;&#x5B50;&#x7535;&#x5668;&#x8BBE;&#x5907;&#x8054;&#x5408;&#x4F1A;&#xFF09;, &#x9700;&#x8981;&#x8BFB;&#x51FA; &#x5236;&#x9020;&#x5546;ID &#x548C; &#x8BBE;ID&#xFF0C; &#x6765;&#x83B7;&#x53D6; Flash&#x7684;&#x5927;&#x5C0F;</p>
+<p>NAND Flash&#x7684;&#x4E3B;&#x8981;&#x63A5;&#x53E3;</p>
+<ul>
+<li>I/O&#x603B;&#x7EBF;&#xFF1A; &#x5730;&#x5740;&#x3001; &#x6307;&#x4EE4; &#x548C; &#x6570;&#x636E;&#x901A;&#x8FC7;&#x8FD9;&#x7EC4;&#x603B;&#x7EBF;&#x4F20;&#x8F93;&#xFF0C; &#x4E00;&#x822C;&#x4E3A;8&#x4F4D;&#x6216;16&#x4F4D;</li>
+<li>&#x82AF;&#x7247;&#x542F;&#x52A8;&#xFF08;Chip Enable&#xFF0C; CE#&#xFF09; &#xFF1A; &#x5982;&#x679C;&#x6CA1;&#x6709;&#x68C0;&#x6D4B;&#x5230;CE&#x4FE1;&#x53F7;&#xFF0C; NAND&#x5668;&#x4EF6;&#x5C31;&#x4FDD;&#x6301;&#x5F85;&#x673A;&#x6A21;&#x5F0F;&#xFF0C; &#x4E0D;&#x5BF9;&#x4EFB;&#x4F55;&#x63A7;&#x5236;&#x4FE1;&#x53F7;&#x505A;&#x51FA;&#x54CD;&#x5E94;</li>
+<li>&#x5199;&#x4F7F;&#x80FD;&#xFF08;Write Enable&#xFF0C; WE#&#xFF09; &#xFF1A; WE#&#x8D1F;&#x8D23;&#x5C06;&#x6570;&#x636E;&#x3001; &#x5730;&#x5740;&#x6216;&#x6307;&#x4EE4;&#x5199;&#x5165;NAND&#x4E4B;&#x4E2D;</li>
+<li>&#x8BFB;&#x4F7F;&#x80FD;&#xFF08;Read Enable&#xFF0C; RE#&#xFF09; &#xFF1A; RE#&#x5141;&#x8BB8;&#x6570;&#x636E;&#x8F93;&#x51FA;</li>
+<li>&#x6307;&#x4EE4;&#x9501;&#x5B58;&#x4F7F;&#x80FD;&#xFF08;Command Latch Enable&#xFF0C; CLE&#xFF09; &#xFF1A; &#x5F53;CLE&#x4E3A;&#x9AD8;&#x7535;&#x5E73;&#x65F6;&#xFF0C;&#x5728;WE#&#x4FE1;&#x53F7;&#x7684;&#x4E0A;&#x5347;&#x6CBF;&#xFF0C; &#x6307;&#x4EE4;&#x5C06;&#x88AB;&#x9501;&#x5B58;&#x5230;NAND&#x6307;&#x4EE4;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;</li>
+<li>&#x5730;&#x5740;&#x9501;&#x5B58;&#x4F7F;&#x80FD;&#xFF08;Address Latch Enable&#xFF0C; ALE&#xFF09; &#xFF1A; &#x5F53;ALE&#x4E3A;&#x9AD8;&#x7535;&#x5E73;&#x65F6;&#xFF0C; &#x5728;WE#&#x4FE1;&#x53F7;&#x7684;&#x4E0A;&#x5347;&#x6CBF;&#xFF0C; &#x5730;&#x5740;&#x5C06;&#x88AB;&#x9501;&#x5B58;&#x5230;NAND&#x5730;&#x5740;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</li>
+<li>&#x5C31;&#x7EEA;/&#x5FD9;&#xFF08;Ready/Busy&#xFF0C; R/B#&#xFF09; &#xFF1A; &#x5982;&#x679C;NAND&#x5668;&#x4EF6;&#x5FD9;&#xFF0C; R/B#&#x4FE1;&#x53F7;&#x5C06;&#x53D8;&#x4E3A;&#x4F4E;&#x7535;&#x5E73;&#x3002; &#x8BE5;&#x4FE1;&#x53F7;&#x662F;&#x6F0F;&#x6781;&#x5F00;&#x8DEF;&#xFF0C; &#x9700;&#x8981;&#x91C7;&#x7528;&#x4E0A;&#x62C9;&#x7535;&#x963B;</li>
+</ul>
+<p>&#x4F7F;&#x7528;NAND Flash&#x7684;&#x540C;&#x65F6;&#xFF0C; &#x5E94;&#x91C7;&#x7528; &#x9519;&#x8BEF;&#x63A2;&#x6D4B; / &#x9519;&#x8BEF;&#x66F4;&#x6B63;&#xFF08;EDC / ECC&#xFF09; &#x7B97;&#x6CD5;</p>
+<p>Flash&#x7684;&#x7F16;&#x7A0B;&#x539F;&#x7406;&#x90FD;&#x662F; <strong>&#x53EA;&#x80FD;&#x5C06;1&#x5199;&#x4E3A;0</strong>&#xFF0C; &#x800C; <strong>&#x4E0D;&#x80FD;&#x5C06;0&#x5199;&#x4E3A;1</strong></p>
+<p>RAM&#x53EF;&#x5206;&#x4E3A;<strong>&#x9759;&#x6001;</strong>RAM&#xFF08;SRAM&#xFF09; &#x548C; <strong>&#x52A8;&#x6001;</strong>RAM&#xFF08;DRAM&#xFF09;</p>
+<p><strong>DRAM</strong>&#x4EE5;&#x7535;&#x8377;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#xFF0C; &#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x7535;&#x5BB9;&#x5668;&#x4E2D; , &#x9700;&#x8981;&#x5B9A;&#x671F;&#x5237;&#x65B0;</p>
+<p><strong>SRAM</strong>&#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C; &#x53EA;&#x8981;&#x4F9B;&#x7535;&#x5B83;&#x5C31;&#x4F1A;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;&#x503C;&#xFF0C; SRAM&#x6CA1;&#x6709;&#x5237;&#x65B0;&#x5468;&#x671F;</p>
+<p><strong>DPRAM</strong>&#xFF1A; &#x53CC;&#x7AEF;&#x53E3;RAM</p>
+<p>DPRAM&#x7684;&#x4F18;&#x70B9;&#x662F;&#x901A;&#x4FE1;&#x901F;&#x5EA6;&#x5FEB;&#x3001; &#x5B9E;&#x65F6;&#x6027;&#x5F3A;&#x3001; &#x63A5;&#x53E3;&#x7B80;&#x5355;&#xFF0C; &#x800C;&#x4E14;&#x4E24;&#x8FB9;&#x5904;&#x7406;&#x5668;&#x90FD;&#x53EF;&#x4E3B;&#x52A8;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x8F93;</p>
+<p>&#x53CC;&#x7AEF;&#x53E3;RAM :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628100739.png" alt="image-20200628100700440"></p>
+<p><strong>CAM</strong>&#xFF1A; &#x5185;&#x5BB9;&#x5BFB;&#x5740;RAM</p>
+<p>CAM&#x662F;&#x4EE5;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x5BFB;&#x5740;&#x7684;&#x5B58;&#x50A8;&#x5668; , &#x8F93;&#x5165;&#x8981;&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#xFF0C; &#x8F93;&#x51FA;&#x5C31;&#x662F; &#x6570;&#x636E;&#x5730;&#x5740; &#x548C; &#x5339;&#x914D;&#x6807;&#x5FD7;&#x3002; &#x82E5;&#x5339;&#x914D;&#xFF08;&#x5373;&#x641C;&#x5BFB;&#x5230;&#x6570;&#x636E;&#xFF09; &#xFF0C; &#x5219;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x5730;&#x5740;&#x3002;</p>
+<p>CAM&#x7684;&#x8F93;&#x5165;&#x4E0E;&#x8F93;&#x51FA; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628100732.png" alt="image-20200628100651583"></p>
+<p><strong>FIFO</strong>&#xFF1A; &#x5148;&#x8FDB;&#x5148;&#x51FA;&#x961F;&#x5217;</p>
+<p>FIFO&#x5B58;&#x50A8;&#x5668;&#x7684;&#x7279;&#x70B9;&#x662F;&#x5148;&#x8FDB;&#x5148;&#x51FA;&#xFF0C; &#x8FDB;&#x51FA;&#x6709;&#x5E8F;&#xFF0C; FIFO&#x591A;&#x7528;&#x4E8E;&#x6570;&#x636E;&#x7F13;&#x51B2; .</p>
+<p>&#x5B58;&#x50A8;&#x5668;&#x5206;&#x7C7B; :</p>
+<pre><code class="lang-text">&#x5B58;&#x50A8;&#x5668;&#x975E;&#x6613;&#x5931;&#x6027;&#x5B58;&#x50A8;&#x5668;_NVM_ROM_ROM_PROMEPROME2PROMFlashNORFlashNANDFlash&#x5149;/&#x78C1;&#x4ECB;&#x8D28;&#x5B58;&#x50A8;&#x5668;&#x6389;&#x7535;&#x4E22;&#x5931;&#x6570;&#x636E;&#x7684;RAMSRAMDRAM_SDRM_DDR_SDRAM_&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;RAM&#x4E00;&#x822C;&#x91C7;&#x7528;SRAMNVRAMDPRAMCAMFIFO
+</code></pre>
+<h4 id="&#x63A5;&#x53E3;&#x4E0E;&#x603B;&#x7EBF;">&#x63A5;&#x53E3;&#x4E0E;&#x603B;&#x7EBF;</h4>
+<p><strong>&#x4E32;&#x53E3;</strong></p>
+<p>RS-232&#x3001; RS-422 &#x4E0E; RS-485 &#x90FD;&#x662F;&#x4E32;&#x884C;&#x6570;&#x636E;&#x63A5;&#x53E3;&#x6807;&#x51C6;</p>
+<p><strong>RS-232</strong> : &#x547D;&#x540D;&#x4E3A; EIA-232-E</p>
+<p><strong>RS-422</strong> : &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x79CD;&#x5E73;&#x8861;&#x901A;&#x4FE1;&#x63A5;&#x53E3;&#xFF0C; &#x5B83;&#x662F;&#x4E00;&#x79CD;&#x5355;&#x673A;&#x53D1;&#x9001;&#x3001; &#x591A;&#x673A;&#x63A5;&#x6536;&#x7684;&#x5355;&#x5411;&#x3001; &#x5E73;&#x8861;&#x4F20;&#x8F93;&#x89C4;&#x8303;&#xFF0C; &#x88AB;&#x547D;&#x540D;&#x4E3A; TIA/EIA-422-A &#x6807;&#x51C6;</p>
+<p><strong>RS-485</strong> : &#x589E;&#x52A0;&#x4E86;&#x591A;&#x70B9;&#x3001; &#x53CC;&#x5411;&#x901A;&#x4FE1;&#x80FD;&#x529B;&#xFF0C; &#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x53D1;&#x9001;&#x5668;&#x8FDE;&#x63A5;&#x5230;&#x540C;&#x4E00;&#x6761;&#x603B;&#x7EBF;&#x4E0A;&#xFF0C;&#x540C;&#x65F6;&#x589E;&#x52A0;&#x4E86; &#x53D1;&#x9001;&#x5668;&#x7684;&#x9A71;&#x52A8;&#x80FD;&#x529B; &#x548C; &#x51B2;&#x7A81;&#x4FDD;&#x62A4;&#x7279;&#x6027;&#xFF0C; &#x5E76;&#x6269;&#x5C55;&#x4E86; &#x603B;&#x7EBF;&#x5171;&#x6A21;&#x8303;&#x56F4;&#xFF0C; &#x88AB;&#x547D;&#x540D;&#x4E3A;TIA/EIA-485-A&#x6807;&#x51C6;&#x3002;</p>
+<p>RS-232C : &#x4E3A;&#x8FDE;&#x63A5; <strong>DTE</strong>&#xFF08;&#x6570;&#x636E;&#x7EC8;&#x7AEF;&#x8BBE;&#x5907;&#xFF09; &#x4E0E; <strong>DCE</strong>&#xFF08;&#x6570;&#x636E;&#x901A;&#x4FE1;&#x8BBE;&#x5907;&#xFF09; &#x800C;&#x5236;&#x5B9A; .</p>
+<p>RS-232C&#x6807;&#x51C6;&#x63A5;&#x53E3;&#x6709;25&#x6761;&#x7EBF;&#xFF08;4&#x6761;&#x6570;&#x636E;&#x7EBF;&#x3001; 11&#x6761;&#x63A7;&#x5236;&#x7EBF;&#x3001; 3&#x6761;&#x5B9A;&#x65F6;&#x7EBF;&#x3001; 7&#x6761;&#x5907;&#x7528;&#x548C;&#x672A;&#x5B9A;&#x4E49;&#x7EBF;&#xFF09;, &#x5E38;&#x7528;&#x7684;&#x53EA;&#x6709;9&#x6839;&#xFF0C; &#x5B83;&#x4EEC;&#x662F;<strong>RTS/CTS</strong>&#xFF08;&#x8BF7;&#x6C42;&#x53D1;&#x9001;/&#x6E05;&#x9664;&#x53D1;&#x9001;&#x6D41;&#x63A7;&#x5236;&#xFF09; &#x3001;<strong>RxD/TxD</strong>&#xFF08;&#x6570;&#x636E;&#x6536;&#x53D1;&#xFF09; &#x3001; <strong>DSR/DTR</strong>&#xFF08;&#x6570;&#x636E;&#x8BBE;&#x7F6E;&#x5C31;&#x7EEA;/&#x6570;&#x636E;&#x7EC8;&#x7AEF;&#x5C31;&#x7EEA;&#x6D41;&#x63A7;&#x5236;&#xFF09; &#x3001;<strong>DCD</strong>&#xFF08;&#x6570;&#x636E;&#x8F7D;&#x6CE2;&#x68C0;&#x6D4B;&#xFF0C; &#x4E5F;&#x79F0;RLSD&#xFF0C; &#x5373;&#x63A5;&#x6536;&#x7EBF;&#x4FE1;&#x53F7;&#x68C0;&#x51FA;&#xFF09; &#x3001; <strong>Ringing-RI</strong>&#xFF08;&#x632F;&#x94C3;&#x6307;&#x793A;&#xFF09; &#x3001; <strong>SG</strong>&#xFF08;&#x4FE1;&#x53F7;&#x5730;&#xFF09; &#x4FE1;&#x53F7;&#x3002;</p>
+<ul>
+<li>RTS&#xFF1A; &#x7528;&#x6765;&#x8868;&#x793A; DTE&#x8BF7;&#x6C42;DCE&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C; &#x5F53;&#x7EC8;&#x7AEF;&#x8981;&#x53D1;&#x9001;&#x6570;&#x636E;&#x65F6;&#xFF0C; &#x4F7F;&#x8BE5;&#x4FE1;&#x53F7;&#x6709;&#x6548;</li>
+<li>CTS&#xFF1A; &#x7528;&#x6765;&#x8868;&#x793A;DCE&#x51C6;&#x5907;&#x597D;&#x63A5;&#x6536;DTE&#x53D1;&#x6765;&#x7684;&#x6570;&#x636E;&#xFF0C; &#x662F;&#x5BF9;RTS&#x7684;&#x54CD;&#x5E94;&#x4FE1;&#x53F7;&#x3002;</li>
+<li>RxD&#xFF1A; DTE&#x901A;&#x8FC7;RxD&#x63A5;&#x6536;&#x4ECE;DCE&#x53D1;&#x6765;&#x7684;&#x4E32;&#x884C;&#x6570;&#x636E;&#x3002;</li>
+<li>TxD&#xFF1A; DTE&#x901A;&#x8FC7;TxD&#x5C06;&#x4E32;&#x884C;&#x6570;&#x636E;&#x53D1;&#x9001;&#x5230;DCE&#x3002;</li>
+<li>DSR&#xFF1A; &#x6709;&#x6548;&#xFF08;ON&#x72B6;&#x6001;&#xFF09; &#x8868;&#x660E;DCE&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;</li>
+<li>DTR&#xFF1A; &#x6709;&#x6548;&#xFF08;ON&#x72B6;&#x6001;&#xFF09; &#x8868;&#x660E;DTE&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;</li>
+<li>DCD&#xFF1A; &#x5F53;&#x672C;&#x5730;DCE&#x8BBE;&#x5907;&#x6536;&#x5230;&#x5BF9;&#x65B9;DCE&#x8BBE;&#x5907;&#x9001;&#x6765;&#x7684;&#x8F7D;&#x6CE2;&#x4FE1;&#x53F7;&#x65F6;&#xFF0C; &#x4F7F;DCD&#x6709;&#x6548;&#xFF0C; &#x901A;&#x77E5;DTE&#x51C6;&#x5907;&#x63A5;&#x6536;&#xFF0C; &#x5E76;&#x4E14;&#x7531;DCE&#x5C06;&#x63A5;&#x6536;&#x5230;&#x7684;&#x8F7D;&#x6CE2;&#x4FE1;&#x53F7;&#x89E3;&#x8C03;&#x4E3A;&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#xFF0C; &#x7ECF;RxD&#x7EBF;&#x9001;&#x7ED9;DTE&#x3002;</li>
+<li>Ringing-RI&#xFF1A; &#x5F53;&#x8C03;&#x5236;&#x89E3;&#x8C03;&#x5668;&#x6536;&#x5230;&#x4EA4;&#x6362;&#x53F0;&#x9001;&#x6765;&#x7684;&#x632F;&#x94C3;&#x547C;&#x53EB;&#x4FE1;&#x53F7;&#x65F6;&#xFF0C; &#x4F7F;&#x8BE5;&#x4FE1;&#x53F7;&#x6709;&#x6548;&#xFF08;ON&#x72B6;&#x6001;&#xFF09; &#xFF0C; &#x901A;&#x77E5;&#x7EC8;&#x7AEF;&#xFF0C; &#x5DF2;&#x88AB;&#x547C;&#x53EB;&#x3002;</li>
+</ul>
+<p>RS-232C&#x4E32;&#x53E3;&#x7535;&#x8DEF;&#x539F;&#x7406; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145349.png" alt="image-20200628145348941"></p>
+<p><strong>I2C</strong></p>
+<p>I2C&#xFF08; &#x5185;&#x7F6E;&#x96C6;&#x6210;&#x7535;&#x8DEF;&#xFF09; &#x603B;&#x7EBF;&#x662F;&#x7531;Philips&#x516C;&#x53F8;&#x5F00;&#x53D1;&#x7684;&#x4E24;&#x7EBF;&#x5F0F;<strong>&#x4E32;&#x884C;&#x603B;&#x7EBF;</strong></p>
+<p>I2C&#x603B;&#x7EBF;&#x652F;&#x6301;&#x591A;&#x4E3B;&#x63A7;&#xFF08; Multi-Mastering&#xFF09; &#x6A21;&#x5F0F;&#xFF0C; &#x4EFB;&#x4F55;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x7684;&#x8BBE;&#x5907;&#x90FD;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;&#x4E3B;&#x8BBE;&#x5907;&#x3002;</p>
+<p>&#x4E24;&#x4E2A;&#x4FE1;&#x53F7;&#x4E3A;&#x6570;&#x636E;&#x7EBF;SDA&#x548C;&#x65F6;&#x949F;SCL</p>
+<p>&#x603B;&#x7EBF;&#x7684;&#x8F93;&#x51FA;&#x7AEF;&#x5FC5;&#x987B;&#x662F;&#x5F00;&#x6F0F;&#x8F93;&#x51FA;( CMOS )&#x6216; &#x96C6;&#x7535;&#x6781;&#x5F00;&#x8DEF;( TTL )&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x603B;&#x7EBF;&#x7A7A;&#x95F2;&#x65F6;&#xFF0C; &#x4E0A;&#x62C9;&#x7535;&#x963B;&#x4F7F; SDA &#x548C; SCL&#x7EBF;&#x90FD;&#x4FDD;&#x6301;&#x9AD8;&#x7535;&#x5E73;&#x3002;</p>
+<p>&#x6839;&#x636E; &#x5F00;&#x6F0F;&#x8F93;&#x51FA; &#x6216; &#x96C6;&#x7535;&#x6781;&#x5F00;&#x8DEF;&#x8F93;&#x51FA;&#x4FE1;&#x53F7;&#x7684;&#x201C; <strong>&#x7EBF;&#x4E0E;</strong> &#x201D;&#x903B;&#x8F91;&#xFF0C; I2C&#x603B;&#x7EBF;&#x4E0A;&#x4EFB;&#x610F;&#x5668;&#x4EF6;&#x8F93;&#x51FA; <strong>&#x4F4E;&#x7535;&#x5E73;</strong> &#x90FD;&#x4F1A;&#x4F7F;&#x76F8;&#x5E94;&#x603B;&#x7EBF;&#x4E0A;&#x7684;<strong>&#x4FE1;&#x53F7;&#x7EBF;&#x53D8;&#x4F4E;</strong></p>
+<p>&#x5F53; SCL&#x7A33;&#x5B9A;&#x5728;&#x9AD8;&#x7535;&#x5E73;&#x65F6;&#xFF0C; SDA &#x7531;&#x9AD8;&#x5230;&#x4F4E; &#x7684;&#x53D8;&#x5316;&#x5C06;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;<strong>&#x5F00;&#x59CB;&#x4F4D;</strong>&#xFF0C; &#x800C; &#x7531;&#x4F4E;&#x5230;&#x9AD8; &#x7684;&#x53D8;&#x5316;&#x5219;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;<strong>&#x505C;&#x6B62;&#x4F4D;</strong></p>
+<p>I2C&#x603B;&#x7EBF;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x548C;&#x505C;&#x6B62;&#x4F4D; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145547.png" alt="image-20200628145547766"></p>
+<p>&#x5F00;&#x59CB;&#x4F4D; &#x548C; &#x505C;&#x6B62;&#x4F4D; &#x90FD;&#x7531;I2C&#x4E3B;&#x8BBE;&#x5907;&#x4EA7;&#x751F;&#x3002; &#x5728;&#x9009;&#x62E9;&#x4ECE;&#x8BBE;&#x5907;&#x65F6;&#xFF0C; &#x5982;&#x679C;&#x4ECE;&#x8BBE;&#x5907;&#x91C7;&#x7528;7&#x4F4D;&#x5730;&#x5740;&#xFF0C; &#x5219;&#x4E3B;&#x8BBE;&#x5907;&#x5728;&#x53D1;&#x8D77;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x524D;&#xFF0C; &#x9700;&#x5148;&#x53D1;&#x9001;1&#x5B57;&#x8282;&#x7684;&#x5730;&#x5740;&#x4FE1;&#x606F;&#xFF0C; &#x524D;7&#x4F4D;&#x4E3A;<strong>&#x8BBE;&#x5907;&#x5730;&#x5740;</strong>&#xFF0C; &#x6700;&#x540E;1&#x4F4D;&#x4E3A;<strong>&#x8BFB;&#x5199;&#x6807;&#x5FD7;</strong>&#x3002; &#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C; &#x6BCF;&#x6B21;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x662F;1&#x5B57;&#x8282;&#xFF0C; &#x4ECE;MSB&#x5F00;&#x59CB;&#x4F20;&#x8F93;&#x3002; &#x6BCF;&#x4E2A;&#x5B57;&#x8282;&#x4F20;&#x5B8C;&#x540E;&#xFF0C; &#x5728;SCL&#x7684;&#x7B2C;9&#x4E2A;&#x4E0A;&#x5347;&#x6CBF;&#x5230;&#x6765;&#x4E4B;&#x524D;&#xFF0C; <strong>&#x63A5;&#x6536;&#x65B9;</strong>&#x5E94;&#x8BE5;&#x53D1;&#x51FA;1&#x4E2A;<strong>ACK&#x4F4D;</strong>&#x3002;</p>
+<p>I2C&#x603B;&#x7EBF;&#x7684;&#x65F6;&#x5E8F; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145603.png" alt="image-20200628145603514"></p>
+<p><strong>SPI</strong></p>
+<p>SPI&#xFF08; Serial Peripheral Interface&#xFF0C; &#x4E32;&#x884C;&#x5916;&#x8BBE;&#x63A5;&#x53E3;&#xFF09; &#x603B;&#x7EBF;&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x79CD;&#x540C;&#x6B65;&#x4E32;&#x884C;&#x5916;&#x8BBE;&#x63A5;&#x53E3; , &#x4F7F;CPU&#x4E0E;&#x5404;&#x79CD;&#x5916;&#x56F4;&#x8BBE;&#x5907;&#x4EE5;<strong>&#x4E32;&#x884C;&#x65B9;&#x5F0F;</strong>&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x4EE5;&#x4EA4;&#x6362;&#x4FE1;&#x606F;&#x3002;&#x4E00;&#x822C;&#x4E3B;&#x63A7;SoC&#x4F5C;&#x4E3A;SPI&#x7684;&#x201C; &#x4E3B; &#x201D;&#xFF0C; &#x800C;&#x5916;&#x8BBE;&#x4F5C;&#x4E3A;SPI&#x7684;&#x201C; &#x4ECE; &#x201D;</p>
+<p>SPI&#x63A5;&#x53E3;&#x4E00;&#x822C;&#x4F7F;&#x7528;4&#x6761;&#x7EBF;&#xFF1A; <strong>&#x4E32;&#x884C;&#x65F6;&#x949F;&#x7EBF;</strong>&#xFF08; SCLK&#xFF09; &#x3001; <strong>&#x4E3B;&#x673A;&#x8F93;&#x5165;/&#x4ECE;&#x673A;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7EBF;</strong> MISO&#x3001; <strong>&#x4E3B;&#x673A;&#x8F93;&#x51FA;/&#x4ECE;&#x673A;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7EBF;</strong> MOSI &#x548C; &#x4F4E;&#x7535;&#x5E73;&#x6709;&#x6548;&#x7684;<strong>&#x4ECE;&#x673A;&#x9009;&#x62E9;&#x7EBF;</strong>SS</p>
+<p>SPI&#x4E3B;&#x3001; &#x4ECE;&#x786C;&#x4EF6;&#x8FDE;&#x63A5;&#x56FE; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145616.png" alt="image-20200628145616617"></p>
+<p>&#x5728;SPI&#x603B;&#x7EBF;&#x7684;&#x4F20;&#x8F93;&#x4E2D;&#xFF0C; SS&#x4FE1;&#x53F7;&#x662F;&#x4F4E;&#x7535;&#x5E73;&#x6709;&#x6548;&#x7684;&#xFF0C; &#x5F53;&#x6211;&#x4EEC;&#x8981;&#x4E0E;&#x67D0;&#x5916;&#x8BBE;&#x901A;&#x4FE1;&#x7684;&#x65F6;&#x5019;&#xFF0C; &#x9700;&#x8981;&#x5C06;&#x8BE5;&#x5916;&#x8BBE;&#x4E0A;&#x7684;SS&#x7EBF;&#x7F6E;&#x4F4E;&#x3002; SPI&#x4ECE;&#x8BBE;&#x5907;&#x652F;&#x6301;&#x7684;SPI&#x603B;&#x7EBF;&#x6700;&#x9AD8;&#x65F6;&#x949F;&#x9891;&#x7387;&#xFF08; &#x51B3;&#x5B9A;&#x4E86;SCK&#x7684;&#x9891;&#x7387;&#xFF09; &#x51B3;&#x5B9A;&#x4E86;&#x6570;&#x636E;&#x4E0E;&#x65F6;&#x949F;&#x4E4B;&#x95F4;&#x7684;&#x504F;&#x79FB; , &#x5916;&#x8BBE;&#x7684;CPHA&#x51B3;&#x5B9A;&#x4E86;&#x91C7;&#x6837;&#x7684;&#x65F6;&#x523B;&#x3001;CPOL&#x6A21;&#x5F0F;&#x51B3;&#x5B9A;&#x4E86;&#x89E6;&#x53D1;&#x7684;&#x8FB9;&#x6CBF;&#x662F;&#x4E0A;&#x5347;&#x6CBF;&#x8FD8;&#x662F;&#x4E0B;&#x964D;&#x6CBF;</p>
+<p>SPI&#x6A21;&#x5757;&#x4E3A;&#x4E86;&#x548C;&#x5916;&#x8BBE;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4EA4;&#x6362;&#xFF0C; &#x6839;&#x636E;&#x5916;&#x8BBE;&#x5DE5;&#x4F5C;&#x8981;&#x6C42;&#xFF0C; &#x5176;&#x8F93;&#x51FA;&#x4E32;&#x884C;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x6781;&#x6027;&#xFF08;CPOL&#xFF09; &#x548C;&#x76F8;&#x4F4D;&#xFF08;CPHA&#xFF09; &#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x5982; CPOL = 0&#xFF0C; &#x4E32;&#x884C;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x7684;&#x7A7A;&#x95F2;&#x72B6;&#x6001; = &#x4F4E;&#x7535;&#x5E73;&#xFF1B;</p>
+<p>&#x5982; CPOL = 1&#xFF0C; &#x4E32;&#x884C;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x7684;&#x7A7A;&#x95F2;&#x72B6;&#x6001; = &#x9AD8;&#x7535;&#x5E73;&#x3002;</p>
+<p>&#x5982; CPHA = 0&#xFF0C; &#x5728;&#x4E32;&#x884C;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8DF3;&#x53D8;&#x6CBF;&#xFF08;&#x4E0A;&#x5347;&#x6216;&#x4E0B;&#x964D;&#xFF09; &#x6570;&#x636E;&#x88AB;&#x91C7;&#x6837;&#xFF1B;</p>
+<p>&#x5982; CPHA = 1&#xFF0C; &#x5728;&#x4E32;&#x884C;&#x540C;&#x6B65;&#x65F6;&#x949F;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x8DF3;&#x53D8;&#x6CBF;&#xFF08;&#x4E0A;&#x5347;&#x6216;&#x4E0B;&#x964D;&#xFF09; &#x6570;&#x636E;&#x88AB;&#x91C7;&#x6837;</p>
+<p>SPI&#x603B;&#x7EBF;&#x7684;&#x65F6;&#x5E8F; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145641.png" alt="image-20200628145641748"></p>
+<p><strong>USB</strong></p>
+<p>USB&#xFF08; &#x901A;&#x7528;&#x4E32;&#x884C;&#x603B;&#x7EBF;&#xFF09; &#x5177;&#x6709;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7387;&#x9AD8;&#x3001; &#x6613;&#x6269;&#x5C55;&#x3001; &#x652F;&#x6301;&#x5373;&#x63D2;&#x5373;&#x7528; &#x548C; &#x70ED;&#x63D2;&#x62D4;&#x7684;&#x4F18;&#x70B9;</p>
+<p>USB 1.1&#x5305;&#x542B;<strong>&#x5168;&#x901F;</strong>&#x548C;<strong>&#x4F4E;&#x901F;</strong>&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C; &#x4F4E;&#x901F;&#x6A21;&#x5F0F;&#x7684;&#x901F;&#x7387;&#x4E3A;1.5Mbit/s&#xFF0C; &#x652F;&#x6301;&#x5C0F;&#x6570;&#x636E;&#x541E;&#x5410;&#x91CF; &#x548C; &#x9AD8;&#x5B9E;&#x65F6;&#x6027;&#x7684;&#x8BBE;&#x5907;&#xFF0C; &#x5982;&#x9F20;&#x6807;&#x7B49;&#x3002; &#x5168;&#x901F;&#x6A21;&#x5F0F;&#x4E3A;12Mbit/s&#xFF0C; &#x53EF;&#x4EE5;&#x5916;&#x63A5;&#x901F;&#x7387;&#x66F4;&#x9AD8;&#x7684;&#x5916;&#x8BBE;&#x3002;</p>
+<p>&#x5728;USB 2.0&#x4E2D;&#xFF0C; &#x589E;&#x52A0;&#x4E86;&#x4E00;&#x79CD;&#x9AD8;&#x901F;&#x65B9;&#x5F0F;&#xFF0C;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7387;&#x8FBE;&#x5230;480Mbit/s&#xFF0C; &#x534A;&#x53CC;&#x5DE5;&#xFF0C; &#x6EE1;&#x8DB3;&#x66F4;&#x9AD8;&#x901F;&#x5916;&#x8BBE;&#x7684;&#x9700;&#x8981;&#x3002; &#x91C7;&#x7528;4&#x82AF;&#x7684;&#x5C4F;&#x853D;&#x7EBF;&#xFF0C; &#x4E00;&#x5BF9;<strong>&#x5DEE;&#x5206;</strong>&#x7EBF;&#xFF08; D+&#x3001; D-&#xFF09; &#x4F20;&#x9001;&#x4FE1;&#x53F7;&#xFF0C; &#x53E6;&#x4E00;&#x5BF9;&#xFF08; VBUS&#x3001; &#x7535;&#x6E90;&#x5730;&#xFF09; &#x4F20;&#x9001;+5V&#x7684;&#x76F4;&#x6D41;&#x7535; . &#x589E;&#x6DFB;&#x7684; Bulk&#x6A21;&#x5F0F;&#x652F;&#x6301;1&#x4E2A;<strong>&#x6570;&#x636E;&#x6D41;</strong></p>
+<p>&#x800C;USB3.0&#xFF08; &#x4E5F;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;Super Speed USB&#xFF09; &#x7684;&#x6700;&#x5927;&#x4F20;&#x8F93;&#x5E26;&#x5BBD;&#x9AD8;&#x8FBE;5.0Gbit/s&#xFF08; &#x5373;640MB/s&#xFF09; &#xFF0C; &#x5168;&#x53CC;&#x5DE5;&#x3002; &#x8BBE;&#x8BA1;&#x4E86;8&#x6761;&#x5185;&#x90E8;&#x7EBF;&#x8DEF;&#xFF0C; &#x9664;VBUS&#x3001; &#x7535;&#x6E90;&#x5730;&#x4E4B;&#x5916;&#xFF0C; &#x5176;&#x4F59;3&#x5BF9;&#x5747;&#x4E3A; &#x6570;&#x636E;&#x4F20;&#x8F93;&#x7EBF;&#x8DEF;&#x3002; &#x5176;&#x4E2D;&#x4FDD;&#x7559;&#x4E86; <strong>D+</strong> &#x4E0E; <strong>D-</strong> &#x8FD9;&#x4E24;&#x6761;&#x517C;&#x5BB9;USB 2.0&#x7684;&#x7EBF;&#x8DEF;&#xFF0C; &#x65B0;&#x589E;&#x4E86;SSRX&#x4E0E;SSTX&#x4E13;&#x4E3A;USB 3.0&#x6240;&#x8BBE;&#x7684;&#x7EBF;&#x8DEF; . &#x589E;&#x52A0;&#x4E86; <strong>Bulk Streams</strong>&#x4F20;&#x8F93;&#x6A21;&#x5F0F; &#x652F;&#x6301;<strong>&#x591A;&#x4E2A;&#x6570;&#x636E;&#x6D41;</strong>&#xFF0C; &#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x6D41;&#x88AB;&#x5206;&#x914D;&#x4E00;&#x4E2A;<strong>Stream ID</strong>&#xFF08;SID&#xFF09; &#xFF0C; &#x6BCF;&#x4E2A;SID&#x4E0E;&#x4E00;&#x4E2A;&#x4E3B;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x5E94; .</p>
+<p>&#x5F00;&#x53D1;&#x677F;&#x9700;&#x8981;&#x6302;&#x63A5;USB&#x8BBE;&#x5907;&#xFF0C; &#x5219;&#x9700;&#x63D0;&#x4F9B;<strong>USB&#x4E3B;&#x673A;&#xFF08; Host&#xFF09; &#x63A7;&#x5236;&#x5668;</strong>&#x548C;&#x8FDE;&#x63A5;&#x5668;&#xFF1B;</p>
+<p>&#x4F5C;&#x4E3A;USB&#x8BBE;&#x5907;&#xFF0C; &#x5219;&#x9700;&#x63D0;&#x4F9B;<strong>USB&#x8BBE;&#x5907;&#x9002;&#x914D;</strong>&#x5668;&#x548C;&#x8FDE;&#x63A5;&#x5668;</p>
+<p>USB&#x7684;&#x7269;&#x7406;&#x62D3;&#x6251;&#x7ED3;&#x6784; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145659.png" alt="image-20200628145659602"></p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;USB&#x8BBE;&#x5907;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x903B;&#x8F91;&#x8FDE;&#x63A5;&#x70B9;&#x5728;&#x91CC;&#x9762;&#xFF0C; &#x6BCF;&#x4E2A;&#x8FDE;&#x63A5;&#x70B9;&#x53EB;&#x7AEF;&#x70B9;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x7AEF;&#x70B9;&#x4F20;&#x8F93;&#x65B9;&#x5F0F; :</p>
+<p><strong>&#x63A7;&#x5236;</strong>&#xFF08;Control&#xFF09; &#x4F20;&#x8F93;&#x65B9;&#x5F0F;</p>
+<p>&#x63A7;&#x5236;&#x4F20;&#x8F93;&#x662F;&#x53CC;&#x5411;&#x4F20;&#x8F93;&#xFF0C; &#x6570;&#x636E;&#x91CF;&#x901A;&#x5E38;&#x8F83;&#x5C0F;&#xFF0C; &#x4E3B;&#x8981;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x3001; &#x914D;&#x7F6E;&#x548C;&#x7ED9;USB&#x8BBE;&#x5907;&#x53D1;&#x9001;&#x901A;&#x7528;&#x547D;&#x4EE4;&#x3002; &#x6240;&#x6709;USB&#x8BBE;&#x5907;&#x5FC5;&#x987B;&#x652F;&#x6301;&#x6807;&#x51C6;&#x8BF7;&#x6C42;&#xFF08;StandardRequest&#xFF09; &#xFF0C; &#x63A7;&#x5236;&#x4F20;&#x8F93;&#x65B9;&#x5F0F; &#x548C; &#x7AEF;&#x70B9;0&#x3002;</p>
+<p><strong>&#x540C;&#x6B65;</strong>&#xFF08;Isochronous&#xFF09; &#x4F20;&#x8F93;&#x65B9;&#x5F0F; ( Streaming Real-time )</p>
+<p>&#x540C;&#x6B65;&#x4F20;&#x8F93;&#x63D0;&#x4F9B;&#x4E86;&#x786E;&#x5B9A;&#x7684;<strong>&#x5E26;&#x5BBD;</strong>&#x548C;<strong>&#x95F4;&#x9694;&#x65F6;&#x95F4;</strong>&#xFF0C; &#x5B83;&#x7528;&#x4E8E;&#x65F6;&#x95F4;&#x8981;&#x6C42;&#x4E25;&#x683C;&#x5E76;&#x5177;&#x6709;&#x8F83;&#x5F3A;<strong>&#x5BB9;&#x9519;&#x6027;</strong>&#x7684;&#x6D41;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C; &#x6216; &#x7528;&#x4E8E;&#x8981;&#x6C42;&#x6052;&#x5B9A;&#x6570;&#x636E;&#x4F20;&#x9001;&#x7387;&#x7684;&#x5373;&#x65F6;&#x5E94;&#x7528; . &#x5982;: &#x8BED;&#x97F3;&#x4E1A;&#x52A1;&#x4F20;&#x8F93;</p>
+<p><strong>&#x4E2D;&#x65AD;</strong>&#xFF08;Interrupt&#xFF09; &#x4F20;&#x8F93;&#x65B9;&#x5F0F;</p>
+<p>&#x4E2D;&#x65AD;&#x65B9;&#x5F0F;&#x4F20;&#x9001;&#x662F;&#x5355;&#x5411;&#x7684;&#xFF0C; &#x5BF9;&#x4E8E;USB&#x4E3B;&#x673A;&#x800C;&#x8A00;&#xFF0C; &#x53EA;&#x6709;&#x8F93;&#x5165;&#x3002; &#x4E2D;&#x65AD;&#x4F20;&#x8F93;&#x65B9;&#x5F0F;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x5B9A;&#x65F6;&#x67E5;&#x8BE2;&#x8BBE;&#x5907;&#x662F;&#x5426;&#x6709;&#x4E2D;&#x65AD;&#x6570;&#x636E;&#x8981;&#x4F20;&#x9001;&#xFF0C; &#x8BE5;&#x4F20;&#x8F93;&#x65B9;&#x5F0F;&#x5E94;&#x7528;&#x5728;&#x5C11;&#x91CF;&#x5206;&#x6563;&#x7684;&#x3001; &#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x573A;&#x5408;&#xFF0C; &#x5982;: &#x952E;&#x76D8;&#x3001; &#x6E38;&#x620F;&#x6746;&#x548C; &#x9F20;&#x6807;</p>
+<p><strong>&#x6279;&#x91CF;</strong>&#xFF08;Bulk&#xFF09; &#x4F20;&#x8F93;&#x65B9;&#x5F0F;</p>
+<p>&#x6279;&#x91CF;&#x4F20;&#x8F93;&#x4E3B;&#x8981;&#x5E94;&#x7528;&#x5728;&#x6CA1;&#x6709;&#x5E26;&#x5BBD;&#x3001; &#x95F4;&#x9694;&#x65F6;&#x95F4;&#x8981;&#x6C42;&#x7684;&#x6279;&#x91CF;&#x6570;&#x636E;&#x7684;&#x4F20;&#x9001;&#x548C;&#x63A5;&#x6536;&#x4E2D;&#xFF0C; &#x5B83;&#x8981;&#x6C42;&#x4FDD;&#x8BC1;&#x4F20;&#x8F93;&#x3002; &#x5982; : &#x6253;&#x5370;&#x673A;&#x548C;&#x626B;&#x63CF;&#x4EEA;</p>
+<p><strong>&#x96C6;&#x7EBF;&#x5668;</strong>&#x8D1F;&#x8D23;&#x68C0;&#x6D4B;&#x8BBE;&#x5907;&#x7684;<strong>&#x8FDE;&#x63A5;</strong>&#x548C;<strong>&#x65AD;&#x5F00;</strong>&#xFF0C; &#x5229;&#x7528;&#x5176;<strong>&#x4E2D;&#x65AD;IN&#x7AEF;&#x70B9;</strong>&#xFF08;Interrupt IN Endpoint&#xFF09; &#x6765;&#x5411;&#x4E3B;&#x673A;&#x62A5;&#x544A;&#x3002; &#x4E00;&#x65E6;&#x83B7;&#x6089;&#x6709;&#x65B0;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x4E0A;&#x6765;&#xFF0C; &#x4E3B;&#x673A;&#x5C31;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x7CFB;&#x5217;&#x8BF7;&#x6C42;&#x7ED9;&#x8BBE;&#x5907;&#x6240;&#x6302;&#x8F7D;&#x7684;&#x96C6;&#x7EBF;&#x5668;&#xFF0C; &#x518D;&#x7531;&#x96C6;&#x7EBF;&#x5668;&#x5EFA;&#x7ACB;&#x8D77;&#x4E00;&#x6761;&#x8FDE;&#x63A5;<strong>&#x4E3B;&#x673A;&#x548C;&#x8BBE;&#x5907;</strong>&#x4E4B;&#x95F4;&#x7684;<strong>&#x901A;&#x4FE1;&#x901A;&#x9053;</strong>&#x3002; &#x7136;&#x540E;&#x4E3B;&#x673A;&#x4EE5;<strong>&#x63A7;&#x5236;&#x4F20;&#x8F93;</strong>&#x7684;&#x65B9;&#x5F0F;&#xFF0C; &#x901A;&#x8FC7;<strong>&#x7AEF;&#x70B9;0</strong>&#x5BF9;&#x8BBE;&#x5907;&#x53D1;&#x9001;&#x5404;&#x79CD;&#x8BF7;&#x6C42;&#xFF0C; &#x8BBE;&#x5907;&#x6536;&#x5230;&#x4E3B;&#x673A;&#x53D1;&#x6765;&#x7684;&#x8BF7;&#x6C42;&#x540E;&#x56DE;&#x590D;&#x76F8;&#x5E94;&#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x8FDB;&#x884C;<strong>&#x679A;&#x4E3E;</strong>&#xFF08;Enumerate&#xFF09; &#x64CD;&#x4F5C;&#x3002; &#x56E0;&#x6B64;USB&#x603B;&#x7EBF;&#x5177;&#x5907;<strong>&#x70ED;&#x63D2;&#x62D4;</strong>&#x7684;&#x80FD;&#x529B;</p>
+<p><strong>&#x4EE5;&#x592A;&#x7F51;&#x63A5;&#x53E3;</strong></p>
+<p>&#x4EE5;&#x592A;&#x7F51;&#x63A5;&#x53E3;&#x7531;<strong>MAC</strong>&#xFF08;&#x4EE5;&#x592A;&#x7F51;&#x5A92;&#x4F53;&#x63A5;&#x5165;&#x63A7;&#x5236;&#x5668;&#xFF09; &#x548C; <strong>PHY</strong>&#xFF08;&#x7269;&#x7406;&#x63A5;&#x53E3;&#x6536;&#x53D1;&#x5668;&#xFF09; &#x7EC4;&#x6210;</p>
+<p>&#x4EE5;&#x592A;&#x7F51;MAC&#x7531; <strong>IEEE 802.3</strong> &#x4EE5;&#x592A;&#x7F51;&#x6807;&#x51C6;&#x5B9A;&#x4E49;&#xFF0C; &#x5B9E;&#x73B0;&#x4E86;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;</p>
+<p>MAC &#x548C; PHY&#x4E4B;&#x95F4;&#x91C7;&#x7528; MII&#xFF08;&#x5A92;&#x4F53;&#x72EC;&#x7ACB;&#x63A5;&#x53E3;&#xFF09; &#x8FDE;&#x63A5;&#xFF0C; &#x5B83;&#x662F; IEEE-802.3&#x5B9A;&#x4E49;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x884C;&#x4E1A;&#x6807;&#x51C6;&#xFF0C; &#x5305;&#x62EC; 1&#x4E2A;<strong>&#x6570;&#x636E;</strong>&#x63A5;&#x53E3; &#x4E0E; MAC &#x548C; PHY &#x4E4B;&#x95F4;&#x7684;1&#x4E2A;<strong>&#x7BA1;&#x7406;</strong>&#x63A5;&#x53E3;</p>
+<p>&#x6570;&#x636E;&#x63A5;&#x53E3;&#x5305;&#x62EC;&#x5206;&#x522B;&#x7528;&#x4E8E; <strong>&#x53D1;&#x9001;</strong> &#x548C; <strong>&#x63A5;&#x6536;</strong> &#x7684;&#x4E24;&#x6761;&#x72EC;&#x7ACB;&#x4FE1;&#x9053;&#xFF0C; &#x6BCF;&#x6761;&#x4FE1;&#x9053;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684; &#x6570;&#x636E;&#x3001;&#x65F6;&#x949F; &#x548C; &#x63A7;&#x5236;&#x4FE1;&#x53F7;&#xFF0C; MII&#x6570;&#x636E;&#x63A5;&#x53E3;&#x603B;&#x5171;&#x9700;&#x8981;16&#x4E2A;&#x4FE1;&#x53F7;&#x3002;</p>
+<p>MII&#x7BA1;&#x7406;&#x63A5;&#x53E3;&#x6709;&#x4E24;&#x4E2A;&#x4FE1;&#x53F7;&#xFF0C; <strong>&#x65F6;&#x949F;</strong>&#x4FE1;&#x53F7;&#xFF0C; <strong>&#x6570;&#x636E;</strong>&#x4FE1;&#x53F7;&#x3002; &#x901A;&#x8FC7;&#x7BA1;&#x7406;&#x63A5;&#x53E3;&#xFF0C; &#x4E0A;&#x5C42;&#x80FD; &#x76D1;&#x89C6; &#x548C; &#x63A7;&#x5236;PHY</p>
+<p>&#x4EE5;&#x592A;&#x7F51;&#x63A5;&#x53E3;&#x7684;&#x786C;&#x4EF6;&#x7535;&#x8DEF;&#x539F;&#x7406; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145720.png" alt="image-20200628145720172"></p>
+<p><strong>PCI&#x548C;PCI-E</strong></p>
+<p>PCI&#xFF08;&#x5916;&#x56F4;&#x90E8;&#x4EF6;&#x4E92;&#x8FDE;&#xFF09; &#x662F;&#x7531; Intel &#x63A8;&#x51FA;&#x7684;&#x4E00;&#x79CD;&#x5C40;&#x90E8;&#x603B;&#x7EBF;&#xFF0C; &#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x901A;&#x7528;&#x7684;&#x603B;&#x7EBF;&#x63A5;&#x53E3;&#x6807;&#x51C6;</p>
+<p>PCI&#x603B;&#x7EBF;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x7279;&#x70B9; :</p>
+<ul>
+<li>&#x6570;&#x636E;&#x603B;&#x7EBF;&#x4E3A;32&#x4F4D;&#xFF0C; &#x53EF;&#x6269;&#x5145;&#x5230;64&#x4F4D;</li>
+<li>&#x53EF;&#x8FDB;&#x884C;&#x7A81;&#x53D1;&#xFF08;Burst&#xFF09; &#x6A21;&#x5F0F;&#x4F20;&#x8F93;&#x3002; &#x7A81;&#x53D1;&#x65B9;&#x5F0F;&#x4F20;&#x8F93;&#x662F;&#x6307;&#x53D6;&#x5F97;&#x603B;&#x7EBF;&#x63A7;&#x5236;&#x6743;&#x540E;&#x8FDE;&#x7EED;&#x8FDB;&#x884C;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x4F20;&#x8F93;&#x3002; &#x7A81;&#x53D1;&#x4F20;&#x8F93;&#x65F6;&#xFF0C; &#x53EA;&#x9700;&#x8981;&#x7ED9;&#x51FA;&#x76EE;&#x7684;&#x5730;&#x7684;&#x9996;&#x5730;&#x5740;&#xFF0C; &#x8BBF;&#x95EE;&#x7B2C;1&#x4E2A;&#x6570;&#x636E;&#x540E;&#xFF0C; &#x7B2C;2&#xFF5E;n&#x4E2A;&#x6570;&#x636E;&#x4F1A;&#x5728;&#x9996;&#x5730;&#x5740;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6309;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x81EA;&#x52A8;&#x5BFB;&#x5740;&#x548C;&#x4F20;&#x8F93;&#x3002; &#x4E0E;&#x7A81;&#x53D1;&#x65B9;&#x5F0F;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x5355;&#x5468;&#x671F;&#x65B9;&#x5F0F;&#xFF0C; &#x5B83;&#x5728;1&#x4E2A;&#x603B;&#x7EBF;&#x5468;&#x671F;&#x53EA;&#x4F20;&#x9001;1&#x4E2A;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x603B;&#x7EBF;&#x64CD;&#x4F5C;&#x4E0E;&#x5904;&#x7406;&#x5668;&#x2014;&#x2014;&#x5B58;&#x50A8;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;&#x5E76;&#x884C;</li>
+<li>&#x91C7;&#x7528;&#x4E2D;&#x592E;&#x96C6;&#x4E2D;&#x5F0F;&#x603B;&#x7EBF;&#x4EF2;&#x88C1;</li>
+<li>&#x652F;&#x6301;&#x5168;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x3001; &#x8D44;&#x6E90;&#x5206;&#x914D;&#xFF0C; PCI&#x5361;&#x5185;&#x6709;&#x8BBE;&#x5907;&#x4FE1;&#x606F;&#x5BC4;&#x5B58;&#x5668;&#x7EC4;&#x4E3A;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x5361;&#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x53EF;&#x5B9E;&#x73B0;&#x5373;&#x63D2;&#x5373;&#x7528;</li>
+<li>PCI&#x603B;&#x7EBF;&#x89C4;&#x8303;&#x72EC;&#x7ACB;&#x4E8E;&#x5FAE;&#x5904;&#x7406;&#x5668;&#xFF0C; &#x901A;&#x7528;&#x6027;&#x597D;</li>
+<li>PCI&#x8BBE;&#x5907;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x4F5C;&#x4E3A;&#x4E3B;&#x63A7;&#x8BBE;&#x5907;&#x63A7;&#x5236;&#x603B;&#x7EBF;</li>
+</ul>
+<p>&#x57FA;&#x4E8E;PCI&#x603B;&#x7EBF;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x903B;&#x8F91;&#x793A;&#x610F;&#x56FE; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145740.png" alt="image-20200628145740570"></p>
+<p>&#x7CFB;&#x7EDF;&#x7684;&#x5404;&#x4E2A;&#x90E8;&#x5206;&#x901A;&#x8FC7;<strong>PCI&#x603B;&#x7EBF;</strong>&#x548C;<strong>PCI-PCI&#x6865;</strong>&#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;</p>
+<p>CPU&#x548C;RAM&#x901A;&#x8FC7;<strong>PCI&#x6865;</strong>&#x8FDE;&#x63A5;&#x5230;PCI&#x603B;&#x7EBF;0&#xFF08;&#x5373;&#x4E3B;PCI&#x603B;&#x7EBF;&#xFF09; &#xFF0C; &#x800C;&#x5177;&#x6709;PCI&#x63A5;&#x53E3;&#x7684;<strong>&#x663E;&#x5361;</strong>&#x5219;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FDE;&#x63A5;&#x5230;&#x4E3B;PCI&#x603B;&#x7EBF;&#x4E0A;&#x3002;</p>
+<p>PCI-PCI&#x6865;&#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;PCI&#x8BBE;&#x5907;&#xFF0C; &#x5B83;&#x8D1F;&#x8D23;&#x5C06; <strong>PCI&#x603B;&#x7EBF;0</strong> &#x548C; <strong>PCI&#x603B;&#x7EBF;1</strong>&#xFF08;&#x5373;&#x4ECE;PCI&#x4E3B;&#x7EBF;&#xFF09; &#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C; &#x901A;&#x5E38;PCI&#x603B;&#x7EBF;1&#x79F0;&#x4E3A; PCI-PCI&#x6865;&#x7684;<strong>&#x4E0B;&#x6E38;</strong>&#xFF08;Downstream&#xFF09; &#xFF0C; &#x800C;PCI&#x603B;&#x7EBF;0&#x5219;&#x79F0;&#x4E3A; PCI-PCI&#x6865;&#x7684;<strong>&#x4E0A;&#x6E38;</strong>&#xFF08;Upstream&#xFF09; &#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x65E7;&#x7684;ISA&#x603B;&#x7EBF;&#x6807;&#x51C6;&#xFF0C; PCI&#x603B;&#x7EBF;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <strong>PCI-ISA&#x6865;</strong> &#x6765;&#x8FDE;&#x63A5;ISA&#x603B;&#x7EBF;&#xFF0C; &#x4ECE;&#x800C;&#x652F;&#x6301;&#x4EE5;&#x524D;&#x7684;ISA&#x8BBE;&#x5907;&#x3002;</p>
+<p>PCI&#x914D;&#x7F6E;&#x7A7A;&#x95F4; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145759.png" alt="image-20200628145759043"></p>
+<p>PCI&#x914D;&#x7F6E;&#x7A7A;&#x95F4;&#x5171;&#x4E3A;256&#x5B57;&#x8282; = (3CH + 04H)* 4 :</p>
+<ul>
+<li>&#x5236;&#x9020;&#x5546;&#x6807;&#x8BC6;&#xFF08;Vendor ID&#xFF09; &#xFF1A; &#x7531;PCI&#x7EC4;&#x7EC7;&#x5206;&#x914D;&#x7ED9;&#x5382;&#x5BB6;</li>
+<li>&#x8BBE;&#x5907;&#x6807;&#x8BC6;&#xFF08;Device ID&#xFF09; &#xFF1A; &#x6309;&#x4EA7;&#x54C1;&#x5206;&#x7C7B;&#x7ED9;&#x672C;&#x5361;&#x7684;&#x7F16;&#x53F7;</li>
+<li>&#x5206;&#x7C7B;&#x7801;&#xFF08;Class Code&#xFF09; &#xFF1A; &#x672C;&#x5361;&#x529F;&#x80FD;&#x7684;&#x5206;&#x7C7B;&#x7801;&#xFF0C; &#x5982;&#x56FE;&#x5361;&#x3001; &#x663E;&#x793A;&#x5361;&#x3001; &#x89E3;&#x538B;&#x5361;&#x7B49;</li>
+<li>&#x7533;&#x8BF7;&#x5B58;&#x50A8;&#x5668;&#x7A7A;&#x95F4;&#xFF1A; PCI&#x5361;&#x5185;&#x6709;&#x5B58;&#x50A8;&#x5668; &#x6216; &#x4EE5;<strong>&#x5B58;&#x50A8;&#x5668;&#x7F16;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x548C;I/O&#x7A7A;&#x95F4;&#xFF0C; &#x4E3A;&#x4F7F;<strong>&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;</strong>&#x548C;<strong>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</strong>&#x80FD;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#xFF0C; &#x9700;&#x7533;&#x8BF7;CPU&#x7684;&#x4E00;&#x6BB5;<strong>&#x5B58;&#x50A8;&#x533A;&#x57DF;</strong>&#x4EE5;&#x8FDB;&#x884C;&#x5B9A;&#x4F4D;&#x3002; &#x914D;&#x7F6E;&#x7A7A;&#x95F4;&#x7684;<strong>&#x57FA;&#x5730;&#x5740;&#x5BC4;&#x5B58;&#x5668;</strong>&#x7528;&#x4E8E;&#x6B64;&#x76EE;&#x7684;</li>
+<li>&#x7533;&#x8BF7;I/O&#x7A7A;&#x95F4;&#xFF1A; &#x914D;&#x7F6E;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;<strong>&#x57FA;&#x5730;&#x5740;</strong>&#x5BC4;&#x5B58;&#x5668;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;I/O&#x7A7A;&#x95F4;&#x7684;&#x7533;&#x8BF7;</li>
+<li>&#x4E2D;&#x65AD;&#x8D44;&#x6E90;&#x7533;&#x8BF7;&#xFF1A; &#x914D;&#x7F6E;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;<strong>&#x4E2D;&#x65AD;&#x5F15;&#x811A;</strong>&#x548C;<strong>&#x4E2D;&#x65AD;&#x7EBF;</strong>&#x7528;&#x6765;&#x5411;&#x7CFB;&#x7EDF;<strong>&#x7533;&#x8BF7;&#x4E2D;&#x65AD;&#x8D44;&#x6E90;</strong>&#x3002; &#x504F;&#x79FB; 3D H &#x5904;&#x4E3A;&#x4E2D;&#x65AD;&#x5F15;&#x811A;&#x5BC4;&#x5B58;&#x5668;&#xFF0C; &#x5176;&#x503C;&#x8868;&#x660E;PCI&#x8BBE;&#x5907;&#x4F7F;&#x7528;&#x4E86;&#x54EA;&#x4E00;&#x4E2A;&#x4E2D;&#x65AD;&#x5F15;&#x811A;&#xFF0C; &#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x4E3A;1&#x2014;INTA#&#x3001; 2&#x2014;INTB#&#x3001; 3&#x2014;INTC#&#x3001; 4&#x2014;INTD#</li>
+</ul>
+<p>PCI-E&#xFF08; PCI Express&#xFF09; &#x662F;Intel&#x516C;&#x53F8;&#x63D0;&#x51FA;&#x7684;&#x65B0;&#x4E00;&#x4EE3;&#x7684;&#x603B;&#x7EBF;&#x63A5;&#x53E3;&#xFF0C; PCI Express&#x91C7;&#x7528;&#x4E86;&#x76EE;&#x524D;&#x4E1A;&#x5185;&#x6D41;&#x884C;&#x7684;<strong>&#x70B9;&#x5BF9;&#x70B9;&#x4E32;&#x884C;</strong>&#x8FDE;&#x63A5;&#xFF0C; &#x6BD4;&#x8D77;PCI&#x4EE5;&#x53CA;&#x66F4;&#x65E9;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x603B;&#x7EBF;&#x7684;&#x5171;&#x4EAB;&#x5E76;&#x884C;&#x67B6;&#x6784;&#xFF0C; &#x6BCF;&#x4E2A;&#x8BBE;&#x5907;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4E13;&#x7528;&#x8FDE;&#x63A5;&#xFF0C; &#x91C7;&#x7528;<strong>&#x4E32;&#x884C;</strong>&#x65B9;&#x5F0F;&#x4F20;&#x8F93;&#x6570;&#x636E;&#xFF0C; &#x5E76;&#x628A;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7387;&#x63D0;&#x9AD8;&#x5230;&#x4E00;&#x4E2A;&#x5F88;&#x9AD8;&#x7684;&#x9891;&#x7387;&#xFF0C; &#x8FBE;&#x5230;PCI&#x6240;&#x4E0D;&#x80FD;&#x63D0;&#x4F9B;&#x7684;&#x9AD8;&#x5E26;&#x5BBD;&#x3002;</p>
+<p><strong>SD&#x548C;SDIO</strong></p>
+<p>SD&#xFF08;Secure Digital&#xFF09; &#x662F;&#x4E00;&#x79CD;&#x5173;&#x4E8E;Flash&#x5B58;&#x50A8;&#x5361;&#x7684;&#x6807;&#x51C6;&#xFF0C; &#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x822C;&#x5E38;&#x89C1;&#x7684;SD&#x8BB0;&#x5FC6;&#x5361;&#xFF0C; &#x5728;&#x8BBE;&#x8BA1;&#x4E0A;&#x4E0E;MMC&#xFF08;Multi-Media Card&#xFF09; &#x4FDD;&#x6301;&#x4E86;&#x517C;&#x5BB9;</p>
+<p>SDHC&#xFF08;SDHigh Capacity&#xFF09; &#x662F;&#x5927;&#x5BB9;&#x91CF;SD&#x5361;&#xFF0C; &#x652F;&#x6301;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF;&#x4E3A;32GB&#x3002;</p>
+<p>SDXC&#xFF08;SD eXtended Capacity&#xFF09; &#x5219;&#x652F;&#x6301;&#x6700;&#x5927;2TB&#x5927;&#x5C0F;&#x7684;&#x5BB9;&#x91CF;</p>
+<p>SDIO&#xFF08;Secure Digital Input and Output Card&#xFF0C; &#x5B89;&#x5168;&#x6570;&#x5B57;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x5361;&#xFF09; &#x5728;SD&#x6807;&#x51C6;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C; &#x5B9A;&#x4E49;&#x4E86;&#x9664;&#x5B58;&#x50A8;&#x5361;&#x4EE5;&#x5916;&#x7684;&#x5916;&#x8BBE;&#x63A5;&#x53E3;&#x3002;</p>
+<p>SDIO&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x7C7B;&#x5E94;&#x7528;&#x2014;&#x2014;<strong>&#x53EF;&#x79FB;&#x52A8;</strong>&#x548C;<strong>&#x4E0D;&#x53EF;&#x79FB;&#x52A8;</strong>&#x3002;</p>
+<p>&#x4E0D;&#x53EF;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x9075;&#x5FAA;&#x76F8;&#x540C;&#x7684;&#x7535;&#x6C14;&#x6807;&#x51C6;&#xFF0C; &#x4F46;&#x4E0D;&#x8981;&#x6C42;&#x7B26;&#x5408;&#x7269;&#x7406;&#x6807;&#x51C6;&#x3002;</p>
+<p>&#x6709;&#x5F88;&#x591A;&#x7684;&#x624B;&#x673A;&#x6216;&#x8005;&#x624B;&#x6301;&#x88C5;&#x7F6E;&#x90FD;&#x652F;&#x6301;SDIO&#x7684;&#x529F;&#x80FD;&#xFF0C; &#x4EE5;&#x8FDE;&#x63A5;WiFi&#x3001; &#x84DD;&#x7259;&#x3001; GPS&#x7B49;&#x6A21;&#x5757;&#x3002;</p>
+<p>SD/SDIO&#x7684;&#x4F20;&#x8F93;&#x6A21;&#x5F0F;&#x6709;&#xFF1A;</p>
+<ul>
+<li>SPI&#x6A21;&#x5F0F;</li>
+<li>1&#x4F4D;&#x6A21;&#x5F0F;</li>
+<li>4&#x4F4D;&#x6A21;&#x5F0F;</li>
+</ul>
+<p>SDIO&#x63A5;&#x53E3;&#x5F15;&#x811A;&#x5B9A;&#x4E49; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145832.png" alt="image-20200628145832178"></p>
+<p>CLK&#x4E3A;&#x65F6;&#x949F;&#x5F15;&#x811A;&#xFF0C; &#x6BCF;&#x4E2A;&#x65F6;&#x949F;&#x5468;&#x671F;&#x4F20;&#x8F93;&#x4E00;&#x4E2A;<strong>&#x547D;&#x4EE4;</strong> &#x6216; <strong>&#x6570;&#x636E;&#x4F4D;</strong>&#xFF1B;</p>
+<p>CMD&#x662F;&#x547D;&#x4EE4;&#x5F15;&#x811A;&#xFF0C; &#x547D;&#x4EE4;&#x5728;CMD&#x7EBF;&#x4E0A;<strong>&#x4E32;&#x884C;&#x4F20;&#x8F93;</strong>&#xFF0C; &#x662F;<strong>&#x53CC;&#x5411;&#x534A;&#x53CC;&#x5DE5;</strong>&#x7684;&#xFF08;&#x547D;&#x4EE4;&#x4ECE;&#x4E3B;&#x673A;&#x5230;&#x4ECE;&#x5361;&#xFF0C; &#x800C;&#x547D;&#x4EE4;&#x7684;&#x54CD;&#x5E94;&#x662F;&#x4ECE;&#x5361;&#x53D1;&#x9001;&#x5230;&#x4E3B;&#x673A;&#xFF09;</p>
+<p>DAT[0] ~ DAT[3]&#x4E3A;<strong>&#x6570;&#x636E;&#x7EBF;</strong>&#x5F15;&#x811A;&#xFF1B;</p>
+<p>&#x5728;SPI&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C; &#x7B2C;8&#x811A;&#x4F4D;&#x88AB;&#x5F53;&#x6210;<strong>&#x4E2D;&#x65AD;&#x4FE1;&#x53F7;</strong></p>
+<p>SDIO&#x5355;&#x6A21;&#x5757;&#x8BFB;&#x3001; &#x5199;&#x7684;&#x5178;&#x578B;&#x65F6;&#x5E8F; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145852.png" alt="image-20200628145852582"></p>
+<p><strong>eMMC</strong>&#xFF08; Embedded Multi Media Card&#xFF09; &#x662F;&#x5F53;&#x524D;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x7684;&#x4E3B;&#x6D41;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C; &#x76EE;&#x7684;&#x5728;&#x4E8E;&#x7B80;&#x5316;&#x624B;&#x673A;&#x5B58;&#x50A8;&#x5668;&#x7684;&#x8BBE;&#x8BA1;&#x3002;</p>
+<p> eMMC&#x5C31;&#x662F;<strong>NAND Flash</strong>&#x3001; <strong>&#x95EA;&#x5B58;&#x63A7;&#x5236;&#x82AF;&#x7247;</strong>&#x548C;<strong>&#x6807;&#x51C6;&#x63A5;&#x53E3;&#x5C01;&#x88C5;</strong>&#x7684;&#x96C6;&#x5408;&#xFF0C; &#x5B83;&#x628A;NAND&#x548C;&#x63A7;&#x5236;&#x82AF;&#x7247;&#x5C01;&#x88C5;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x591A;&#x82AF;&#x7247;&#x5C01;&#x88C5;&#xFF08; Multi-Chip Package&#xFF0C; MCP&#xFF09; &#x82AF;&#x7247;&#x3002;</p>
+<p> eMMC&#x652F;&#x6301; DAT[0] ~ DAT[7] 8&#x4F4D;&#x7684;&#x6570;&#x636E;&#x7EBF;&#x3002;</p>
+<p>&#x4E0A;&#x7535;&#x6216;&#x8005;&#x590D;&#x4F4D;&#x540E;&#xFF0C; &#x9ED8;&#x8BA4;&#x5904;&#x4E8E;1&#x4F4D;&#x6A21;&#x5F0F;&#xFF0C; &#x53EA;&#x4F7F;&#x7528;DAT[0]&#xFF0C; &#x540E;&#x7EED;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x4E3A;4&#x4F4D;&#x6216;&#x8005;8&#x4F4D;&#x6A21;&#x5F0F;&#x3002;</p>
+<h4 id="cpld&#x548C;fpga">CPLD&#x548C;FPGA</h4>
+<p>CPLD&#xFF08;&#x590D;&#x6742;&#x53EF;&#x7F16;&#x7A0B;&#x903B;&#x8F91;&#x5668;&#x4EF6;&#xFF09; &#x7531; &#x5B8C;&#x5168;&#x53EF;&#x7F16;&#x7A0B;&#x7684;<strong>&#x4E0E;&#x6216;&#x95E8;&#x9635;&#x5217;</strong> &#x4EE5;&#x53CA; <strong>&#x5B8F;&#x5355;&#x5143;</strong>&#x6784;&#x6210;&#x3002;</p>
+<p>CPLD&#x4E2D;&#x7684;&#x57FA;&#x672C;&#x903B;&#x8F91;&#x5355;&#x5143;&#x662F;<strong>&#x5B8F;&#x5355;&#x5143;</strong>&#xFF0C;</p>
+<p>&#x5B8F;&#x5355;&#x5143;&#x7531;&#x4E00;&#x4E9B;&#x201C; &#x4E0E;&#x6216; &#x201D;&#x9635;&#x5217;&#x52A0;&#x4E0A; <strong>&#x89E6;&#x53D1;&#x5668;</strong> &#x6784;&#x6210;&#xFF0C; &#x5176;&#x4E2D;&#x201C; &#x4E0E;&#x6216; &#x201D;&#x9635;&#x5217;&#x5B8C;&#x6210; <strong>&#x7EC4;&#x5408;&#x903B;&#x8F91;</strong> &#x529F;&#x80FD;&#xFF0C; &#x89E6;&#x53D1;&#x5668;&#x5B8C;&#x6210; <strong>&#x65F6;&#x5E8F;&#x903B;&#x8F91;</strong> &#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5B8F;&#x5355;&#x5143;&#x4E2D;&#x4E0E;&#x9635;&#x5217;&#x7684;&#x8F93;&#x51FA;&#x79F0;&#x4E3A;<strong>&#x4E58;&#x79EF;&#x9879;</strong>&#xFF0C; &#x5176;&#x6570;&#x91CF;&#x6807;&#x793A;&#x7740;CPLD&#x7684;&#x5BB9;&#x91CF;&#x3002;</p>
+<p><strong>&#x4E58;&#x79EF;&#x9879;&#x9635;&#x5217;</strong>&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x201C;<strong>&#x4E0E;&#x6216;</strong>&#x201D;&#x9635;&#x5217;&#xFF0C; &#x6BCF;&#x4E00;&#x4E2A;&#x4EA4;&#x53C9;&#x70B9;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#x7194;&#x4E1D;&#xFF0C; &#x5982; &#x5BFC;&#x901A;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x201C;<strong>&#x4E0E;</strong>&#x201D;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x5728;&#x201C; <strong>&#x4E0E;</strong> &#x201D;&#x9635;&#x5217;&#x540E;&#x4E00;&#x822C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x201C; <strong>&#x6216;</strong> &#x201D;&#x9635;&#x5217;&#xFF0C; &#x7528;&#x4EE5;&#x5B8C;&#x6210;<strong>&#x6700;&#x5C0F;&#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;</strong>&#x4E2D;&#x7684;&#x201C; <strong>&#x6216;</strong> &#x201D;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x5178;&#x578B;&#x7684;CPLD&#x7684;&#x5355;&#x4E2A;&#x5B8F;&#x5355;&#x5143;&#x7ED3;&#x6784;</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145916.png" alt="image-20200628145916715"></p>
+<p>CPLD&#x7531; <strong>LAB</strong>&#xFF08;&#x903B;&#x8F91;&#x9635;&#x5217;&#x6A21;&#x5757;&#xFF0C; &#x7531;&#x591A;&#x4E2A;&#x5B8F;&#x5355;&#x5143;&#x7EC4;&#x6210;&#xFF09; &#x901A;&#x8FC7;<strong>PIA</strong>&#xFF08;&#x53EF;&#x7F16;&#x7A0B;&#x4E92;&#x8FDE;&#x9635;&#x5217;&#xFF09; &#x4E92;&#x8FDE;&#x7EC4;&#x6210;&#xFF0C; &#x800C;CPLD&#x4E0E;&#x5916;&#x90E8;&#x7684;&#x63A5;&#x53E3;&#x5219;&#x7531;<strong>I/O&#x63A7;&#x5236;</strong>&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x3002;</p>
+<p>&#x5B8F;&#x5355;&#x5143;&#x7684;&#x8F93;&#x51FA;&#x4F1A;&#x7ECF;<strong>I/O&#x63A7;&#x5236;&#x5757;</strong>&#x9001;&#x81F3;<strong>I/O&#x5F15;&#x811A;</strong>&#xFF0C; I/O&#x63A7;&#x5236;&#x5757;&#x63A7;&#x5236;&#x6BCF;&#x4E00;&#x4E2A;I/O&#x5F15;&#x811A;&#x7684;<strong>&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;</strong>&#xFF0C; &#x51B3;&#x5B9A;&#x5176;&#x4E3A;<strong>&#x8F93;&#x5165;</strong>&#x3001; <strong>&#x8F93;&#x51FA;</strong>&#x8FD8;&#x662F;<strong>&#x53CC;&#x5411;&#x5F15;&#x811A;</strong>&#xFF0C; &#x5E76;&#x51B3;&#x5B9A;&#x5176;<strong>&#x4E09;&#x6001;&#x8F93;&#x51FA;</strong>&#x7684;<strong>&#x4F7F;&#x80FD;&#x7AEF;</strong>&#x63A7;&#x5236;&#x3002;</p>
+<p>&#x5178;&#x578B;&#x7684;CPLD&#x6574;&#x4F53;&#x67B6;&#x6784;</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145943.png" alt="image-20200628145943802"></p>
+<p>FPGA&#x7531;IOC&#xFF08;&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x63A7;&#x5236;&#x6A21;&#x5757;&#xFF09; &#x3001; EAB&#xFF08;&#x5D4C;&#x5165;&#x5F0F;&#x9635;&#x5217;&#x5757;&#xFF09; &#x3001; LAB&#x548C;&#x5FEB;&#x901F;&#x901A;&#x9053;&#x4E92;&#x8FDE;&#x6784;&#x6210;</p>
+<p>IOC&#x662F;&#x5185;&#x90E8;&#x4FE1;&#x53F7;&#x5230;I/O&#x5F15;&#x811A;&#x7684;&#x63A5;&#x53E3;&#xFF0C; &#x5B83;&#x4F4D;&#x4E8E;&#x5FEB;&#x901F;&#x901A;&#x9053;&#x7684;&#x884C;&#x548C;&#x5217;&#x7684;&#x672B;&#x7AEF;&#xFF0C; &#x6BCF;&#x4E2A;IOC&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x53CC;&#x5411;I/O&#x7F13;&#x51B2;&#x5668;&#x548C;&#x4E00;&#x4E2A;&#x65E2;&#x53EF;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x5BC4;&#x5B58;&#x5668;&#x4E5F;&#x53EF;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x89E6;&#x53D1;&#x5668;</p>
+<p>EAB&#xFF08;&#x5D4C;&#x5165;&#x5F0F;&#x5B58;&#x50A8;&#x5757;&#xFF09; &#x662F;&#x4E00;&#x79CD;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x7AEF;&#x5E26;&#x6709;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#x7684;RAM&#x3002; EAB&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x5B58;&#x50A8;&#x5668;&#xFF0C; &#x8FD8;&#x53EF;&#x4EE5;&#x4E8B;&#x5148;&#x5199;&#x5165;&#x67E5;&#x8868;&#x503C;&#x4EE5;&#x7528;&#x6765;&#x6784;&#x6210;&#x5982;&#x4E58;&#x6CD5;&#x5668;&#x3001; &#x7EA0;&#x9519;&#x903B;&#x8F91;&#x7B49;&#x7535;&#x8DEF;&#x3002; &#x5F53;&#x7528;&#x4E8E;RAM&#x65F6;&#xFF0C; EAB&#x53EF;&#x914D;&#x5236;&#x6210;8&#x4F4D;&#x3001; 4&#x4F4D;&#x3001; 2&#x4F4D;&#x548C;1&#x4F4D;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;</p>
+<p>LAB&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x903B;&#x8F91;&#x7535;&#x8DEF;&#x8BBE;&#x8BA1;&#xFF0C; &#x4E00;&#x4E2A;LAB&#x5305;&#x62EC;&#x591A;&#x4E2A;LE&#xFF08;&#x903B;&#x8F91;&#x5355;&#x5143;&#xFF09; &#xFF0C; &#x6BCF;&#x4E2A;LE&#x5305;&#x62EC;&#x7EC4;&#x5408;&#x903B;&#x8F91;&#x53CA;&#x4E00;&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#x89E6;&#x53D1;&#x5668;&#x3002; &#x4E00;&#x7CFB;&#x5217;LAB&#x6784;&#x6210;&#x7684;&#x903B;&#x8F91;&#x9635;&#x5217;&#x53EF;&#x5B9E;&#x73B0;&#x666E;&#x901A;&#x903B;&#x8F91;&#x529F;&#x80FD;&#xFF0C; &#x5982;&#x8BA1;&#x6570;&#x5668;&#x3001; &#x52A0;&#x6CD5;&#x5668;&#x3001; &#x72B6;&#x6001;&#x673A;&#x7B49;</p>
+<p>&#x5178;&#x578B;&#x7684;FPGA&#x5185;&#x90E8;&#x7ED3;&#x6784; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628145955.png" alt="image-20200628145955367"></p>
+<p>&#x5668;&#x4EF6;&#x5185;&#x90E8;&#x4FE1;&#x53F7;&#x7684;&#x4E92;&#x8FDE;&#x548C;&#x5668;&#x4EF6;&#x5F15;&#x51FA;&#x7AEF;&#x4E4B;&#x95F4;&#x7684;&#x4FE1;&#x53F7;&#x4E92;&#x8FDE;&#x7531;&#x5FEB;&#x901F;&#x901A;&#x9053;&#x8FDE;&#x7EBF;&#x63D0;&#x4F9B;&#xFF0C; &#x5FEB;&#x901F;&#x901A;&#x9053;&#x904D;&#x5E03;&#x4E8E;&#x6574;&#x4E2A;FPGA&#x5668;&#x4EF6;&#x4E2D;&#xFF0C; &#x662F;&#x4E00;&#x7CFB;&#x5217;&#x6C34;&#x5E73;&#x548C;&#x5782;&#x76F4;&#x8D70;&#x5411;&#x7684;&#x8FDE;&#x7EED;&#x5F0F;&#x5E03;&#x7EBF;&#x901A;&#x9053;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x903B;&#x8F91;&#x7535;&#x8DEF;&#x4E0E;&#x67E5;&#x627E;&#x8868;&#x7684;&#x5B9E;&#x73B0; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200628150019.png" alt="image-20200628150019064"></p>
+<h4 id="&#x539F;&#x7406;&#x56FE;&#x5206;&#x6790;">&#x539F;&#x7406;&#x56FE;&#x5206;&#x6790;</h4>
+<h4 id="&#x786C;&#x4EF6;&#x65F6;&#x5E8F;&#x5206;&#x6790;">&#x786C;&#x4EF6;&#x65F6;&#x5E8F;&#x5206;&#x6790;</h4>
+<p><strong>&#x65F6;&#x5E8F;&#x5206;&#x6790;&#x7684;&#x6982;&#x5FF5;</strong></p>
+<p><strong>&#x5178;&#x578B;&#x7684;&#x786C;&#x4EF6;&#x65F6;&#x5E8F;</strong></p>
+<h4 id="&#x82AF;&#x7247;&#x6570;&#x636E;&#x624B;&#x518C;&#x9605;&#x8BFB;&#x65B9;&#x6CD5;">&#x82AF;&#x7247;&#x6570;&#x636E;&#x624B;&#x518C;&#x9605;&#x8BFB;&#x65B9;&#x6CD5;</h4>
+<h4 id="&#x4EEA;&#x5668;&#x4EEA;&#x8868;&#x4F7F;&#x7528;">&#x4EEA;&#x5668;&#x4EEA;&#x8868;&#x4F7F;&#x7528;</h4>
+<p><strong>&#x4E07;&#x7528;&#x8868;</strong></p>
+<p><strong>&#x793A;&#x6CE2;&#x5668;</strong></p>
+<p><strong>&#x903B;&#x8F91;&#x5206;&#x6790;&#x4EEA;</strong></p>
+<h3 id="linux&#x5185;&#x6838;&#x53CA;&#x5185;&#x6838;&#x7F16;&#x7A0B;">Linux&#x5185;&#x6838;&#x53CA;&#x5185;&#x6838;&#x7F16;&#x7A0B;</h3>
+<h4 id="linux&#x5185;&#x6838;&#x7684;&#x53D1;&#x5C55;&#x4E0E;&#x6F14;&#x53D8;">Linux&#x5185;&#x6838;&#x7684;&#x53D1;&#x5C55;&#x4E0E;&#x6F14;&#x53D8;</h4>
+<p><strong>Linux</strong>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;<strong>UNIX</strong>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x79CD;<strong>&#x514B;&#x9686;&#x7CFB;&#x7EDF;</strong></p>
+<p>UNIX&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+<p>&#x9F3B;&#x7956;</p>
+<p>Minix&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+<p>Minix&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E5F;&#x662F;UNIX&#x7684;&#x4E00;&#x79CD;&#x514B;&#x9686;&#x7CFB;&#x7EDF;</p>
+<p>GNU&#x8BA1;&#x5212;</p>
+<p>GNU&#x9879;&#x76EE;&#x5DF2;&#x7ECF;&#x5F00;&#x53D1;&#x51FA;&#x8BB8;&#x591A;&#x9AD8;&#x8D28;&#x91CF;&#x7684;&#x514D;&#x8D39;&#x8F6F;&#x4EF6;&#xFF0C; &#x5176;&#x4E2D;&#x5305;&#x62EC; emacs&#x7F16;&#x8F91;&#x7CFB;&#x7EDF;&#x3001; bash shell&#x7A0B;&#x5E8F;&#x3001; gcc&#x7CFB;&#x5217;&#x7F16;&#x8BD1;&#x7A0B;&#x5E8F;&#x3001; GDB&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x7B49; . &#x4E3A;Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5F00;&#x53D1;&#x521B;&#x9020;&#x4E86;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x73AF;&#x5883;</p>
+<p>POSIX&#x6807;&#x51C6;</p>
+<p>POSIX&#xFF08;Portable Operating System Interface&#xFF0C; <strong>&#x53EF;&#x79FB;&#x690D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63A5;&#x53E3;</strong>&#xFF09; &#x662F;&#x7531;IEEE&#x548C;ISO/IEC&#x5F00;&#x53D1;&#x7684;&#x4E00;&#x7EC4;&#x6807;&#x51C6;&#x3002; &#x57FA;&#x4E8E;UNIX&#xFF0C; &#x63CF;&#x8FF0;&#x4E86;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;<strong>&#x8C03;&#x7528;&#x670D;&#x52A1;&#x63A5;&#x53E3;</strong>&#xFF0C; &#x7528;&#x4E8E;&#x4FDD;&#x8BC1;&#x7F16;&#x5199;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;<strong>&#x79FB;&#x690D;</strong></p>
+<p>Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x7684;&#x5386;&#x53F2;&#x53CA;&#x7279;&#x70B9; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200629200001.png" alt="image-20200629200000931"></p>
+<p>android&#x91C7;&#x7528;Linux&#x5185;&#x6838;&#xFF0C; &#x5E76;&#x5728;&#x5185;&#x6838;&#x91CC;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x8865;&#x4E01;</p>
+<p>Linux&#x5185;&#x6838;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x548C;&#x8865;&#x4E01;&#x60C5;&#x51B5; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200629200131.png" alt="image-20200629200130885"></p>
+<h4 id="linux-26&#x540E;&#x7684;&#x5185;&#x6838;&#x7279;&#x70B9;">Linux 2.6&#x540E;&#x7684;&#x5185;&#x6838;&#x7279;&#x70B9;</h4>
+<p>&#x65B0;&#x7684;&#x8C03;&#x5EA6;&#x5668;</p>
+<p><strong>CFS</strong>&#xFF08;Completely FairScheduler&#xFF0C; &#x5B8C;&#x5168;&#x516C;&#x5E73;&#x8C03;&#x5EA6;&#xFF09; &#x7B97;&#x6CD5;</p>
+<p>Linux 3.14 &#x4E2D;: &#x589E;&#x52A0; EDF&#xFF08;Earliest Deadline First&#xFF0C; &#x6700;&#x65E9;&#x622A;&#x6B62;&#x671F;&#x9650;&#x4F18;&#x5148;&#xFF09; &#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</p>
+<p><strong>&#x5185;&#x6838;&#x62A2;&#x5360;</strong></p>
+<p>&#x4E00;&#x4E2A;&#x5185;&#x6838;&#x4EFB;&#x52A1;&#x53EF;&#x4EE5;&#x88AB;&#x62A2;&#x5360;&#xFF0C; &#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x7CFB;&#x7EDF;&#x7684;<strong>&#x5B9E;&#x65F6;&#x6027;</strong></p>
+<p>Linux 2.4&#x7684;&#x5185;&#x6838;&#x4E2D;&#xFF0C; &#x5728;IRQ1&#x7684;&#x4E2D;&#x65AD;&#x670D;&#x52A1;&#x7A0B;&#x5E8F;&#x5524;&#x9192;RT&#xFF08;&#x5B9E;&#x65F6;&#xFF09; &#x4EFB;&#x52A1;&#x540E;&#xFF0C; &#x5FC5;&#x987B;&#x8981;&#x7B49;&#x5F85;&#x524D;&#x9762;&#x4E00;&#x4E2A;Normal&#xFF08;&#x666E;&#x901A;&#xFF09; &#x4EFB;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5B8C;&#x6210;&#xFF0C; &#x8FD4;&#x56DE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x65F6;&#x5019;&#xFF0C; RT&#x4EFB;&#x52A1;&#x624D;&#x80FD;&#x5207;&#x5165;</p>
+<p>Linux 2.6&#x5185;&#x6838;&#x4E2D;&#xFF0C; Normal&#x4EFB;&#x52A1;&#x7684;<strong>&#x4E34;&#x754C;&#x533A;</strong>&#xFF08;&#x5982;&#x81EA;&#x65CB;&#x9501;&#xFF09; &#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#xFF0C; RT&#x4EFB;&#x52A1;&#x5C31;&#x4ECE;&#x5185;&#x6838;&#x5207;&#x5165;</p>
+<p>Linux 2.6&#x4EE5;&#x540E;&#x7684;&#x5185;&#x6838;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4E2D;&#x65AD;&#x3001; &#x8F6F;&#x4E2D;&#x65AD;&#x3001; &#x81EA;&#x65CB;&#x9501;&#x7B49;&#x539F;&#x5B50;&#x4E0A;&#x4E0B;&#x6587;&#x8FDB;&#x7A0B;&#x65E0;&#x6CD5;&#x62A2;&#x5360;&#x6267;&#x884C;</p>
+<p>Linux 2.4&#x548C;2.6&#x4EE5;&#x540E;&#x7684;&#x5185;&#x6838;&#x5728;&#x62A2;&#x5360;&#x4E0A;&#x7684;&#x533A;&#x522B; :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200629200338.png" alt="image-20200629200338341"></p>
+<p>&#x6539;&#x8FDB;&#x7684;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;</p>
+<p>&#x865A;&#x62DF;&#x5185;&#x5B58;&#x7684;&#x53D8;&#x5316;</p>
+<p>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</p>
+<p>&#x97F3;&#x9891;</p>
+<p>&#x603B;&#x7EBF;&#x3001; &#x8BBE;&#x5907;&#x548C;&#x9A71;&#x52A8;&#x6A21;&#x578B;</p>
+<p>&#x7535;&#x6E90;&#x7BA1;&#x7406;</p>
+<p>&#x8054;&#x7F51;&#x548C;IPSec</p>
+<p>&#x7528;&#x6237;&#x754C;&#x9762;&#x5C42;</p>
+<p>Linux 3.0&#x540E;ARM&#x67B6;&#x6784;&#x7684;&#x53D8;&#x66F4;</p>
+<h4 id="linux&#x5185;&#x6838;&#x7684;&#x7EC4;&#x6210;">Linux&#x5185;&#x6838;&#x7684;&#x7EC4;&#x6210;</h4>
+<h4 id="linux&#x5185;&#x6838;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;">Linux&#x5185;&#x6838;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h4>
+<h4 id="linux&#x5185;&#x6838;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;">Linux&#x5185;&#x6838;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;</h4>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200629200514.png" alt="image-20200629200514816"></p>
+<h4 id="linux&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x4E0E;&#x7528;&#x6237;&#x7A7A;&#x95F4;">Linux&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x4E0E;&#x7528;&#x6237;&#x7A7A;&#x95F4;</h4>
+<h4 id="linux&#x5185;&#x6838;&#x7684;&#x7F16;&#x8BD1;&#x53CA;&#x52A0;&#x8F7D;">Linux&#x5185;&#x6838;&#x7684;&#x7F16;&#x8BD1;&#x53CA;&#x52A0;&#x8F7D;</h4>
+<h4 id="linux&#x4E0B;&#x7684;c&#x7F16;&#x7A0B;&#x7279;&#x70B9;">Linux&#x4E0B;&#x7684;C&#x7F16;&#x7A0B;&#x7279;&#x70B9;</h4>
+<h4 id="&#x5DE5;&#x5177;&#x94FE;">&#x5DE5;&#x5177;&#x94FE;</h4>
+<h4 id="&#x5B9E;&#x9A8C;&#x5BA4;&#x5EFA;&#x8BBE;">&#x5B9E;&#x9A8C;&#x5BA4;&#x5EFA;&#x8BBE;</h4>
+<h4 id="&#x4E32;&#x53E3;&#x5DE5;&#x5177;">&#x4E32;&#x53E3;&#x5DE5;&#x5177;</h4>
+<h3 id="linux&#x5185;&#x6838;&#x6A21;&#x5757;">Linux&#x5185;&#x6838;&#x6A21;&#x5757;</h3>
+<h4 id="linux&#x5185;&#x6838;&#x6A21;&#x5757;&#x7B80;&#x4ECB;">Linux&#x5185;&#x6838;&#x6A21;&#x5757;&#x7B80;&#x4ECB;</h4>
+<h4 id="linux&#x5185;&#x6838;&#x6A21;&#x5757;&#x7A0B;&#x5E8F;&#x7ED3;&#x6784;">Linux&#x5185;&#x6838;&#x6A21;&#x5757;&#x7A0B;&#x5E8F;&#x7ED3;&#x6784;</h4>
+<h4 id="&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x51FD;&#x6570;">&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x51FD;&#x6570;</h4>
+<h4 id="&#x6A21;&#x5757;&#x5378;&#x8F7D;&#x51FD;&#x6570;">&#x6A21;&#x5757;&#x5378;&#x8F7D;&#x51FD;&#x6570;</h4>
+<h3 id="linux&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0E;&#x8BBE;&#x5907;&#x6587;&#x4EF6;">Linux&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0E;&#x8BBE;&#x5907;&#x6587;&#x4EF6;</h3>
+<h4 id="linux&#x6587;&#x4EF6;&#x64CD;&#x4F5C;">Linux&#x6587;&#x4EF6;&#x64CD;&#x4F5C;</h4>
+<h3 id="&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h3>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;</h3>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x963B;&#x585E;&#x4E0E;&#x975E;&#x963B;&#x585E;io">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x963B;&#x585E;&#x4E0E;&#x975E;&#x963B;&#x585E;I/O</h3>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x901A;&#x77E5;&#x4E0E;&#x5F02;&#x6B65;io">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x4E2D;&#x7684;&#x5F02;&#x6B65;&#x901A;&#x77E5;&#x4E0E;&#x5F02;&#x6B65;I/O</h3>
+<h3 id="&#x4E2D;&#x65AD;&#x4E0E;&#x65F6;&#x949F;">&#x4E2D;&#x65AD;&#x4E0E;&#x65F6;&#x949F;</h3>
+<h3 id="&#x5185;&#x5B58;&#x4E0E;io&#x8BBF;&#x95EE;">&#x5185;&#x5B58;&#x4E0E;I/O&#x8BBF;&#x95EE;</h3>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x8F6F;&#x4EF6;&#x67B6;&#x6784;&#x601D;&#x60F3;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x8F6F;&#x4EF6;&#x67B6;&#x6784;&#x601D;&#x60F3;</h3>
+<h3 id="linux&#x5757;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">Linux&#x5757;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h3>
+<h3 id="linux&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">Linux&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h3>
+<h3 id="linux-i2c&#x6838;&#x5FC3;&#x3001;-&#x603B;&#x7EBF;&#x4E0E;&#x8BBE;&#x5907;&#x9A71;&#x52A8;">Linux I2C&#x6838;&#x5FC3;&#x3001; &#x603B;&#x7EBF;&#x4E0E;&#x8BBE;&#x5907;&#x9A71;&#x52A8;</h3>
+<h3 id="usb&#x4E3B;&#x673A;&#x3001;-&#x8BBE;&#x5907;&#x4E0E;gadget&#x9A71;&#x52A8;">USB&#x4E3B;&#x673A;&#x3001; &#x8BBE;&#x5907;&#x4E0E;Gadget&#x9A71;&#x52A8;</h3>
+<h3 id="i2c&#x3001;-spi&#x3001;-usb&#x9A71;&#x52A8;&#x67B6;&#x6784;&#x7C7B;&#x6BD4;">I2C&#x3001; SPI&#x3001; USB&#x9A71;&#x52A8;&#x67B6;&#x6784;&#x7C7B;&#x6BD4;</h3>
+<h3 id="arm-linux&#x8BBE;&#x5907;&#x6811;">ARM Linux&#x8BBE;&#x5907;&#x6811;</h3>
+<h3 id="linux&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x7684;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x548C;&#x9A71;&#x52A8;">Linux&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x7684;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x548C;&#x9A71;&#x52A8;</h3>
+<h3 id="linux&#x82AF;&#x7247;&#x7EA7;&#x79FB;&#x690D;&#x53CA;&#x5E95;&#x5C42;&#x9A71;&#x52A8;">Linux&#x82AF;&#x7247;&#x7EA7;&#x79FB;&#x690D;&#x53CA;&#x5E95;&#x5C42;&#x9A71;&#x52A8;</h3>
+<h3 id="linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x8C03;&#x8BD5;">Linux&#x8BBE;&#x5907;&#x9A71;&#x52A8;&#x7684;&#x8C03;&#x8BD5;</h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="character_device_driver.html" class="navigation navigation-prev " aria-label="Previous page: 字符设备驱动开发">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../android_bottom/hardware_abstraction_layer.html" class="navigation navigation-next " aria-label="Next page: 硬件抽象层">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Linux驱动开发","level":"2.2","depth":1,"next":{"title":"硬件抽象层","level":"3.1","depth":1,"path":"android_bottom/hardware_abstraction_layer.md","ref":"android_bottom/hardware_abstraction_layer.md","articles":[]},"previous":{"title":"字符设备驱动开发","level":"2.1","depth":1,"path":"linux_driver/character_device_driver.md","ref":"linux_driver/character_device_driver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux_driver/linux_driver.md","mtime":"2020-07-12T13:08:16.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T12:11:30.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

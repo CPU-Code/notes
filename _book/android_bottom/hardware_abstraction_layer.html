@@ -1,0 +1,2199 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>硬件抽象层 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="smart_pointer.html" />
+    
+    
+    <link rel="prev" href="../linux_driver/linux_driver.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux驱动开发</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../linux_driver/character_device_driver.html">
+            
+                <a href="../linux_driver/character_device_driver.html">
+            
+                    
+                    字符设备驱动开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../linux_driver/linux_driver.html">
+            
+                <a href="../linux_driver/linux_driver.html">
+            
+                    
+                    Linux驱动开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">安卓底层开发</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="hardware_abstraction_layer.html">
+            
+                <a href="hardware_abstraction_layer.html">
+            
+                    
+                    硬件抽象层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="smart_pointer.html">
+            
+                <a href="smart_pointer.html">
+            
+                    
+                    智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="AOSP.html">
+            
+                <a href="AOSP.html">
+            
+                    
+                    AOSP源码开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="summary.html">
+            
+                <a href="summary.html">
+            
+                    
+                    Android底层软硬件结合开发概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">操作系统</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../operating_system/operat_mechanism.html">
+            
+                <a href="../operating_system/operat_mechanism.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../operating_system/process.html">
+            
+                <a href="../operating_system/process.html">
+            
+                    
+                    进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">linux一句话</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../linux_in_a_word/network_indepen.html">
+            
+                <a href="../linux_in_a_word/network_indepen.html">
+            
+                    
+                    与网络无关的Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux内核0.12</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../linux_kernel_0_12/computer_composition.html">
+            
+                <a href="../linux_kernel_0_12/computer_composition.html">
+            
+                    
+                    微型计算机组成结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >硬件抽象层</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <!--
+
+ * @Author: cpu_code
+ * @Date: 2020-07-12 22:20:34
+ * @LastEditTime: 2020-07-13 22:52:17
+ * @FilePath: \notes\android_bottom\hardware_abstraction_layer.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+--> 
+<h1 id="&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;">&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;</h1>
+<ul>
+<li>@Author: cpu_code</li>
+<li>@Date: 2020-07-12 22:20:34</li>
+<li>@LastEditTime: 2020-07-13 22:52:02</li>
+<li>@FilePath: \notes\android_bottom\hardware_abstraction_layer.md</li>
+<li>@Gitee: <a href="https://gitee.com/cpu_code" target="_blank">https://gitee.com/cpu_code</a></li>
+<li>@Github: <a href="https://github.com/CPU-Code" target="_blank">https://github.com/CPU-Code</a></li>
+<li>@CSDN: <a href="https://blog.csdn.net/qq_44226094" target="_blank">https://blog.csdn.net/qq_44226094</a></li>
+<li>@Gitbook: <a href="https://923992029.gitbook.io/cpucode/" target="_blank">https://923992029.gitbook.io/cpucode/</a></li>
+</ul>
+<p>Android&#x7CFB;&#x7EDF;&#x7684;<strong>&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;</strong>&#xFF08;Hardware Abstract Layer&#xFF0C; HAL&#xFF09; &#x8FD0;&#x884C;&#x5728;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C; &#x5B83;&#x5411;&#x4E0B;&#x5C4F;&#x853D;&#x786C;&#x4EF6;&#x9A71;&#x52A8;&#x6A21;&#x5757;&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF0C; &#x5411;&#x4E0A;&#x63D0;&#x4F9B;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x3002;  </p>
+<p>Android&#x7CFB;&#x7EDF;&#x7684;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;  :</p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200713152328.png" alt="Android&#x7CFB;&#x7EDF;&#x7684;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;"></p>
+<hr>
+<h2 id="&#x5F00;&#x53D1;android&#x786C;&#x4EF6;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;">&#x5F00;&#x53D1;Android&#x786C;&#x4EF6;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;</h2>
+<hr>
+<h3 id="&#x5B9E;&#x73B0;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;">&#x5B9E;&#x73B0;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;</h3>
+<p>&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;  :</p>
+<pre><code class="lang-shell">~/Android/kernel/goldfish
+    drivers
+        freg
+            freg.h    # &#x6E90;&#x4EE3;&#x7801;&#x6587;&#x4EF6;
+            freg.c    # &#x6E90;&#x4EE3;&#x7801;&#x6587;&#x4EF6;
+            Kconfig    # &#x7F16;&#x8BD1;&#x9009;&#x9879;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+            Makefile    # &#x7F16;&#x8BD1;&#x811A;&#x672C;&#x6587;&#x4EF6;
+</code></pre>
+<p>freg.h  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// kernel\goldfish\drivers\freg\freg.h</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _FAKE_REG_H_</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _FAKE_REG_H_</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/cdev.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/semaphore.h&gt;</span></span>
+
+<span class="hljs-comment">//&#x5B9A;&#x4E49;&#x4E86;&#x56DB;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x5728;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x540D;&#x79F0;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_DEVICE_NODE_NAME  <span class="hljs-string">&quot;freg&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_DEVICE_FILE_NAME  <span class="hljs-string">&quot;freg&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_DEVICE_PROC_NAME  <span class="hljs-string">&quot;freg&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_DEVICE_CLASS_NAME <span class="hljs-string">&quot;freg&quot;</span></span>
+
+<span class="hljs-comment">// &#x63CF;&#x8FF0;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg</span>
+<span class="hljs-keyword">struct</span> fake_reg_dev 
+{
+    <span class="hljs-comment">// &#x63CF;&#x8FF0;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x5BC4;&#x5B58;&#x5668;</span>
+    <span class="hljs-keyword">int</span> val;
+    <span class="hljs-comment">// &#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#x91CF;, &#x7528;&#x6765;&#x540C;&#x6B65;&#x8BBF;&#x95EE;&#x865A;&#x62DF;&#x5BC4;&#x5B58;&#x5668; val</span>
+    <span class="hljs-keyword">struct</span> semaphore sem;
+    <span class="hljs-comment">// &#x4E00;&#x4E2A;&#x6807;&#x51C6;&#x7684;Linux&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;&#xFF0C; &#x7528;&#x6765;&#x6807;&#x5FD7;&#x8BE5;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x7C7B;&#x578B;&#x4E3A;&#x5B57;&#x7B26;&#x8BBE;&#x5907;</span>
+    <span class="hljs-keyword">struct</span> cdev dev;
+};
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<p>freg.c  </p>
+<pre><code class="lang-c"><span class="hljs-comment">// kernel\goldfish\drivers\freg\freg.c</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/types.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/fs.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/proc_fs.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;linux/device.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;asm/uaccess.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;freg.h&quot;</span></span>
+
+<span class="hljs-comment">/* &#x4E3B;&#x8BBE;&#x5907;&#x53F7; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> freg_major = <span class="hljs-number">0</span>;
+<span class="hljs-comment">/* &#x4ECE;&#x8BBE;&#x5907;&#x53F7;&#x53D8;&#x91CF; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> freg_minor = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x7C7B;&#x522B; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">class</span>* freg_class = <span class="hljs-literal">NULL</span>;
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x53D8;&#x91CF; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> fake_reg_dev* freg_dev = <span class="hljs-literal">NULL</span>;
+
+<span class="hljs-comment">/* &#x4F20;&#x7EDF;&#x7684;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_open</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode* inode, <span class="hljs-keyword">struct</span> file* filp)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_release</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode* inode, <span class="hljs-keyword">struct</span> file* filp)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_read</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file* filp, <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t* f_pos)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_write</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file* filp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t* f_pos)</span></span>;
+
+<span class="hljs-comment">/* &#x4F20;&#x7EDF;&#x7684;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x8868; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> file_operations freg_fops = {
+        .owner = THIS_MODULE,
+        .open = freg_open,
+        .release = freg_release,
+        .read = freg_read,
+        .write = freg_write,
+};
+
+<span class="hljs-comment">/* devfs&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x8BBE;&#x5907;&#x5C5E;&#x6027;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_val_show</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> device* dev, <span class="hljs-keyword">struct</span> device_attribute* attr,  <span class="hljs-keyword">char</span>* buf)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_val_store</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> device* dev, <span class="hljs-keyword">struct</span> device_attribute* attr, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* buf, size_t count)</span></span>;
+
+<span class="hljs-comment">/* devfs&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x8BBE;&#x5907;&#x5C5E;&#x6027; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-title">DEVICE_ATTR</span><span class="hljs-params">(val, S_IRUGO | S_IWUSR, freg_val_show, freg_val_store)</span></span>;
+
+<span class="hljs-comment">/* &#x6253;&#x5F00;&#x8BBE;&#x5907;&#x65B9;&#x6CD5; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_open</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode* inode, <span class="hljs-keyword">struct</span> file* filp)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> fake_reg_dev* dev;
+
+    <span class="hljs-comment">//&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#x4FDD;&#x5B58;&#x5728;&#x6587;&#x4EF6;&#x6307;&#x9488;&#x7684;&#x79C1;&#x6709;&#x6570;&#x636E;&#x57DF;&#x4E2D;, &#x4EE5;&#x4FBF;&#x8BBF;&#x95EE;&#x8BBE;&#x5907;&#x65F6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x62FF;&#x6765;&#x7528;</span>
+    dev = container_of(inode-&gt;i_cdev, <span class="hljs-keyword">struct</span> fake_reg_dev, dev);
+    filp-&gt;private_data = dev;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x91CA;&#x653E;&#x65F6;&#x8C03;&#x7528;, &#x7A7A;&#x5B9E;&#x73B0; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_release</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> inode* inode, <span class="hljs-keyword">struct</span> file* filp)</span> 
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* &#x8BFB;&#x53D6;&#x8BBE;&#x5907;&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x503C; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_read</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file* filp, <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t* f_pos)</span> 
+</span>{
+    <span class="hljs-keyword">ssize_t</span> err = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">struct</span> fake_reg_dev* dev = filp-&gt;private_data;
+
+    <span class="hljs-comment">/* &#x540C;&#x6B65;&#x8BBF;&#x95EE; */</span>
+    <span class="hljs-keyword">if</span>(down_interruptible(&amp;(dev-&gt;sem))) 
+    {    
+        <span class="hljs-keyword">return</span> -ERESTARTSYS;
+    }
+
+    <span class="hljs-keyword">if</span>(count &lt; <span class="hljs-keyword">sizeof</span>(dev-&gt;val)) 
+    {
+        <span class="hljs-keyword">goto</span> out;
+    }
+
+    <span class="hljs-comment">/* &#x5C06;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x503C;&#x590D;&#x5236;&#x5230;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x4E2D; */</span>
+    <span class="hljs-keyword">if</span>(copy_to_user(buf, &amp;(dev-&gt;val), <span class="hljs-keyword">sizeof</span>(dev-&gt;val))) 
+    {
+        err = -EFAULT;
+        <span class="hljs-keyword">goto</span> out;
+    }
+
+    err = <span class="hljs-keyword">sizeof</span>(dev-&gt;val);
+
+out:
+    up(&amp;(dev-&gt;sem));
+    <span class="hljs-keyword">return</span> err;
+}
+
+<span class="hljs-comment">/* &#x5199;&#x8BBE;&#x5907;&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x503C; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_write</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file* filp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> __user *buf, size_t count, loff_t* f_pos)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> fake_reg_dev* dev = filp-&gt;private_data;
+    <span class="hljs-keyword">ssize_t</span> err = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">/* &#x540C;&#x6B65;&#x8BBF;&#x95EE; */</span>
+    <span class="hljs-keyword">if</span>(down_interruptible(&amp;(dev-&gt;sem))) 
+    {
+        <span class="hljs-keyword">return</span> -ERESTARTSYS;
+    }
+
+    <span class="hljs-keyword">if</span>(count != <span class="hljs-keyword">sizeof</span>(dev-&gt;val)) 
+    {
+        <span class="hljs-keyword">goto</span> out;
+    }
+
+    <span class="hljs-comment">/* &#x5C06;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x503C;&#x5199;&#x5230;&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x4E2D; */</span>
+    <span class="hljs-keyword">if</span>(copy_from_user(&amp;(dev-&gt;val), buf, count)) 
+    {
+        err = -EFAULT;
+        <span class="hljs-keyword">goto</span> out;
+    }
+
+    err = <span class="hljs-keyword">sizeof</span>(dev-&gt;val);
+
+out:
+    up(&amp;(dev-&gt;sem));
+    <span class="hljs-keyword">return</span> err;
+}
+
+<span class="hljs-comment">/* &#x5C06;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x503C;&#x8BFB;&#x53D6;&#x5230;&#x7F13;&#x51B2;&#x533A;buf&#x4E2D;, &#x5185;&#x90E8;&#x4F7F;&#x7528; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">ssize_t</span> __freg_get_val(<span class="hljs-keyword">struct</span> fake_reg_dev* dev, <span class="hljs-keyword">char</span>* buf) 
+{
+    <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">/* &#x540C;&#x6B65;&#x8BBF;&#x95EE; */</span>
+    <span class="hljs-keyword">if</span>(down_interruptible(&amp;(dev-&gt;sem))) 
+    {
+        <span class="hljs-keyword">return</span> -ERESTARTSYS;
+    }
+
+    val = dev-&gt;val;
+    up(&amp;(dev-&gt;sem));
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">snprintf</span>(buf, PAGE_SIZE, <span class="hljs-string">&quot;%d\n&quot;</span>, val);
+}
+
+<span class="hljs-comment">/* &#x628A;&#x7F13;&#x51B2;&#x533A;buf&#x7684;&#x503C;&#x5199;&#x5230;&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;val&#x4E2D;, &#x5185;&#x90E8;&#x4F7F;&#x7528; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">ssize_t</span> __freg_set_val(<span class="hljs-keyword">struct</span> fake_reg_dev* dev, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* buf, <span class="hljs-keyword">size_t</span> count) 
+{
+    <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">/* &#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x5B57; */</span>
+    val = simple_strtol(buf, <span class="hljs-literal">NULL</span>, <span class="hljs-number">10</span>);
+
+    <span class="hljs-comment">/* &#x540C;&#x6B65;&#x8BBF;&#x95EE; */</span>
+    <span class="hljs-keyword">if</span>(down_interruptible(&amp;(dev-&gt;sem))) 
+    {
+        <span class="hljs-keyword">return</span> -ERESTARTSYS;
+    }
+
+    dev-&gt;val = val;
+    up(&amp;(dev-&gt;sem));
+
+    <span class="hljs-keyword">return</span> count;
+}
+
+<span class="hljs-comment">/* &#x8BFB;&#x8BBE;&#x5907;&#x5C5E;&#x6027;val&#x7684;&#x503C; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_val_show</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> device* dev, <span class="hljs-keyword">struct</span> device_attribute* attr, <span class="hljs-keyword">char</span>* buf)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> fake_reg_dev* hdev = (<span class="hljs-keyword">struct</span> fake_reg_dev*)dev_get_drvdata(dev);
+
+    <span class="hljs-keyword">return</span> __freg_get_val(hdev, buf);
+}
+
+<span class="hljs-comment">/* &#x5199;&#x8BBE;&#x5907;&#x5C5E;&#x6027;val&#x7684;&#x503C; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_val_store</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> device* dev, 
+                              <span class="hljs-keyword">struct</span> device_attribute* attr, 
+                              <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* buf, 
+                              size_t count)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> fake_reg_dev* hdev = (<span class="hljs-keyword">struct</span> fake_reg_dev*)dev_get_drvdata(dev);
+
+    <span class="hljs-keyword">return</span> __freg_set_val(hdev, buf, count);
+}
+
+<span class="hljs-comment">/* &#x8BFB;&#x53D6;&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668; val &#x7684;&#x503C; , &#x4FDD;&#x5B58;&#x5230;page &#x7F13;&#x51B2;&#x533A;&#x4E2D;*/</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_proc_read</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* page, <span class="hljs-keyword">char</span>** start, 
+                              off_t off, 
+                              <span class="hljs-keyword">int</span> count, 
+                              <span class="hljs-keyword">int</span>* eof, 
+                              <span class="hljs-keyword">void</span>* data)</span> 
+</span>{
+    <span class="hljs-keyword">if</span>(off &gt; <span class="hljs-number">0</span>) 
+    {
+        *eof = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-keyword">return</span> __freg_get_val(freg_dev, page);    
+}
+
+<span class="hljs-comment">/* &#x628A;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x503C; buff &#x4FDD;&#x5B58;&#x5230;&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668; val &#x4E2D; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> ssize_t <span class="hljs-title">freg_proc_write</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> file* filp, 
+                               <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> __user *buff, 
+                               <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> len, 
+                               <span class="hljs-keyword">void</span>* data)</span> 
+</span>{    
+    <span class="hljs-keyword">int</span> err = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">char</span>* page = <span class="hljs-literal">NULL</span>;
+
+    <span class="hljs-keyword">if</span>(len &gt; PAGE_SIZE) 
+    {
+        printk(KERN_ALERT<span class="hljs-string">&quot;The buff is too large: %lu.\n&quot;</span>, len);
+        <span class="hljs-keyword">return</span> -EFAULT;
+    }
+
+    page = (<span class="hljs-keyword">char</span>*)__get_free_page(GFP_KERNEL);
+    <span class="hljs-keyword">if</span>(!page) 
+    {
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to alloc page.\n&quot;</span>);
+        <span class="hljs-keyword">return</span> -ENOMEM;
+    }
+
+    <span class="hljs-comment">/* &#x5148;&#x628A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x503C;&#x590D;&#x5236;&#x5230;&#x5185;&#x6838;&#x7F13;&#x51B2;&#x533A;&#x4E2D; */</span>
+    <span class="hljs-keyword">if</span>(copy_from_user(page, buff, len)) 
+    {
+        printk(KERN_ALERT <span class="hljs-string">&quot;Failed to copy buff from user.\n&quot;</span>);
+        err = -EFAULT;
+
+        <span class="hljs-keyword">goto</span> out;
+    }
+
+    err = __freg_set_val(freg_dev, page, len);
+
+out:
+    free_page((<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>)page);
+    <span class="hljs-keyword">return</span> err;    
+}
+
+<span class="hljs-comment">/* &#x521B;&#x5EFA; /proc/freg &#x6587;&#x4EF6; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">freg_create_proc</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> proc_dir_entry* entry;
+
+    entry = create_proc_entry(FREG_DEVICE_PROC_NAME, <span class="hljs-number">0</span>, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-keyword">if</span>(entry) 
+    {
+        entry-&gt;owner = THIS_MODULE;
+        entry-&gt;read_proc = freg_proc_read;
+        entry-&gt;write_proc = freg_proc_write;
+    }
+}
+
+<span class="hljs-comment">/* &#x5220;&#x9664; /proc/freg &#x6587;&#x4EF6; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">freg_remove_proc</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> 
+</span>{
+    remove_proc_entry(FREG_DEVICE_PROC_NAME, <span class="hljs-literal">NULL</span>);
+}
+
+<span class="hljs-comment">/* &#x521D;&#x59CB;&#x5316;&#x8BBE;&#x5907; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>  __freg_setup_dev(<span class="hljs-keyword">struct</span> fake_reg_dev* dev) 
+{
+    <span class="hljs-keyword">int</span> err;
+    <span class="hljs-keyword">dev_t</span> devno = MKDEV(freg_major, freg_minor);
+
+    <span class="hljs-built_in">memset</span>(dev, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> fake_reg_dev));
+
+    <span class="hljs-comment">/* &#x521D;&#x59CB;&#x5316;&#x5B57;&#x7B26;&#x8BBE;&#x5907; */</span>
+    cdev_init(&amp;(dev-&gt;dev), &amp;freg_fops);
+    dev-&gt;dev.owner = THIS_MODULE;
+    dev-&gt;dev.ops = &amp;freg_fops;
+
+    <span class="hljs-comment">/* &#x6CE8;&#x518C;&#x5B57;&#x7B26;&#x8BBE;&#x5907; */</span>
+    err = cdev_add(&amp;(dev-&gt;dev),devno, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">if</span>(err) 
+    {
+        <span class="hljs-keyword">return</span> err;
+    }    
+
+    <span class="hljs-comment">/* &#x521D;&#x59CB;&#x5316;&#x4FE1;&#x53F7;&#x91CF; */</span>
+    init_MUTEX(&amp;(dev-&gt;sem));
+    <span class="hljs-comment">/* &#x521D;&#x59CB;&#x5316;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x503C; */</span>
+    dev-&gt;val = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* &#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x65B9;&#x6CD5; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> __<span class="hljs-function">init <span class="hljs-title">freg_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> 
+</span>{ 
+    <span class="hljs-keyword">int</span> err = <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">dev_t</span> dev = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">struct</span> device* temp = <span class="hljs-literal">NULL</span>;
+
+    printk(KERN_ALERT<span class="hljs-string">&quot;Initializing freg device.\n&quot;</span>);
+
+    <span class="hljs-comment">/* &#x52A8;&#x6001;&#x5206;&#x914D;&#x4E3B;&#x8BBE;&#x5907;&#x53F7; &#x548C; &#x4ECE;&#x8BBE;&#x5907;&#x53F7; */</span>
+    err = alloc_chrdev_region(&amp;dev, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, FREG_DEVICE_NODE_NAME);
+    <span class="hljs-keyword">if</span>(err &lt; <span class="hljs-number">0</span>) 
+    {
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to alloc char dev region.\n&quot;</span>);
+        <span class="hljs-keyword">goto</span> fail;
+    }
+
+    freg_major = MAJOR(dev);
+    freg_minor = MINOR(dev);
+
+    <span class="hljs-comment">/* &#x5206;&#x914D;freg&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53; */</span>
+    freg_dev = kmalloc(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> fake_reg_dev), GFP_KERNEL);
+    <span class="hljs-keyword">if</span>(!freg_dev) 
+    {
+        err = -ENOMEM;
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to alloc freg device.\n&quot;</span>);
+        <span class="hljs-keyword">goto</span> unregister;
+    }
+
+    <span class="hljs-comment">/* &#x521D;&#x59CB;&#x5316;&#x8BBE;&#x5907; */</span>
+    err = __freg_setup_dev(freg_dev);
+    <span class="hljs-keyword">if</span>(err) 
+    {
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to setup freg device: %d.\n&quot;</span>, err);
+        <span class="hljs-keyword">goto</span> cleanup;
+    }
+
+    <span class="hljs-comment">/* &#x5728;/sys/class/ &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x8BBE;&#x5907;&#x7C7B;&#x522B;&#x76EE;&#x5F55;freg */</span>
+    freg_class = class_create(THIS_MODULE, FREG_DEVICE_CLASS_NAME);
+    <span class="hljs-keyword">if</span>(IS_ERR(freg_class)) 
+    {
+        err = PTR_ERR(freg_class);
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to create freg device class.\n&quot;</span>);
+        <span class="hljs-keyword">goto</span> destroy_cdev;
+    }
+
+    <span class="hljs-comment">/* &#x5728; /dev/ &#x76EE;&#x5F55; &#x548C; /sys/class/freg&#x76EE;&#x5F55;&#x4E0B;&#x5206;&#x522B;&#x521B;&#x5EFA;&#x8BBE;&#x5907;&#x6587;&#x4EF6;frag */</span>
+    temp = device_create(freg_class, <span class="hljs-literal">NULL</span>, dev, <span class="hljs-string">&quot;%s&quot;</span>, FREG_DEVICE_FILE_NAME);
+    <span class="hljs-keyword">if</span>(IS_ERR(temp)) 
+    {
+        err = PTR_ERR(temp);
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to create freg device.\n&quot;</span>);
+        <span class="hljs-keyword">goto</span> destroy_class;
+    }
+
+    <span class="hljs-comment">/* &#x5728; /sys/class/freg/freg &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x5C5E;&#x6027;&#x6587;&#x4EF6;val */</span>
+    err = device_create_file(temp, &amp;dev_attr_val);
+    <span class="hljs-keyword">if</span>(err &lt; <span class="hljs-number">0</span>) 
+    {
+        printk(KERN_ALERT<span class="hljs-string">&quot;Failed to create attribute val of freg device.\n&quot;</span>);
+                <span class="hljs-keyword">goto</span> destroy_device;
+    }
+
+    dev_set_drvdata(temp, freg_dev);
+
+    <span class="hljs-comment">/* &#x521B;&#x5EFA; /proc/freg&#x6587;&#x4EF6; */</span>
+    freg_create_proc();
+
+    printk(KERN_ALERT<span class="hljs-string">&quot;Succedded to initialize freg device.\n&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+destroy_device:
+    device_destroy(freg_class, dev);
+destroy_class:
+    class_destroy(freg_class);
+destroy_cdev:
+    cdev_del(&amp;(freg_dev-&gt;dev));    
+cleanup:
+    kfree(freg_dev);
+unregister:
+    unregister_chrdev_region(MKDEV(freg_major, freg_minor), <span class="hljs-number">1</span>);    
+fail:
+    <span class="hljs-keyword">return</span> err;
+}
+
+<span class="hljs-comment">/* &#x6A21;&#x5757;&#x5378;&#x8F7D;&#x65B9;&#x6CD5; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __<span class="hljs-function"><span class="hljs-built_in">exit</span> <span class="hljs-title">freg_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> 
+</span>{
+    <span class="hljs-keyword">dev_t</span> devno = MKDEV(freg_major, freg_minor);
+
+    printk(KERN_ALERT<span class="hljs-string">&quot;Destroy freg device.\n&quot;</span>);
+
+    <span class="hljs-comment">/* &#x5220;&#x9664; /proc/freg &#x6587;&#x4EF6; */</span>
+    freg_remove_proc();
+
+    <span class="hljs-comment">/* &#x6CE8;&#x9500;&#x8BBE;&#x5907;&#x7C7B;&#x522B; &#x548C; &#x8BBE;&#x5907; */</span>
+    <span class="hljs-keyword">if</span>(freg_class) 
+    {
+        device_destroy(freg_class, MKDEV(freg_major, freg_minor));
+        class_destroy(freg_class);
+    }
+
+    <span class="hljs-comment">/* &#x5220;&#x9664;&#x5B57;&#x7B26;&#x8BBE;&#x5907; &#x548C; &#x91CA;&#x653E;&#x8BBE;&#x5907;&#x5185;&#x5B58; */</span>
+    <span class="hljs-keyword">if</span>(freg_dev) 
+    {
+        cdev_del(&amp;(freg_dev-&gt;dev));
+        kfree(freg_dev);
+    }
+
+    <span class="hljs-comment">/* &#x91CA;&#x653E;&#x8BBE;&#x5907;&#x53F7;&#x8D44;&#x6E90; */</span>
+    unregister_chrdev_region(devno, <span class="hljs-number">1</span>);
+}
+
+MODULE_LICENSE(<span class="hljs-string">&quot;GPL&quot;</span>);
+MODULE_DESCRIPTION(<span class="hljs-string">&quot;Fake Register Driver&quot;</span>);
+
+module_init(freg_init);
+module_exit(freg_exit);
+</code></pre>
+<p>Kconfig  :</p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># kernel\goldfish\drivers\freg\Kconfig</span>
+config FREG
+    tristate &quot;Fake Register Driver&quot;
+    default n
+    help
+    This is the freg driver for android system.
+</code></pre>
+<p>Makefile  :</p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># kernel\goldfish\drivers\freg\Makefile</span>
+
+<span class="hljs-comment">#  $&#xFF08;CONFIG_FREG&#xFF09; &#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C; &#x5B83;&#x7684;&#x503C;&#x4E0E;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x7684;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x6709;&#x5173;</span>
+
+<span class="hljs-comment">#&#x5982;&#x679C;&#x9009;&#x62E9;&#x5C06;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x5185;&#x5EFA;&#x5230;&#x5185;&#x6838;&#x4E2D;&#xFF0C; &#x90A3;&#x4E48;&#x53D8;&#x91CF;$&#xFF08;CONFIG_FREG&#xFF09; &#x7684;&#x503C;&#x4E3A;y&#xFF1B; </span>
+<span class="hljs-comment"># &#x5982;&#x679C;&#x9009;&#x62E9;&#x4EE5;&#x6A21;&#x5757;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x7F16;&#x8BD1;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#xFF0C; &#x90A3;&#x4E48;&#x53D8;&#x91CF;$&#xFF08;CONFIG_FREG&#xFF09; &#x7684;&#x503C;&#x4E3A;m&#xFF1B; </span>
+<span class="hljs-comment"># &#x5982;&#x679C;&#x53D8;&#x91CF;$&#xFF08;CONFIG_FREG&#xFF09; &#x7684;&#x503C;&#x65E2;&#x4E0D;&#x4E3A;y&#xFF0C; &#x4E5F;&#x4E0D;&#x4E3A;m&#xFF0C;&#x90A3;&#x4E48;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;</span>
+
+obj-$(CONFIG_FREG) += freg.o
+</code></pre>
+<hr>
+<h3 id="&#x4FEE;&#x6539;&#x5185;&#x6838;kconfig&#x6587;&#x4EF6;">&#x4FEE;&#x6539;&#x5185;&#x6838;Kconfig&#x6587;&#x4EF6;</h3>
+<pre><code class="lang-makefile"><span class="hljs-comment"># arch/arm/Kconfig</span>
+
+menu &quot;Device Drivers&quot;
+
+<span class="hljs-comment"># &#x5C06;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x7684;Kconfig&#x6587;&#x4EF6;&#x5305;&#x542B;&#x8FDB;&#x6765;</span>
+source &quot;drivers/freg/Kconfig&quot;
+
+source &quot;drivers/base/Kconfig&quot;
+
+source &quot;drivers/connector/Kconfig&quot;
+
+<span class="hljs-comment"># ...</span>
+
+endmenu
+</code></pre>
+<pre><code class="lang-makefile"><span class="hljs-comment"># drivers/Kconfig</span>
+
+menu &quot;Device Drivers&quot;
+
+<span class="hljs-comment"># &#x5C06;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F; freg &#x7684; Kconfig &#x6587;&#x4EF6;&#x5305;&#x542B;&#x8FDB;&#x6765;</span>
+source &quot;drivers/freg/Kconfig&quot;
+
+source &quot;drivers/base/Kconfig&quot;
+
+<span class="hljs-comment"># ...</span>
+
+endmenu
+</code></pre>
+<hr>
+<h3 id="&#x4FEE;&#x6539;&#x5185;&#x6838;makefile&#x6587;&#x4EF6;">&#x4FEE;&#x6539;&#x5185;&#x6838;Makefile&#x6587;&#x4EF6;</h3>
+<pre><code class="lang-makefile"><span class="hljs-comment"># drivers/Makefile</span>
+
+<span class="hljs-comment"># &#x5F53; make &#x7F16;&#x8BD1;&#x5185;&#x6838;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x5BF9;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F; freg &#x8FDB;&#x884C;&#x7F16;&#x8BD1;</span>
+obj-$(CONFIG_FREG)        += freg/
+obj-y                += gpio/
+obj-$(CONFIG_PCI)        += pci/
+<span class="hljs-comment"># ...</span>
+</code></pre>
+<hr>
+<h3 id="&#x7F16;&#x8BD1;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;">&#x7F16;&#x8BD1;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;</h3>
+<p>&#x5728;&#x7F16;&#x8BD1;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x4E4B;&#x524D;&#xFF0C; &#x6211;&#x4EEC;&#x9700;&#x8981;&#x6267;&#x884C;make menuconfig&#x547D;&#x4EE4;&#x6765;&#x914D;&#x7F6E;&#x5B83;&#x7684;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;  </p>
+<pre><code class="lang-shell">make menuconfig
+</code></pre>
+<p>&#x6267;&#x884C;make&#x547D;&#x4EE4;&#x6765;&#x7F16;&#x8BD1;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg  </p>
+<pre><code class="lang-shell">make
+</code></pre>
+<p>&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;freg&#x7F16;&#x8BD1;&#x6210;&#x529F;  : </p>
+<p><img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200713165801.png" alt="image-20200713165801391"></p>
+<hr>
+<h3 id="&#x9A8C;&#x8BC1;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;">&#x9A8C;&#x8BC1;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;</h3>
+<pre><code class="lang-shell"># &#x4F7F;&#x7528; &#x5F97;&#x5230;&#x7684;&#x5185;&#x6838;&#x955C;&#x50CF;&#x6587;&#x4EF6;zImage&#x6765;&#x542F;&#x52A8;Android&#x6A21;&#x62DF;&#x5668;
+emulator -kernel kernel/goldfish/arch/arm/boot/zImage &amp;
+
+# # &#x7528;adb&#x5DE5;&#x5177;&#x8FDE;&#x63A5;&#x4E0A;
+adb shell
+
+# &#x8FDB;&#x5165; /dev&#x76EE;&#x5F55;&#x4E0B;
+cd dev
+
+# &#x67E5;&#x770B; &#x4E00;&#x4E2A;&#x8BBE;&#x5907;&#x6587;&#x4EF6;freg
+ls freg
+</code></pre>
+<pre><code class="lang-shell"># &#x8FDB;&#x5165;&#x5230;/proc
+cd proc
+
+# &#x8BFB;&#x53D6;&#x6587;&#x4EF6;freg&#x7684;&#x5185;&#x5BB9;
+cat freg
+
+# &#x5F80;&#x6587;&#x4EF6;freg&#x4E2D;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5185;&#x5BB9;
+echo &apos;5&apos; &gt; freg
+
+# &#x5C06;&#x6587;&#x4EF6;freg&#x7684;&#x5185;&#x5BB9;&#x8BFB;&#x53D6;&#x51FA;&#x6765;
+cat freg
+</code></pre>
+<pre><code class="lang-shell"># &#x8FDB;&#x5165;&#x5230;/sys/class/freg/freg
+cd sys/class/freg/freg
+
+# &#x8BFB;&#x53D6;val&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;
+cat val
+
+# &#x5F80;&#x6587;&#x4EF6;val&#x4E2D;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5185;&#x5BB9;
+echo &apos;&apos; &gt; freg
+
+# &#x5C06;&#x6587;&#x4EF6;val&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x8BFB;&#x53D6;&#x51FA;
+cat freg
+</code></pre>
+<hr>
+<h2 id="&#x5F00;&#x53D1;c&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x9A8C;&#x8BC1;android&#x786C;&#x4EF6;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;">&#x5F00;&#x53D1;C&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x9A8C;&#x8BC1;Android&#x786C;&#x4EF6;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;</h2>
+<p>&#x5728;Android&#x6E90;&#x4EE3;&#x7801;&#x5DE5;&#x7A0B;&#x73AF;&#x5883;&#x4E2D;&#x5F00;&#x53D1;&#x7684;C&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6E90;&#x6587;&#x4EF6;&#x4E00;&#x822C;&#x4FDD;&#x5B58;&#x5728;external&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C; &#x6211;&#x4EEC;&#x8FDB;&#x5165;&#x5230;external&#x76EE;&#x5F55;&#x4E2D;&#xFF0C; &#x5E76;&#x4E14;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;freg&#x76EE;&#x5F55;&#xFF0C; &#x7528;&#x6765;&#x4FDD;&#x5B58;&#x6211;&#x4EEC;&#x5C06;&#x8981;&#x5F00;&#x53D1;&#x7684;C&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6E90;&#x6587;&#x4EF6;&#x3002; </p>
+<p>&#x76EE;&#x5F55;&#x7ED3;&#x6784; :</p>
+<pre><code class="lang-shell">~/Android
+    exiternal
+        freg
+            freg.c
+            Android.mk
+</code></pre>
+<p>&#x6E90;&#x6587;&#x4EF6;freg.c   :</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_DEVICE_NAME <span class="hljs-string">&quot;/dev/freg&quot;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>** argv)</span>
+</span>{
+    <span class="hljs-keyword">int</span> fd = <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// &#x4EE5;&#x8BFB;&#x5199;&#x65B9;&#x5F0F;&#x6253;&#x5F00;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg</span>
+    fd = open(FREG_DEVICE_NAME, O_RDWR);
+    <span class="hljs-keyword">if</span>(fd == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Failed to open device %s.\n&quot;</span>, FREG_DEVICE_NAME);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Read original value:\n&quot;</span>);
+
+    <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x5B83;&#x7684;&#x5185;&#x5BB9;&#xFF0C; &#x5373;&#x8BFB;&#x53D6;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val &#x7684;&#x5185;&#x5BB9;</span>
+    read(fd, &amp;val, <span class="hljs-keyword">sizeof</span>(val));
+    <span class="hljs-comment">// &#x6253;&#x5370;&#x51FA;&#x6765;</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d.\n\n&quot;</span>, val);
+
+    val = <span class="hljs-number">5</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Write value %d to %s.\n\n&quot;</span>, val, FREG_DEVICE_NAME);
+    <span class="hljs-comment">// &#x5C06;&#x4E00;&#x4E2A;&#x6574;&#x6570; 5 &#x5199;&#x5165;&#x5230;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val &#x4E2D;</span>
+    write(fd, &amp;val, <span class="hljs-keyword">sizeof</span>(val));
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Read the value again:\n&quot;</span>);
+
+    <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x5B83;&#x7684;&#x5185;&#x5BB9;&#xFF0C; &#x5373;&#x8BFB;&#x53D6;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val &#x7684;&#x5185;&#x5BB9;</span>
+    read(fd, &amp;val, <span class="hljs-keyword">sizeof</span>(val));
+    <span class="hljs-comment">// &#x6253;&#x5370;</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d.\n\n&quot;</span>, val);
+
+    close(fd);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x811A;&#x672C;&#x6587;&#x4EF6;Android.mk  :</p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># &#x5C06;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728; out/target/product/gerneric/system/bin &#x76EE;&#x5F55;&#x4E2D;</span>
+LOCAL_PATH := <span class="hljs-variable">$(call my-dir)</span>
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE := freg
+LOCAL_SRC_FILES := <span class="hljs-variable">$(call all-subdir-c-files)</span>
+<span class="hljs-comment"># &#x5F53;&#x524D;&#x8981;&#x7F16;&#x8BD1;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6A21;&#x5757;</span>
+include $(BUILD_EXECUTABLE)
+</code></pre>
+<pre><code class="lang-shell"># &#x7F16;&#x8BD1;
+mmm ./external/freg/
+# &#x6253;&#x5305;&#x8FD9;&#x4E2A;C&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;
+make snod
+</code></pre>
+<pre><code class="lang-shell"># &#x5C06;&#x5F97;&#x5230;&#x7684; system.img &#x6587;&#x4EF6;&#x542F;&#x52A8; Android&#x6A21;&#x62DF;&#x5668;
+emulator -kernal kernel/goldfish/arch/arm/boot/zImage &amp;
+
+# adb&#x5DE5;&#x5177;&#x8FDE;&#x63A5;&#x4E0A;&#x5B83;
+adb shell
+
+# &#x8FDB;&#x5165;&#x5230;/system/bin&#x76EE;&#x5F55;&#x4E2D;
+cd system/bin
+
+# &#x6267;&#x884C;&#x91CC;&#x9762;&#x7684;freg&#x6587;&#x4EF6;
+./freg
+</code></pre>
+<hr>
+<h2 id="&#x5F00;&#x53D1;android&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;">&#x5F00;&#x53D1;Android&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;</h2>
+<h3 id="&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7F16;&#x5199;&#x89C4;&#x8303;">&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7F16;&#x5199;&#x89C4;&#x8303;</h3>
+<h4 id="&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;">&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;</h4>
+<p>&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x7684;&#x547D;&#x540D;&#x89C4;&#x8303;  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware/libhardware/hardware.c</span>
+
+<span class="hljs-comment">/**
+ * There are a set of variant filename for modules. The form of the filename
+ * is &quot;&lt;MODULE_ID&gt;.variant.so&quot; so for the led module the Dream variants 
+ * of base &quot;ro.product.board&quot;, &quot;ro.board.platform&quot; and &quot;ro.arch&quot; would be:
+ *
+ * MODULE_ID : &#x6A21;&#x5757;&#x7684;ID
+ * led.trout.so
+ * led.msm7k.so
+ * led.ARMV6.so
+ * led.default.so
+ */</span>
+
+<span class="hljs-comment">// variant &#x8868;&#x793A;&#x56DB;&#x4E2A;&#x7CFB;&#x7EDF;&#x5C5E;&#x6027; ro.hardware&#x3001; ro.product.board&#x3001; ro.board.platform &#x548C; ro.arch &#x4E4B;&#x4E00;</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *variant_keys[] = {
+    <span class="hljs-string">&quot;ro.hardware&quot;</span>,     <span class="hljs-comment">/* &#x7531; init &#x8FDB;&#x7A0B;&#x8D1F;&#x8D23;&#x8BBE;&#x7F6E; */</span> <span class="hljs-comment">/* This goes first so that it can pick up a different
+                       file on the emulator. */</span>
+    <span class="hljs-string">&quot;ro.product.board&quot;</span>,
+    <span class="hljs-string">&quot;ro.board.platform&quot;</span>,
+    <span class="hljs-string">&quot;ro.arch&quot;</span>
+};
+</code></pre>
+<h4 id="&#x3000;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;&#x89C4;&#x8303;">&#x3000;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;&#x5B9A;&#x4E49;&#x89C4;&#x8303;</h4>
+<p>&#x7ED3;&#x6784;&#x4F53;hw_module_t  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="hljs-comment">/*
+ * Value for the hw_module_t.tag field
+ */</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAKE_TAG_CONSTANT(A,B,C,D) (((A) &lt;&lt; 24) | ((B) &lt;&lt; 16) | ((C) &lt;&lt; 8) | (D))</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HARDWARE_MODULE_TAG MAKE_TAG_CONSTANT(<span class="hljs-string">&apos;H&apos;</span>, <span class="hljs-string">&apos;W&apos;</span>, <span class="hljs-string">&apos;M&apos;</span>, <span class="hljs-string">&apos;T&apos;</span>)</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HARDWARE_DEVICE_TAG MAKE_TAG_CONSTANT(<span class="hljs-string">&apos;H&apos;</span>, <span class="hljs-string">&apos;W&apos;</span>, <span class="hljs-string">&apos;D&apos;</span>, <span class="hljs-string">&apos;T&apos;</span>)</span>
+
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span>;
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_methods_t</span>;
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span>;
+
+<span class="hljs-comment">/**
+ * Every hardware module must have a data structure named HAL_MODULE_INFO_SYM
+ * and the fields of this data structure must begin with hw_module_t
+ * followed by module specific information.
+ */</span>
+<span class="hljs-comment">/* 
+&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x90FD;&#x5FC5;&#x987B;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;&#xFF0C; 
+&#x800C;&#x4E14;&#x5B83;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x4E3A; hw_module_t
+*/</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span> 
+{
+    <span class="hljs-comment">/** tag must be initialized to HARDWARE_MODULE_TAG */</span>
+    <span class="hljs-comment">/* &#x6210;&#x5458;&#x53D8;&#x91CF; tag &#x7684;&#x503C;&#x5FC5;&#x987B;&#x8BBE;&#x7F6E;&#x4E3A; HARDWARE_MODULE_TAG&#xFF0C; &#x5373;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x503C;&#xFF08;&apos;H&apos;&#xFF1C;&#xFF1C;24|&apos;W&apos;&#xFF1C;&#xFF1C;16|&apos;M&apos;&#xFF1C;&#xFF1C;8|&apos;T&apos;&#xFF09;,
+       &#x7528;&#x6765;&#x6807;&#x5FD7;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53; 
+     */</span>
+    <span class="hljs-keyword">uint32_t</span> tag;
+
+    <span class="hljs-comment">/** major version number for the module */</span>
+    <span class="hljs-keyword">uint16_t</span> version_major;
+
+    <span class="hljs-comment">/** minor version number of the module */</span>
+    <span class="hljs-keyword">uint16_t</span> version_minor;
+
+    <span class="hljs-comment">/** Identifier of module */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *id;
+
+    <span class="hljs-comment">/** Name of this module */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name;
+
+    <span class="hljs-comment">/** Author/owner/implementor of the module */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *author;
+
+    <span class="hljs-comment">/** Modules methods */</span>
+    <span class="hljs-comment">/* &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x5217;&#x8868; */</span>
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_methods_t</span>* methods;
+
+    <span class="hljs-comment">/** module&apos;s dso */</span>
+    <span class="hljs-comment">/* &#x4FDD;&#x5B58;&#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x540E;&#x5F97;&#x5230;&#x7684;&#x53E5;&#x67C4;&#x503C; */</span>
+    <span class="hljs-comment">/*
+     * &#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x8C03;&#x7528; dlopen &#x51FD;&#x6570;&#x6765;&#x52A0;&#x8F7D;&#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x6587;&#x4EF6;&#x7684;&#x8FC7;&#x7A0B;&#x3002; 
+     * &#x5728;&#x8C03;&#x7528; dlclose &#x51FD;&#x6570;&#x6765;&#x5378;&#x8F7D;&#x8FD9;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x65F6;&#xFF0C; &#x8981;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x53E5;&#x67C4;&#x503C;
+     */</span>
+    <span class="hljs-keyword">void</span>* dso;
+
+    <span class="hljs-comment">/** padding to 128 bytes, reserved for future use */</span>
+    <span class="hljs-keyword">uint32_t</span> reserved[<span class="hljs-number">32</span><span class="hljs-number">-7</span>];
+
+} <span class="hljs-keyword">hw_module_t</span>;
+
+<span class="hljs-comment">/**
+ * Name of the hal_module_info
+ */</span>
+<span class="hljs-comment">/*
+&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x90FD;&#x5FC5;&#x987B;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5BFC;&#x51FA;&#x7B26;&#x53F7; HAL_MODULE_IFNO_SYM&#xFF0C; &#x5373;&#x201C;HMI&#x201D;&#xFF0C; 
+&#x5B83;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;
+*/</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HAL_MODULE_INFO_SYM         HMI</span>
+</code></pre>
+<p>struct hw_module_methods_t  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_methods_t</span> 
+{
+    <span class="hljs-comment">/** Open a specific device */</span>
+    <span class="hljs-comment">/**
+     * @function: &#x6253;&#x5F00;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x786C;&#x4EF6;&#x8BBE;&#x5907;
+     * @parameter: 
+     *        module : &#x8981;&#x6253;&#x5F00;&#x7684;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x6240;&#x5728;&#x7684;&#x6A21;&#x5757;
+     *        id : &#x8981;&#x6253;&#x5F00;&#x7684;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x7684;ID
+     *        device : &#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF0C;&#x63CF;&#x8FF0;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x6253;&#x5F00;&#x7684;&#x786C;&#x4EF6;&#x8BBE;&#x5907;
+     * @return: 
+     *     success: 
+     *     error: 
+     * @note: 
+     */</span>
+    <span class="hljs-keyword">int</span> (*open)(<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span>* module, 
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* id, 
+                <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span>** device);
+
+} <span class="hljs-keyword">hw_module_methods_t</span>;
+</code></pre>
+<p>struct hw_device_t  : </p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\include\hardware\hardware.h</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HARDWARE_DEVICE_TAG MAKE_TAG_CONSTANT(<span class="hljs-string">&apos;H&apos;</span>, <span class="hljs-string">&apos;W&apos;</span>, <span class="hljs-string">&apos;D&apos;</span>, <span class="hljs-string">&apos;T&apos;</span>)</span>
+
+<span class="hljs-comment">/**
+ * Every device data structure must begin with hw_device_t
+ * followed by module specific public methods and attributes.
+ */</span>
+<span class="hljs-comment">/*
+ * &#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x90FD;&#x5FC5;&#x987B;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
+ * &#x800C;&#x4E14;&#x5B83;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x4E3A;hw_device_t
+ */</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span> 
+{
+    <span class="hljs-comment">/** tag must be initialized to HARDWARE_DEVICE_TAG */</span>
+    <span class="hljs-comment">/*
+     * tag &#x5FC5;&#x987B; == HARDWARE_DEVICE_TAG&#xFF0C;&#x5373;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x503C;&#xFF08;&apos;H&apos;&#xFF1C;&#xFF1C;24|&apos;W&apos;&#xFF1C;&#xFF1C;16|&apos;D&apos;&#xFF1C;&#xFF1C;8|&apos;T&apos;&#xFF09;,
+     * &#x7528;&#x6765;&#x6807;&#x5FD7;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x4E2D;&#x7684;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53;
+     */</span>
+    <span class="hljs-keyword">uint32_t</span> tag;
+
+    <span class="hljs-comment">/** version number for hw_device_t */</span>
+    <span class="hljs-keyword">uint32_t</span> version;
+
+    <span class="hljs-comment">/** reference to the module this device belongs to */</span>
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span>* module;
+
+    <span class="hljs-comment">/** padding reserved for future use */</span>
+    <span class="hljs-keyword">uint32_t</span> reserved[<span class="hljs-number">12</span>];
+
+    <span class="hljs-comment">/** Close this device */</span>
+    <span class="hljs-comment">/* &#x5173;&#x95ED;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x8BBE;&#x5907; */</span>
+    <span class="hljs-keyword">int</span> (*close)(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span>* device);
+
+} <span class="hljs-keyword">hw_device_t</span>;
+</code></pre>
+<h3 id="&#x7F16;&#x5199;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x63A5;&#x53E3;">&#x7F16;&#x5199;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x63A5;&#x53E3;</h3>
+<p>&#x5C06;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x5728;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x4E2D;&#x7684;&#x6A21;&#x5757;&#x540D;&#x79F0;&#x5B9A;&#x4E49;&#x4E3A;freg</p>
+<p>&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#xFF1A;  </p>
+<pre><code class="lang-shell">~/Android/hardware/libhardware
+    include
+        hardware
+            freg.h
+    Modules
+        freg
+            freg.cpp
+            Android.mk
+</code></pre>
+<p><code>freg.h</code> &#x6E90;&#x4EE3;&#x7801;&#x6587;&#x4EF6; </p>
+<pre><code class="lang-c"><span class="hljs-comment">// Android/hardware/libhardware/include/hardware/freg.h</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ANDROID_FREG_INTERFACE_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ANDROID_FREG_INTERFACE_H</span>
+
+__BEGIN_DECLS
+
+<span class="hljs-comment">/**
+ * The id of this module
+ */</span>
+<span class="hljs-comment">// &#x5B9A;&#x4E49;&#x6A21;&#x5757;ID</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_HARDWARE_MODULE_ID <span class="hljs-string">&quot;freg&quot;</span></span>
+
+<span class="hljs-comment">/**
+ * The id of this device
+ */</span>
+<span class="hljs-comment">// &#x5B9A;&#x4E49;&#x8BBE;&#x5907;ID</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FREG_HARDWARE_DEVICE_ID <span class="hljs-string">&quot;freg&quot;</span></span>
+
+<span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_module_t</span> 
+{
+    <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x4E3A; hw_module_t</span>
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span> common;
+};
+
+<span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x8BBE;&#x5907;&#x7ED3;&#x6784;&#x4F53; , &#x63CF;&#x8FF0;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span> 
+{
+    <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x4E3A; hw_device_t</span>
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span> common;
+    <span class="hljs-comment">// &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26; , &#x7528;&#x6765;&#x63CF;&#x8FF0;&#x6253;&#x5F00;&#x7684;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg</span>
+    <span class="hljs-keyword">int</span> fd;
+
+    <span class="hljs-comment">// &#x5199;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val &#x7684;&#x5185;&#x5BB9;</span>
+    <span class="hljs-keyword">int</span> (*set_val)(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>* dev, <span class="hljs-keyword">int</span> val);
+    <span class="hljs-comment">// &#x8BFB;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val &#x7684;&#x5185;&#x5BB9;</span>
+    <span class="hljs-keyword">int</span> (*get_val)(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>* dev, <span class="hljs-keyword">int</span>* val);
+};
+
+__END_DECLS
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<p>freg.cpp &#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757; freg &#x7684;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// Android/hardware/libhardware/Modules/freg/freg.cpp</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LOG_TAG <span class="hljs-string">&quot;FregHALStub&quot;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;hardware/hardware.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;hardware/freg.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;errno.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cutils/log.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cutils/atomic.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> DEVICE_NAME <span class="hljs-string">&quot;/dev/freg&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MODULE_NAME <span class="hljs-string">&quot;Freg&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MODULE_AUTHOR <span class="hljs-string">&quot;cpucode&quot;</span></span>
+
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x6253;&#x5F00;&#x63A5;&#x53E3; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_open</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t* module, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* id, <span class="hljs-keyword">struct</span> hw_device_t** device)</span></span>;
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x5173;&#x95ED;&#x63A5;&#x53E3; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_close</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> hw_device_t* device)</span></span>;
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x5199;&#x63A5;&#x53E3; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_set_val</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> freg_device_t* dev, <span class="hljs-keyword">int</span> val)</span></span>;
+<span class="hljs-comment">/* &#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x8BFB;&#x63A5;&#x53E3; */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_get_val</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> freg_device_t* dev, <span class="hljs-keyword">int</span>* val)</span></span>;
+
+<span class="hljs-comment">/* &#x5B9A;&#x4E49;&#x6A21;&#x5757;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF; */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_methods_t</span> freg_module_methods = {
+    open: freg_device_open
+};
+
+<span class="hljs-comment">/* &#x5B9A;&#x4E49;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF; */</span>
+<span class="hljs-comment">// &#x6BCF;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x5FC5;&#x987B;&#x5BFC;&#x51FA;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; HAL_MODULE_INFO_SYM &#x7684;&#x7B26;&#x53F7;</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_module_t</span> HAL_MODULE_INFO_SYM = {
+    common: {
+        <span class="hljs-comment">// tag &#x5FC5;&#x987B; == HARDWARE_MODULE_TAG</span>
+        tag: HARDWARE_MODULE_TAG,    
+        version_major: <span class="hljs-number">1</span>,
+        version_minor: <span class="hljs-number">0</span>,
+        id: FREG_HARDWARE_MODULE_ID,
+        name: MODULE_NAME,
+        author: MODULE_AUTHOR,
+        methods: &amp;freg_module_methods,
+    }
+};
+
+<span class="hljs-comment">// &#x6253;&#x5F00;&#x64CD;&#x4F5C;</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_open</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t* module, 
+                            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* id, 
+                            <span class="hljs-keyword">struct</span> hw_device_t** device)</span> 
+</span>{
+    <span class="hljs-comment">// &#x5224;&#x65AD; id &#x4E0E;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;ID&#x503C;&#x662F;&#x5426; &#x5339;&#x914D;</span>
+    <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">strcmp</span>(id, FREG_HARDWARE_DEVICE_ID))
+    {
+        <span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>* dev;
+
+        dev = (<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>));
+        <span class="hljs-keyword">if</span>(!dev) 
+        {
+            LOGE(<span class="hljs-string">&quot;Failed to alloc space for freg_device_t.&quot;</span>);
+            <span class="hljs-keyword">return</span> -EFAULT;    
+        }
+
+        <span class="hljs-built_in">memset</span>(dev, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>));
+
+        <span class="hljs-comment">// &#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x6807;&#x7B7E;&#xFF08;dev-&#xFF1E;common.tag&#xFF09; &#x5FC5;&#x987B; == HARDWARE_DEVICE_TAG</span>
+        dev-&gt;common.tag = HARDWARE_DEVICE_TAG;
+        dev-&gt;common.version = <span class="hljs-number">0</span>;
+        dev-&gt;common.module = (<span class="hljs-keyword">hw_module_t</span>*)module;
+        <span class="hljs-comment">// &#x5173;&#x95ED;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A; freg_device_close</span>
+        dev-&gt;common.close = freg_device_close;
+        <span class="hljs-comment">// &#x5199;&#x51FD;&#x6570;</span>
+        dev-&gt;set_val = freg_set_val;
+        <span class="hljs-comment">// &#x8BFB;&#x51FD;&#x6570;</span>
+        dev-&gt;get_val = freg_get_val;
+
+        <span class="hljs-comment">// &#x6253;&#x5F00;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg &#xFF0C; &#x4E14;&#x5C06;&#x5F97;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4FDD;&#x5B58;&#x5728;&#x7ED3;&#x6784;&#x4F53; freg_device_t &#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF; fd &#x4E2D;</span>
+        <span class="hljs-keyword">if</span>((dev-&gt;fd = open(DEVICE_NAME, O_RDWR)) == <span class="hljs-number">-1</span>)
+        {
+            LOGE(<span class="hljs-string">&quot;Failed to open device file /dev/freg -- %s.&quot;</span>, strerror(errno));
+            <span class="hljs-built_in">free</span>(dev);
+
+            <span class="hljs-keyword">return</span> -EFAULT;
+        }
+
+        *device = &amp;(dev-&gt;common);
+
+        LOGI(<span class="hljs-string">&quot;Open device file /dev/freg successfully.&quot;</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-keyword">return</span> -EFAULT;
+}
+
+<span class="hljs-comment">// &#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5173;&#x95ED;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_close</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> hw_device_t* device)</span> 
+</span>{
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>* freg_device = (<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>*)device;
+
+    <span class="hljs-keyword">if</span>(freg_device) 
+    {
+        <span class="hljs-comment">// &#x5173;&#x95ED;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg</span>
+        close(freg_device-&gt;fd);
+        <span class="hljs-comment">// &#x91CA;&#x653E;&#x8BBE;&#x5907;</span>
+        <span class="hljs-built_in">free</span>(freg_device);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_set_val</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> freg_device_t* dev, <span class="hljs-keyword">int</span> val)</span> 
+</span>{
+    <span class="hljs-keyword">if</span>(!dev) 
+    {
+        LOGE(<span class="hljs-string">&quot;Null dev pointer.&quot;</span>);
+        <span class="hljs-keyword">return</span> -EFAULT;
+    }
+
+    LOGI(<span class="hljs-string">&quot;Set value %d to device file /dev/freg.&quot;</span>, val);
+    <span class="hljs-comment">// &#x5199;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x5185;&#x5BB9;</span>
+    write(dev-&gt;fd, &amp;val, <span class="hljs-keyword">sizeof</span>(val));
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_get_val</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> freg_device_t* dev, <span class="hljs-keyword">int</span>* val)</span> 
+</span>{
+    <span class="hljs-keyword">if</span>(!dev) 
+    {
+        LOGE(<span class="hljs-string">&quot;Null dev pointer.&quot;</span>);
+        <span class="hljs-keyword">return</span> -EFAULT;
+    }
+
+    <span class="hljs-keyword">if</span>(!val) 
+    {
+        LOGE(<span class="hljs-string">&quot;Null val pointer.&quot;</span>);
+        <span class="hljs-keyword">return</span> -EFAULT;
+    }
+
+    <span class="hljs-comment">// &#x8BFB;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x7684;&#x5185;&#x5BB9;</span>
+    read(dev-&gt;fd, val, <span class="hljs-keyword">sizeof</span>(*val));
+
+    LOGI(<span class="hljs-string">&quot;Get value %d from device file /dev/freg.&quot;</span>, *val);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>Android.mk   &#x7F16;&#x8BD1;&#x811A;&#x672C;&#x6587;&#x4EF6;  :</p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># Android/hardware/libhardware/Modules/freg/Android.mk</span>
+LOCAL_PATH := <span class="hljs-variable">$(call my-dir)</span>
+include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
+LOCAL_PRELINK_MODULE := false
+<span class="hljs-comment"># &#x4FDD;&#x5B58;&#x5728; out/target/product/generic/system/lib/hw</span>
+LOCAL_MODULE_PATH := <span class="hljs-variable">$(TARGET_OUT_SHARED_LIBRARIES)</span>/hw
+LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_SRC_FILES := freg.cpp
+LOCAL_MODULE := freg.default
+<span class="hljs-comment"># &#x5C06;&#x8BE5;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7F16;&#x8BD1;&#x6210;&#x4E00;&#x4E2A;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x6587;&#x4EF6;&#xFF0C; &#x540D;&#x79F0;&#x4E3A; freg.default</span>
+include $(BUILD_SHARED_LIBRARY)
+</code></pre>
+<pre><code class="lang-shell"># &#x7F16;&#x8BD1;
+mmm ./hardware/libhardware/moduels/freg/
+
+# &#x6253;&#x5305;
+make snod
+
+# &#x5728; out/target/product/generic/system/lib/hw &#x76EE;&#x5F55;&#x4E0B;&#x5F97;&#x5230;&#x4E00;&#x4E2A; freg.default.so &#x6587;&#x4EF6;
+</code></pre>
+<h3 id="&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;">&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h3>
+<p>&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x51FD;&#x6570; hw_get_module  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\include\hardware\hardware.h</span>
+<span class="hljs-comment">/**
+ * Get the module info associated with a module by id.
+ * @return: 0 == success, &lt;0 == error and *pHmi == NULL
+ */</span>
+<span class="hljs-comment">// id: &#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF0C; &#x8868;&#x793A;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;ID&#xFF1B;</span>
+<span class="hljs-comment">// module : &#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF0C; &#x5982;&#x679C;&#x52A0;&#x8F7D;&#x6210;&#x529F;&#xFF0C; &#x90A3;&#x4E48;&#x5B83;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;</span>
+<span class="hljs-comment">// &#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hw_get_module</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *id, <span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t **module)</span></span>;
+</code></pre>
+<p>&#x5206;&#x6790;hw_get_module&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\hardware.c</span>
+
+<span class="hljs-comment">/** Base path of the hal modules */</span>
+<span class="hljs-comment">// &#x5B9A;&#x4E49;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;</span>
+<span class="hljs-comment">// &#x7F16;&#x8BD1;&#x597D;&#x7684;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x4F4D;&#x4E8E; out/target/product/generic/system/lib/hw &#x76EE;&#x5F55;&#x4E2D;&#xFF0C; </span>
+<span class="hljs-comment">//&#x800C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7ECF;&#x8FC7;&#x6253;&#x5305;&#x540E;&#xFF0C; &#x5C31;&#x5BF9;&#x5E94;&#x4E8E;&#x8BBE;&#x5907;&#x4E0A;&#x7684; /system/lib/hw &#x76EE;&#x5F55;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HAL_LIBRARY_PATH1 <span class="hljs-string">&quot;/system/lib/hw&quot;</span></span>
+<span class="hljs-comment">// &#x5B9A;&#x4E49;&#x7684;&#x76EE;&#x5F55;&#x4E3A; /vendor/lib/hw &#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x8BBE;&#x5907;&#x5382;&#x5546;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x63A5;&#x53E3;&#x6587;&#x4EF6;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HAL_LIBRARY_PATH2 <span class="hljs-string">&quot;/vendor/lib/hw&quot;</span></span>
+
+<span class="hljs-comment">/**
+ * There are a set of variant filename for modules. The form of the filename
+ * is &quot;&lt;MODULE_ID&gt;.variant.so&quot; so for the led module the Dream variants 
+ * of base &quot;ro.product.board&quot;, &quot;ro.board.platform&quot; and &quot;ro.arch&quot; would be:
+ *
+ * led.trout.so
+ * led.msm7k.so
+ * led.ARMV6.so
+ * led.default.so
+ */</span>
+
+<span class="hljs-comment">// &#x7EC4;&#x88C5;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x79F0;</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *variant_keys[] = {
+    <span class="hljs-string">&quot;ro.hardware&quot;</span>,  <span class="hljs-comment">/* This goes first so that it can pick up a different
+                       file on the emulator. */</span>
+    <span class="hljs-string">&quot;ro.product.board&quot;</span>,
+    <span class="hljs-string">&quot;ro.board.platform&quot;</span>,
+    <span class="hljs-string">&quot;ro.arch&quot;</span>
+};
+
+<span class="hljs-comment">// &#x6570;&#x7EC4; variant_keys&#x7684;&#x5927;&#x5C0F;</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> HAL_VARIANT_KEYS_COUNT = (<span class="hljs-keyword">sizeof</span>(variant_keys)/ <span class="hljs-keyword">sizeof</span>(variant_keys[<span class="hljs-number">0</span>]));
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">hw_get_module</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *id, <span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t **module)</span> 
+</span>{
+    <span class="hljs-keyword">int</span> status;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span> *hmi = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">char</span> prop[PATH_MAX];
+    <span class="hljs-keyword">char</span> path[PATH_MAX];
+
+    <span class="hljs-comment">/*
+     * Here we rely on the fact that calling dlopen multiple times on
+     * the same .so will simply increment a refcount (and not load
+     * a new copy of the library).
+     * We also assume that dlopen() is thread-safe.
+     */</span>
+
+    <span class="hljs-comment">/* Loop through the configuration variants looking for a module */</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span> ; i &lt; HAL_VARIANT_KEYS_COUNT + <span class="hljs-number">1</span> ; i++) 
+    {
+        <span class="hljs-comment">// &#x6839;&#x636E;&#x6570;&#x7EC4; variant_keys &#x5728; HAL_LIBRARY_PATH1 &#x548C; HAL_LIBRARY_PATH2 &#x76EE;&#x5F55;&#x4E2D;&#x68C0;&#x67E5;&#x5BF9;&#x5E94;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C; </span>
+        <span class="hljs-comment">//&#x5982;&#x679C;&#x5B58;&#x5728;&#xFF0C; &#x5219;&#x7ED3;&#x675F;for&#x5FAA;&#x73AF;&#xFF1B; </span>
+
+
+        <span class="hljs-keyword">if</span> (i &lt; HAL_VARIANT_KEYS_COUNT) 
+        {
+            <span class="hljs-comment">// &#x83B7;&#x5F97;&#x7684;&#x7CFB;&#x7EDF;&#x5C5E;&#x6027;&#x201C;ro.hardware&#x201D;&#x7684;&#x503C;</span>
+            <span class="hljs-keyword">if</span> (property_get(variant_keys[i], prop, <span class="hljs-literal">NULL</span>) == <span class="hljs-number">0</span>) 
+            {
+                <span class="hljs-keyword">continue</span>;
+            }
+
+            <span class="hljs-built_in">snprintf</span>(path, <span class="hljs-keyword">sizeof</span>(path), <span class="hljs-string">&quot;%s/%s.%s.so&quot;</span>, HAL_LIBRARY_PATH1, id, prop);
+            <span class="hljs-keyword">if</span> (access(path, R_OK) == <span class="hljs-number">0</span>) 
+            {
+                <span class="hljs-keyword">break</span>;
+            }
+
+            <span class="hljs-built_in">snprintf</span>(path, <span class="hljs-keyword">sizeof</span>(path), <span class="hljs-string">&quot;%s/%s.%s.so&quot;</span>, HAL_LIBRARY_PATH2, id, prop);
+            <span class="hljs-keyword">if</span> (access(path, R_OK) == <span class="hljs-number">0</span>) 
+            {
+                <span class="hljs-keyword">break</span>;
+            }
+
+        } 
+        <span class="hljs-keyword">else</span> 
+        {
+            <span class="hljs-built_in">snprintf</span>(path, <span class="hljs-keyword">sizeof</span>(path), <span class="hljs-string">&quot;%s/%s.default.so&quot;</span>, HAL_LIBRARY_PATH1, id);
+            <span class="hljs-keyword">if</span> (access(path, R_OK) == <span class="hljs-number">0</span>) 
+            {
+                <span class="hljs-keyword">break</span>;
+            }
+
+        }
+    }
+
+    status = -ENOENT;
+    <span class="hljs-keyword">if</span> (i &lt; HAL_VARIANT_KEYS_COUNT + <span class="hljs-number">1</span>) 
+    {
+        <span class="hljs-comment">/* load the module, if this fails, we&apos;re doomed, and we should not try
+         * to load a different variant. */</span>
+        <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x64CD;&#x4F5C;</span>
+        status = load(id, path, module);
+    }
+
+    <span class="hljs-keyword">return</span> status;
+}
+</code></pre>
+<p>load &#x51FD;&#x6570;&#x6765;&#x6267;&#x884C;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x52A0;&#x8F7D;&#x64CD;&#x4F5C;  :</p>
+<pre><code class="lang-c"><span class="hljs-comment">// hardware\libhardware\hardware.c</span>
+
+<span class="hljs-comment">/**
+ * Load the file defined by the variant and if successful
+ * return the dlopen handle and the hmi.
+ * @return 0 = success, !0 = failure.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">load</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *id,
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path,
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t **pHmi)</span>
+</span>{
+    <span class="hljs-keyword">int</span> status;
+    <span class="hljs-keyword">void</span> *handle;
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span> *hmi;
+
+    <span class="hljs-comment">/*
+     * load the symbols resolving undefined symbols before
+     * dlopen returns. Since RTLD_GLOBAL is not or&apos;d in with
+     * RTLD_NOW the external symbols will not be global
+     */</span>
+    <span class="hljs-comment">/* &#x5C06;&#x5B83;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D; */</span>
+    handle = dlopen(path, RTLD_NOW);
+    <span class="hljs-keyword">if</span> (handle == <span class="hljs-literal">NULL</span>) 
+    {
+        <span class="hljs-keyword">char</span> <span class="hljs-keyword">const</span> *err_str = dlerror();
+        LOGE(<span class="hljs-string">&quot;load: module=%s\n%s&quot;</span>, path, err_str?err_str:<span class="hljs-string">&quot;unknown&quot;</span>);
+        status = -EINVAL;
+
+        <span class="hljs-keyword">goto</span> done;
+    }
+
+    <span class="hljs-comment">/* Get the address of the struct hal_module_info. */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sym = HAL_MODULE_INFO_SYM_AS_STR;
+
+    <span class="hljs-comment">// &#x83B7;&#x5F97;&#x91CC;&#x9762;&#x540D;&#x79F0;&#x4E3A; HAL_MODULE_INFO_SYM_AS_STR &#x7684;&#x7B26;&#x53F7;</span>
+    <span class="hljs-comment">// &#x7B26;&#x53F7;&#x6307;&#x5411;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7ED3;&#x6784;&#x4F53;&#xFF0C; </span>
+    <span class="hljs-comment">// &#x5B83;&#x5305;&#x542B;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment">// &#x5C06;&#x6A21;&#x5757;&#x4E2D;&#x7684; HMI &#x7B26;&#x53F7;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A; hw_module_t &#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;</span>
+    hmi = (<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span> *)dlsym(handle, sym);
+    <span class="hljs-keyword">if</span> (hmi == <span class="hljs-literal">NULL</span>) 
+    {
+        LOGE(<span class="hljs-string">&quot;load: couldn&apos;t find symbol %s&quot;</span>, sym);
+        status = -EINVAL;
+
+        <span class="hljs-keyword">goto</span> done;
+    }
+
+    <span class="hljs-comment">/* Check that the id matches */</span>
+    <span class="hljs-comment">/* &#x9A8C;&#x8BC1;&#x52A0;&#x8F7D;&#x5F97;&#x5230;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;ID &#x662F;&#x5426; &#x4E0E;&#x6240;&#x8981;&#x6C42;&#x52A0;&#x8F7D;&#x7684;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;ID&#x4E00;&#x81F4; */</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(id, hmi-&gt;id) != <span class="hljs-number">0</span>) 
+    {
+        LOGE(<span class="hljs-string">&quot;load: id=%s != hmi-&gt;id=%s&quot;</span>, id, hmi-&gt;id);
+        status = -EINVAL;
+
+        <span class="hljs-keyword">goto</span> done;
+    }
+
+    <span class="hljs-comment">//&#x5C06;&#x6210;&#x529F;&#x52A0;&#x8F7D;&#x540E;&#x5F97;&#x5230;&#x7684;&#x6A21;&#x5757;&#x53E5;&#x67C4;&#x503C; handle &#x4FDD;&#x5B58;&#x5728; hw_module_t &#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488; hmi &#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF; dso &#x4E2D;</span>
+    hmi-&gt;dso = handle;
+
+    <span class="hljs-comment">/* success */</span>
+    status = <span class="hljs-number">0</span>;
+
+    done:
+    <span class="hljs-keyword">if</span> (status != <span class="hljs-number">0</span>) 
+    {
+        hmi = <span class="hljs-literal">NULL</span>;
+        <span class="hljs-keyword">if</span> (handle != <span class="hljs-literal">NULL</span>) 
+        {
+            dlclose(handle);
+            handle = <span class="hljs-literal">NULL</span>;
+        }
+    } 
+    <span class="hljs-keyword">else</span> 
+    {
+        LOGV(<span class="hljs-string">&quot;loaded HAL id=%s path=%s hmi=%p handle=%p&quot;</span>, id, path, *pHmi, handle);
+    }
+
+    *pHmi = hmi;
+
+    <span class="hljs-keyword">return</span> status;
+}
+</code></pre>
+<h3 id="&#x3000;&#x5904;&#x7406;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x95EE;&#x9898;">&#x3000;&#x5904;&#x7406;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x95EE;&#x9898;</h3>
+<pre><code class="lang-c"><span class="hljs-comment">// Android/hardware/libhardware/Modules/freg/freg.cpp</span>
+
+<span class="hljs-comment">// &#x6253;&#x5F00;&#x64CD;&#x4F5C;</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_open</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> hw_module_t* module, 
+                            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* id, 
+                            <span class="hljs-keyword">struct</span> hw_device_t** device)</span> 
+</span>{
+    <span class="hljs-comment">// &#x5224;&#x65AD; id &#x4E0E;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;ID&#x503C;&#x662F;&#x5426; &#x5339;&#x914D;</span>
+    <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">strcmp</span>(id, FREG_HARDWARE_DEVICE_ID))
+    {
+        <span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>* dev;
+
+        dev = (<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>));
+        <span class="hljs-keyword">if</span>(!dev) 
+        {
+            LOGE(<span class="hljs-string">&quot;Failed to alloc space for freg_device_t.&quot;</span>);
+            <span class="hljs-keyword">return</span> -EFAULT;    
+        }
+
+        <span class="hljs-built_in">memset</span>(dev, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> <span class="hljs-keyword">freg_device_t</span>));
+
+        <span class="hljs-comment">// &#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x6807;&#x7B7E;&#xFF08;dev-&#xFF1E;common.tag&#xFF09; &#x5FC5;&#x987B; == HARDWARE_DEVICE_TAG</span>
+        dev-&gt;common.tag = HARDWARE_DEVICE_TAG;
+        dev-&gt;common.version = <span class="hljs-number">0</span>;
+        dev-&gt;common.module = (<span class="hljs-keyword">hw_module_t</span>*)module;
+        <span class="hljs-comment">// &#x5173;&#x95ED;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A; freg_device_close</span>
+        dev-&gt;common.close = freg_device_close;
+        <span class="hljs-comment">// &#x5199;&#x51FD;&#x6570;</span>
+        dev-&gt;set_val = freg_set_val;
+        <span class="hljs-comment">// &#x8BFB;&#x51FD;&#x6570;</span>
+        dev-&gt;get_val = freg_get_val;
+
+        <span class="hljs-comment">// &#x6253;&#x5F00;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg &#xFF0C; &#x4E14;&#x5C06;&#x5F97;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4FDD;&#x5B58;&#x5728;&#x7ED3;&#x6784;&#x4F53; freg_device_t &#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF; fd &#x4E2D;</span>
+        <span class="hljs-comment">// &#x4E0D;&#x4FEE;&#x6539;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650; , &#x6253;&#x4E0D;&#x5F00;</span>
+        <span class="hljs-keyword">if</span>((dev-&gt;fd = open(DEVICE_NAME, O_RDWR)) == <span class="hljs-number">-1</span>)
+        {
+            LOGE(<span class="hljs-string">&quot;Failed to open device file /dev/freg -- %s.&quot;</span>, strerror(errno));
+            <span class="hljs-built_in">free</span>(dev);
+
+            <span class="hljs-keyword">return</span> -EFAULT;
+        }
+
+        *device = &amp;(dev-&gt;common);
+
+        LOGI(<span class="hljs-string">&quot;Open device file /dev/freg successfully.&quot;</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-keyword">return</span> -EFAULT;
+}
+</code></pre>
+<p><code>Android</code>&#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x5916;&#x7684;&#x4E00;&#x4E2A;<code>uevent</code>&#x673A;&#x5236;&#xFF0C; &#x53EF;&#x4EE5;&#x5728;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x65F6;&#x4FEE;&#x6539;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;  </p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># system\core\rootdir\ueventd.rc</span>
+<span class="hljs-comment"># ...</span>
+/dev/binder               0666   root       root
+/dev/freg                 0666   root       root
+
+<span class="hljs-comment"># logger should be world writable (for logging) but not readable</span>
+/dev/log/*                0662   root       log
+
+<span class="hljs-comment"># the msm hw3d client device node is world writable/readable.</span>
+/dev/msm_hw3dc            0666   root       root
+
+<span class="hljs-comment"># gpu driver for adreno200 is globally accessible</span>
+/dev/kgsl                 0666   root       root
+
+<span class="hljs-comment">#...</span>
+</code></pre>
+<h4 id="&#x89E3;&#x538B;ramdiskimg&#x955C;&#x50CF;&#x6587;&#x4EF6;">&#x89E3;&#x538B;ramdisk.img&#x955C;&#x50CF;&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-shell">
+
+</code></pre>
+<pre><code class="lang-shell"># &#x5C06;ramdisk.img&#x6539;&#x540D;&#x4E3A;ramdisk.img.gz
+mv ./out/target/product/generic/reamdisk.img ./reamdisk.img.gz
+
+# &#x89E3;&#x538B;
+gunzip ./ramdisk.img.gz
+</code></pre>
+<h4 id="&#x8FD8;&#x539F;ramdiskimg&#x955C;&#x50CF;&#x6587;&#x4EF6;">&#x8FD8;&#x539F;ramdisk.img&#x955C;&#x50CF;&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-shell"># &#x521B;&#x5EFA;&#x76EE;&#x5F55;
+mkdir ramdisk
+
+# &#x8FDB;&#x5165;&#x76EE;&#x5F55;
+cd ./ramdisk/
+
+# &#x89E3;&#x9664;&#x5F52;&#x6863;
+cpio -i -F ../ramdisk.img
+</code></pre>
+<h4 id="&#x4FEE;&#x6539;ueventdrc&#x6587;&#x4EF6;">&#x4FEE;&#x6539;ueventd.rc&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-shell"># &#x8FDB;&#x5165;&#x76EE;&#x5F55;
+cd /ramdisk
+
+# &#x4FEE;&#x6539; &#x6587;&#x4EF6;
+vim ueventd.rc
+</code></pre>
+<pre><code class="lang-makefile"><span class="hljs-comment"># system\core\rootdir\ueventd.rc</span>
+<span class="hljs-comment"># ...</span>
+/dev/binder               0666   root       root
+<span class="hljs-comment"># &#x8D4B;&#x4E88;&#x4E86;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x8BBE;&#x5907;&#x6587;&#x4EF6;/dev/freg&#x7684;&#x6743;&#x9650;</span>
+/dev/freg                 0666   root       root
+
+<span class="hljs-comment"># logger should be world writable (for logging) but not readable</span>
+/dev/log/*                0662   root       log
+
+<span class="hljs-comment"># the msm hw3d client device node is world writable/readable.</span>
+/dev/msm_hw3dc            0666   root       root
+
+<span class="hljs-comment"># gpu driver for adreno200 is globally accessible</span>
+/dev/kgsl                 0666   root       root
+
+<span class="hljs-comment">#...</span>
+</code></pre>
+<h4 id="&#x91CD;&#x65B0;&#x6253;&#x5305;ramdiskimg&#x955C;&#x50CF;&#x6587;&#x4EF6;">&#x91CD;&#x65B0;&#x6253;&#x5305;ramdisk.img&#x955C;&#x50CF;&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-shell"># &#x5220;&#x9664;
+rm -f ../ramdisk.img
+
+# &#x628A; ramdisk &#x76EE;&#x5F55;&#x5F52;&#x6863;&#x6210; cpio &#x6587;&#x4EF6;
+find . | cpio -o -H newc &gt; ../ramdisk.img.unzip
+
+# &#x5207;&#x6362;&#x5230;&#x4E0A;&#x76EE;&#x5F55;
+cd ..
+
+# &#x538B;&#x7F29;&#x6210;gzip&#x6587;&#x4EF6;
+gzip -c ./ramdisk.img.unzip &gt; .ramdisk.img.gz
+
+# &#x5220;&#x9664;
+rm -f ./ramdisk.img.unzip
+rm -R ./ramdisk
+
+# &#x8F6C;&#x79FB; &#x5E76;&#x6539;&#x540D;
+mv ./ramdisk.img.gz ./out/target/product/generic/ramdisk.img
+</code></pre>
+<hr>
+<h2 id="&#x5F00;&#x53D1;android&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;">&#x5F00;&#x53D1;Android&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;</h2>
+<h3 id="&#x5B9A;&#x4E49;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x63A5;&#x53E3;">&#x5B9A;&#x4E49;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x63A5;&#x53E3;</h3>
+<pre><code class="lang-java"><span class="hljs-comment">// frameworks\base\core\java\android\os\IFregService.aidl</span>
+
+<span class="hljs-keyword">package</span> android.os;
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IFregService</span> 
+</span>{
+    <span class="hljs-comment">// &#x5F80;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x4E2D;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x6574;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setVal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span></span>;
+    <span class="hljs-comment">// &#x4ECE;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5BC4;&#x5B58;&#x5668;val&#x4E2D;&#x8BFB;&#x51FA;&#x4E00;&#x4E2A;&#x6574;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getVal</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<pre><code class="lang-makefile"><span class="hljs-comment"># frameworks/base/Android.mk</span>
+
+<span class="hljs-comment">## READ ME: ########################################################</span>
+<span class="hljs-comment">##</span>
+<span class="hljs-comment">## When updating this list of aidl files, consider if that aidl is</span>
+<span class="hljs-comment">## part of the SDK API.  If it is, also add it to the list below that</span>
+<span class="hljs-comment">## is preprocessed and distributed with the SDK.  This list should</span>
+<span class="hljs-comment">## not contain any aidl files for parcelables, but the one below should</span>
+<span class="hljs-comment">## if you intend for 3rd parties to be able to send those objects</span>
+<span class="hljs-comment">## across process boundaries.</span>
+<span class="hljs-comment">##</span>
+<span class="hljs-comment">## READ ME: ########################################################</span>
+LOCAL_SRC_FILES += \
+    core/java/android/accessibilityservice/IAccessibilityServiceConnection.aidl \
+    <span class="hljs-comment">#...</span>
+    core/java/android/net/IThrottleManager.aidl \
+    core/java/android/nfc/IP2pTarget.aidl \
+    core/java/android/os/IVibratorService.aidl \
+    <span class="hljs-comment"># &#x5C06;&#x9700;&#x8981;&#x7684;&#x6DFB;&#x52A0;&#x5230;&#x7F16;&#x8BD1;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x4E2D;</span>
+    core/java/android/os/IFregService.aidl \
+    core/java/android/service/urlrenderer/IUrlRendererService.aidl \
+    <span class="hljs-comment">#...</span>
+    voip/java/android/net/sip/ISipService.aidl
+<span class="hljs-comment">#</span>
+</code></pre>
+<pre><code class="lang-shell"># &#x5BF9;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x63A5;&#x53E3;IFregService&#x8FDB;&#x884C;&#x7F16;&#x8BD1;
+mmm ./frameworks/base/
+</code></pre>
+<h3 id="&#x5B9E;&#x73B0;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;">&#x5B9E;&#x73B0;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;</h3>
+<pre><code class="lang-java"><span class="hljs-comment">// frameworks\base\services\java\com\android\server\FregService.java</span>
+
+<span class="hljs-keyword">package</span> com.android.server;
+
+<span class="hljs-keyword">import</span> android.content.Context;
+<span class="hljs-keyword">import</span> android.os.IFregService;
+<span class="hljs-keyword">import</span> android.util.Slog;
+
+<span class="hljs-comment">// &#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;FregService&#x7EE7;&#x627F;&#x4E86;IFregService.Stub&#x7C7B;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FregService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">IFregService</span>.<span class="hljs-title">Stub</span> 
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String TAG = <span class="hljs-string">&quot;FregService&quot;</span>;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> mPtr = <span class="hljs-number">0</span>;
+
+    FregService() 
+    {
+        <span class="hljs-comment">// &#x8C03;&#x7528; JNI &#x65B9;&#x6CD5; init_native &#x6765;&#x6253;&#x5F00;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#xFF0C;</span>
+        <span class="hljs-comment">// &#x5E76;&#x4E14;&#x83B7;&#x5F97;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x53E5;&#x67C4;&#x503C;&#xFF0C; &#x4FDD;&#x5B58;&#x5728;&#x6210;&#x5458;&#x53D8;&#x91CF; mPtr &#x4E2D;</span>
+        mPtr = init_native();
+
+        <span class="hljs-keyword">if</span>(mPtr == <span class="hljs-number">0</span>) 
+        {
+            Slog.e(TAG, <span class="hljs-string">&quot;Failed to initialize freg service.&quot;</span>);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span> 
+    </span>{
+        <span class="hljs-keyword">if</span>(mPtr == <span class="hljs-number">0</span>) 
+        {
+            Slog.e(TAG, <span class="hljs-string">&quot;Freg service is not initialized.&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-comment">// &#x8C03;&#x7528; JNI &#x65B9;&#x6CD5; setVal_native &#x6765;&#x5199;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val</span>
+        setVal_native(mPtr, val);
+    }    
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVal</span><span class="hljs-params">()</span> 
+    </span>{
+        <span class="hljs-keyword">if</span>(mPtr == <span class="hljs-number">0</span>) 
+        {
+            Slog.e(TAG, <span class="hljs-string">&quot;Freg service is not initialized.&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        <span class="hljs-comment">//&#x8C03;&#x7528; JNI &#x65B9;&#x6CD5; getVal_native &#x6765;&#x8BFB;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668; val</span>
+        <span class="hljs-keyword">return</span> getVal_native(mPtr);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">int</span> <span class="hljs-title">init_native</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVal_native</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ptr, <span class="hljs-keyword">int</span> val)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVal_native</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ptr)</span></span>;
+};
+</code></pre>
+<pre><code class="lang-shell"># &#x91CD;&#x65B0;&#x7F16;&#x8BD1; Android &#x7CFB;&#x7EDF;&#x7684; services &#x6A21;&#x5757;
+mmm ./frameworks/base/services/java/
+</code></pre>
+<h3 id="&#x5B9E;&#x73B0;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x7684;jni&#x65B9;&#x6CD5;">&#x5B9E;&#x73B0;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x7684;JNI&#x65B9;&#x6CD5;</h3>
+<pre><code class="lang-c++"><span class="hljs-comment">// frameworks\base\services\jni\com_android_server_FregService.cpp</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LOG_TAG <span class="hljs-string">&quot;FregServiceJNI&quot;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;jni.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;JNIHelp.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;android_runtime/AndroidRuntime.h&quot;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utils/misc.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utils/Log.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;hardware/hardware.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;hardware/freg.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">namespace</span> android
+{
+    <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907; freg &#x7684;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">freg_setVal</span><span class="hljs-params">(JNIEnv* env, jobject clazz, jint ptr, jint value)</span> 
+    </span>{
+        <span class="hljs-keyword">int</span> val = value;
+
+        <span class="hljs-comment">//&#x5C06;&#x53C2;&#x6570; ptr &#x8F6C;&#x6362;&#x4E3A; freg_device_t &#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;</span>
+        <span class="hljs-keyword">freg_device_t</span>* device = (<span class="hljs-keyword">freg_device_t</span>*)ptr;
+        <span class="hljs-keyword">if</span>(!device)
+        {
+            LOGE(<span class="hljs-string">&quot;Device freg is not open.&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+
+        LOGI(<span class="hljs-string">&quot;Set value %d to device freg.&quot;</span>, val);
+
+        device-&gt;set_val(device, val);
+    }
+
+    <span class="hljs-comment">//&#x8BFB;&#x53D6;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> jint <span class="hljs-title">freg_getVal</span><span class="hljs-params">(JNIEnv* env, jobject clazz, jint ptr)</span>
+    </span>{
+        <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>;
+
+        <span class="hljs-comment">//&#x5C06;&#x4F20;&#x8F93;ptr&#x8F6C;&#x6362;&#x4E3A; freg_device_t &#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;</span>
+        <span class="hljs-keyword">freg_device_t</span>* device = (<span class="hljs-keyword">freg_device_t</span>*)ptr;
+        <span class="hljs-keyword">if</span>(!device) 
+        {
+            LOGE(<span class="hljs-string">&quot;Device freg is not open.&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        device-&gt;get_val(device, &amp;val);
+
+        LOGI(<span class="hljs-string">&quot;Get value %d from device freg.&quot;</span>, val);
+
+        <span class="hljs-keyword">return</span> val;
+    }
+
+    <span class="hljs-comment">//&#x6253;&#x5F00;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">freg_device_open</span><span class="hljs-params">(<span class="hljs-keyword">const</span> hw_module_t* module, 
+                                       <span class="hljs-keyword">struct</span> freg_device_t** device)</span> 
+    </span>{
+        <span class="hljs-keyword">return</span> module-&gt;methods-&gt;open(module, 
+                                     FREG_HARDWARE_DEVICE_ID, 
+                                     (<span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_device_t</span>**)device);
+    }
+
+    <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;&#x5907;freg</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> jint <span class="hljs-title">freg_init</span><span class="hljs-params">(JNIEnv* env, jclass clazz)</span>
+    </span>{
+        <span class="hljs-keyword">freg_module_t</span>* module;
+        <span class="hljs-keyword">freg_device_t</span>* device;
+
+        LOGI(<span class="hljs-string">&quot;Initializing HAL stub freg......&quot;</span>);
+
+        <span class="hljs-comment">//&#x52A0;&#x8F7D;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757;freg</span>
+        <span class="hljs-comment">// &#x6839;&#x636E; FREG_HARDWARE_MODULE_ID &#x6765;&#x52A0;&#x8F7D; Android &#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x5C42;&#x6A21;&#x5757; freg</span>
+        <span class="hljs-keyword">if</span>(hw_get_module(FREG_HARDWARE_MODULE_ID, 
+                         (<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">hw_module_t</span>**)&amp;module) == <span class="hljs-number">0</span>) 
+        {
+            LOGI(<span class="hljs-string">&quot;Device freg found.&quot;</span>);
+            <span class="hljs-comment">//&#x6253;&#x5F00;&#x865A;&#x62DF;&#x786C;&#x4EF6;&#x8BBE;freg</span>
+            <span class="hljs-keyword">if</span>(freg_device_open(&amp;(module-&gt;common), &amp;device) == <span class="hljs-number">0</span>) 
+            {
+                LOGI(<span class="hljs-string">&quot;Device freg is open.&quot;</span>);
+                <span class="hljs-comment">//&#x5C06;freg_device_t &#x63A5;&#x53E3;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x578B;&#x53E5;&#x67C4;&#x503C;&#x503C;&#x8FD4;&#x56DE;</span>
+                <span class="hljs-keyword">return</span> (jint)device;
+            }
+
+            LOGE(<span class="hljs-string">&quot;Failed to open device freg.&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        LOGE(<span class="hljs-string">&quot;Failed to get HAL stub freg.&quot;</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-comment">//java&#x672C;&#x5730;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x8868;</span>
+    <span class="hljs-comment">// &#x628A;JNI&#x65B9;&#x6CD5;&#x8868;method_table&#x6CE8;&#x518C;&#x5230;Java&#x865A;&#x62DF;&#x673A;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> JNINativeMethod method_table[] = {
+        {<span class="hljs-string">&quot;init_native&quot;</span>, <span class="hljs-string">&quot;()I&quot;</span>, (<span class="hljs-keyword">void</span>*)freg_init},
+        {<span class="hljs-string">&quot;setVal_native&quot;</span>, <span class="hljs-string">&quot;(II)V&quot;</span>, (<span class="hljs-keyword">void</span>*)freg_setVal},
+        {<span class="hljs-string">&quot;getVal_native&quot;</span>, <span class="hljs-string">&quot;(I)I&quot;</span>, (<span class="hljs-keyword">void</span>*)freg_getVal},
+    };
+
+    <span class="hljs-comment">//&#x6CE8;&#x518C;java&#x672C;&#x5730;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">register_android_server_FregService</span><span class="hljs-params">(JNIEnv *env)</span> 
+    </span>{
+        <span class="hljs-keyword">return</span> jniRegisterNativeMethods(env, 
+                                        <span class="hljs-string">&quot;com/android/server/FregService&quot;</span>, 
+                                        method_table, 
+                                        NELEM(method_table));
+    }
+
+};
+</code></pre>
+<pre><code class="lang-c++"><span class="hljs-comment">// frameworks/base/services/jni/onload.cpp</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;JNIHelp.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;jni.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;utils/Log.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;utils/misc.h&quot;</span></span>
+
+<span class="hljs-keyword">namespace</span> android 
+{
+<span class="hljs-comment">// ...</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">register_android_server_location_GpsLocationProvider</span><span class="hljs-params">(JNIEnv* env)</span></span>;
+    <span class="hljs-comment">// &#x58F0;&#x660E;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">register_android_server_FregService</span><span class="hljs-params">(JNIEnv* env)</span></span>;
+};
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> android;
+
+<span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function">jint <span class="hljs-title">JNI_OnLoad</span><span class="hljs-params">(JavaVM* vm, <span class="hljs-keyword">void</span>* reserved)</span>
+</span>{
+    JNIEnv* env = <span class="hljs-literal">NULL</span>;
+    jint result = <span class="hljs-number">-1</span>;
+
+    <span class="hljs-keyword">if</span> (vm-&gt;GetEnv((<span class="hljs-keyword">void</span>**) &amp;env, JNI_VERSION_1_4) != JNI_OK) {
+        LOGE(<span class="hljs-string">&quot;GetEnv failed!&quot;</span>);
+        <span class="hljs-keyword">return</span> result;
+    }
+    LOG_ASSERT(env, <span class="hljs-string">&quot;Could not retrieve the env!&quot;</span>);
+
+    <span class="hljs-comment">//...</span>
+    register_android_server_location_GpsLocationProvider(env);
+    <span class="hljs-comment">//&#x8C03;&#x7528;</span>
+    register_android_server_FregService(env);
+
+    <span class="hljs-keyword">return</span> JNI_VERSION_1_4;
+}
+</code></pre>
+<pre><code class="lang-makefile"><span class="hljs-comment"># frameworks/base/services/jni/Android.mk</span>
+
+LOCAL_PATH:= <span class="hljs-variable">$(call my-dir)</span>
+include $(CLEAR_VARS)
+
+<span class="hljs-comment"># &#x4FEE;&#x6539;&#x53D8;&#x91CF;LOCAL_SRC_FILES&#x7684;&#x503C;</span>
+LOCAL_SRC_FILES:= \
+    <span class="hljs-comment">#...</span>
+    com_android_server_location_GpsLocationProvider.cpp \
+    com_android_server_FregService.cpp \
+    onload.cpp
+
+LOCAL_C_INCLUDES += \
+    $(JNI_H_INCLUDE)
+
+LOCAL_SHARED_LIBRARIES := \
+    libandroid_runtime \
+    libcutils \
+    libhardware \
+    libhardware_legacy \
+    libnativehelper \
+    libsystem_server \
+    libutils \
+    libui \
+    libsurfaceflinger_client
+
+ifeq ($(TARGET_SIMULATOR),true)
+ifeq ($(TARGET_OS),linux)
+ifeq ($(TARGET_ARCH),x86)
+LOCAL_LDLIBS += -lpthread -ldl -lrt
+endif
+endif
+endif
+
+ifeq ($(WITH_MALLOC_LEAK_CHECK),true)
+    LOCAL_CFLAGS += -DMALLOC_LEAK_CHECK
+endif
+
+LOCAL_MODULE:= libandroid_servers
+
+include $(BUILD_SHARED_LIBRARY)
+</code></pre>
+<pre><code class="lang-shell"># &#x91CD;&#x65B0;&#x7F16;&#x8BD1;libandroid_servers&#x6A21;&#x5757; , &#x5F97;&#x5230;&#x7684;libandroid_servers.so&#x6587;&#x4EF6;
+mmm ./frameworks/base/services/jni/
+</code></pre>
+<h3 id="&#x542F;&#x52A8;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;">&#x542F;&#x52A8;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;</h3>
+<pre><code class="lang-java">
+<span class="hljs-comment">//...</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> 
+</span>{
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-comment">// &#x4FEE;&#x6539; ServerThread &#x7C7B;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;run&#x7684;&#x5B9E;&#x73B0;</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> 
+    </span>{
+        <span class="hljs-comment">//...</span>
+        <span class="hljs-keyword">if</span> (factoryTest != SystemServer.FACTORY_TEST_LOW_LEVEL) 
+        {
+            <span class="hljs-comment">//...</span>
+            <span class="hljs-keyword">try</span> {
+                Slog.i(TAG, <span class="hljs-string">&quot;DiskStats Service&quot;</span>);
+                ServiceManager.addService(<span class="hljs-string">&quot;diskstats&quot;</span>, <span class="hljs-keyword">new</span> DiskStatsService(context));
+            } <span class="hljs-keyword">catch</span> (Throwable e) {
+                Slog.e(TAG, <span class="hljs-string">&quot;Failure starting DiskStats Service&quot;</span>, e);
+            }
+
+            <span class="hljs-keyword">try</span> {
+                Slog.i(TAG, <span class="hljs-string">&quot;Freg Service&quot;</span>);
+                ServiceManager.addService(<span class="hljs-string">&quot;freg&quot;</span>, <span class="hljs-keyword">new</span> FregService());
+            } <span class="hljs-keyword">catch</span> (Throwable e) {
+                Slog.e(TAG, <span class="hljs-string">&quot;Failure starting Freg Service&quot;</span>, e);
+            }
+        }
+        <span class="hljs-comment">//...</span>
+    }
+}
+
+<span class="hljs-comment">//...</span>
+</code></pre>
+<pre><code class="lang-shell"># &#x91CD;&#x65B0;&#x7F16;&#x8BD1;services&#x6A21;&#x5757;
+mmm ./frameworks/base/services/java/
+</code></pre>
+<pre><code class="lang-shell"># &#x91CD;&#x65B0;&#x6253;&#x5305;Android&#x7CFB;&#x7EDF;&#x955C;&#x50CF;&#x6587;&#x4EF6;system.img
+make snod
+</code></pre>
+<hr>
+<h2 id="&#x5F00;&#x53D1;android&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;">&#x5F00;&#x53D1;Android&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;</h2>
+<pre><code class="lang-shell">~/Android/packages/experimental/Freg
+    # &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+    AndroidManifest.xml
+    Android.mk
+    # &#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;
+    src
+        shy/luo/freg
+            Freg.java
+    # &#x8D44;&#x6E90;&#x76EE;&#x5F55;res
+    res
+        layout
+            main.xml
+            values
+                string.xml
+            drawable
+                icon.png
+</code></pre>
+<p>Freg.java  :</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Android\packages\experimental\Freg\src\shy\luo\freg</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Freg</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">OnClickListener</span> 
+</span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> String LOG_TAG = <span class="hljs-string">&quot;shy.luo.freg.FregActivity&quot;</span>;
+
+    <span class="hljs-keyword">private</span> IFregService fregService = <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-keyword">private</span> EditText valueText = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">private</span> Button readButton = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">private</span> Button writeButton = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">private</span> Button clearButton = <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">/** Called when the activity is first created. */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> 
+    </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        fregService = IFregService.Stub.asInterface(ServiceManager.getService(<span class="hljs-string">&quot;freg&quot;</span>));
+
+        valueText = (EditText)findViewById(R.id.edit_value);
+        readButton = (Button)findViewById(R.id.button_read);
+        writeButton = (Button)findViewById(R.id.button_write);
+        clearButton = (Button)findViewById(R.id.button_clear);
+
+        readButton.setOnClickListener(<span class="hljs-keyword">this</span>);
+        writeButton.setOnClickListener(<span class="hljs-keyword">this</span>);
+        clearButton.setOnClickListener(<span class="hljs-keyword">this</span>);
+
+        Log.i(LOG_TAG, <span class="hljs-string">&quot;Freg Activity Created&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> 
+    </span>{
+        <span class="hljs-keyword">if</span>(v.equals(readButton)) 
+        {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">int</span> val = fregService.getVal();
+                String text = String.valueOf(val);
+                valueText.setText(text);
+            } <span class="hljs-keyword">catch</span> (RemoteException e) {
+                Log.e(LOG_TAG, <span class="hljs-string">&quot;Remote Exception while reading value from freg service.&quot;</span>);
+            }        
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(v.equals(writeButton)) 
+        {
+            <span class="hljs-keyword">try</span> {
+                String text = valueText.getText().toString();
+                <span class="hljs-keyword">int</span> val = Integer.parseInt(text);
+                fregService.setVal(val);
+            } <span class="hljs-keyword">catch</span> (RemoteException e) {
+                Log.e(LOG_TAG, <span class="hljs-string">&quot;Remote Exception while writing value to freg service.&quot;</span>);
+            }
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(v.equals(clearButton)) 
+        {
+            String text = <span class="hljs-string">&quot;&quot;</span>;
+            valueText.setText(text);
+        }
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../linux_driver/linux_driver.html" class="navigation navigation-prev " aria-label="Previous page: Linux驱动开发">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="smart_pointer.html" class="navigation navigation-next " aria-label="Next page: 智能指针">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"硬件抽象层","level":"3.1","depth":1,"next":{"title":"智能指针","level":"3.2","depth":1,"path":"android_bottom/smart_pointer.md","ref":"android_bottom/smart_pointer.md","articles":[]},"previous":{"title":"Linux驱动开发","level":"2.2","depth":1,"path":"linux_driver/linux_driver.md","ref":"linux_driver/linux_driver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android_bottom/hardware_abstraction_layer.md","mtime":"2020-07-14T07:27:16.377Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T12:11:30.800Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
