@@ -1,8 +1,16 @@
+
 # Android硬件驱动
 
+ * @Author: cpu_code
+ * @Date: 2020-07-15 11:51:27
+ * @LastEditTime: 2020-07-15 16:23:20
+ * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_driver.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+
 -----------------------
-
-
 
 Android系统的**硬件抽象层**（Hardware Abstract Layer， HAL） 运行在用户空间中， 它向下屏蔽硬件驱动模块的实现细节， 向上提供硬件访问服务。
 
@@ -10,18 +18,25 @@ Android系统的体系结构 :
 
 ![Android&#x7CFB;&#x7EDF;&#x7684;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;](https://gitee.com/cpu_code/picture_bed/raw/master//20200713152328.png)
 
+依次涉及Android系统的**硬件驱动模块**、 **硬件抽象层**、 **外部库** 和 **运行时库层**、 **应用程序框架层** 和 **应用程序层**等  
+
+开发一个应用访问硬件的流程为 :  首先在Android系统的**内核空间**中为一个**硬件开发驱动**程序， 接着在用户空间中为该硬件添加一个**硬件抽象层模块**， 并且在应用程序框架层中添加一个**硬件访问服务**， 最后开发一个应用程序来访问该硬件服务  
+
+![image-20200715144129859](https://gitee.com/cpu_code/picture_bed/raw/master//20200715144130.png)
+
+
+
 --------------------
 
 ## 开发Android硬件驱动程序
-
 
 -----------------
 
 ### 实现内核驱动程序模块
 
-驱动程序freg的目录结构 :
+驱动程序`freg`的目录结构 :
 
-```text
+```shell
 ~/Android/kernel/goldfish
     drivers
         freg
@@ -31,7 +46,9 @@ Android系统的体系结构 :
             Makefile    # 编译脚本文件
 ```
 
-freg.h :
+
+
+`freg.h` 源代码文件 :
 
 ```c
 // kernel\goldfish\drivers\freg\freg.h
@@ -62,7 +79,9 @@ struct fake_reg_dev
 #endif
 ```
 
-freg.c
+
+
+`freg.c` 实现文件  : 
 
 ```c
 // kernel\goldfish\drivers\freg\freg.c
@@ -102,11 +121,11 @@ static struct file_operations freg_fops = {
         .write = freg_write,
 };
 
-/* devfs文件系统的设备属性操作方法 */
+/* devfs 文件系统的设备属性操作方法 */
 static ssize_t freg_val_show(struct device* dev, struct device_attribute* attr,  char* buf);
 static ssize_t freg_val_store(struct device* dev, struct device_attribute* attr, const char* buf, size_t count);
 
-/* devfs文件系统的设备属性 */
+/* devfs 文件系统的设备属性 */
 static DEVICE_ATTR(val, S_IRUGO | S_IWUSR, freg_val_show, freg_val_store);
 
 /* 打开设备方法 */
@@ -139,6 +158,7 @@ static ssize_t freg_read(struct file* filp, char __user *buf, size_t count, loff
         return -ERESTARTSYS;
     }
 
+    //检查类型是否一致
     if(count < sizeof(dev->val)) 
     {
         goto out;
@@ -154,7 +174,9 @@ static ssize_t freg_read(struct file* filp, char __user *buf, size_t count, loff
     err = sizeof(dev->val);
 
 out:
+    // 撤销同步
     up(&(dev->sem));
+    
     return err;
 }
 
@@ -170,6 +192,7 @@ static ssize_t freg_write(struct file* filp, const char __user *buf, size_t coun
         return -ERESTARTSYS;
     }
 
+    //检查类型是否一致
     if(count != sizeof(dev->val)) 
     {
         goto out;
@@ -201,6 +224,7 @@ static ssize_t __freg_get_val(struct fake_reg_dev* dev, char* buf)
     }
 
     val = dev->val;
+    
     up(&(dev->sem));
 
     return snprintf(buf, PAGE_SIZE, "%d\n", val);
@@ -333,7 +357,7 @@ static int  __freg_setup_dev(struct fake_reg_dev* dev)
     dev->dev.ops = &freg_fops;
 
     /* 注册字符设备 */
-    err = cdev_add(&(dev->dev),devno, 1);
+    err = cdev_add(&(dev->dev), devno, 1);
     if(err) 
     {
         return err;
@@ -407,7 +431,7 @@ static int __init freg_init(void)
     if(err < 0) 
     {
         printk(KERN_ALERT"Failed to create attribute val of freg device.\n");
-                goto destroy_device;
+		goto destroy_device;
     }
 
     dev_set_drvdata(temp, freg_dev);
@@ -468,10 +492,18 @@ module_init(freg_init);
 module_exit(freg_exit);
 ```
 
-Kconfig :
+-------------
 
-```text
+### 修改驱动编译文件
+
+
+
+Kconfig  编译选项配置文件  :
+
+```makefile
 # kernel\goldfish\drivers\freg\Kconfig
+# 执行 make menuconfig 命令来设置这些编译选项
+
 config FREG
     tristate "Fake Register Driver"
     default n
@@ -479,9 +511,17 @@ config FREG
     This is the freg driver for android system.
 ```
 
-Makefile :
+驱动程序 一般有三种方式来编译。 
 
-```text
+第一种方式是**直接内建**在内核中； 第二种方式是编译成**内核模块**； 第三种方式是**不编译**到内核中。 
+
+默认的编译方式为 n， 就是 **不编译到内核**中， 因此， 在编译驱动程序 之前， 我们需要执行 `make menuconfig` 命令来修改它的**编译选项**， 以便可以将 驱动程序 **内建到内核**中 或 以**模块的方式**来编译。  
+
+
+
+Makefile  编译脚本文件  :
+
+```makefile
 # kernel\goldfish\drivers\freg\Makefile
 
 #  $（CONFIG_FREG） 是一个变量， 它的值与驱动程序freg的编译选项有关
@@ -493,20 +533,32 @@ Makefile :
 obj-$(CONFIG_FREG) += freg.o
 ```
 
---------------------------
 
-### 修改内核Kconfig文件
 
-```text
+---------------------
+
+### 修改内核编译文件
+
+修改内核Kconfig文件  : 
+
+在默认情况下，在执行`make menuconfig`命令配置内核编译选项时， 编译系统是无法找到 对应的驱动`Kconfig`文件的。 所以需要修改内核的根`Kconfig`文件， 使得编译系统能够找到驱动程序`freg`的`Kconfig`文件  
+
+当执行`make menuconfig`命令时， 编译系统会读取`arch/$(ARCH)` 目录下的`Kconfig`文件， 其中， `$(ARCH)` 指向**编译的目标CPU体系架构**  
+
+一般我们都会将`$(ARCH)` 的值设置为`arm`， 因此， 就需要修改`arch/arm`目录下的`Kconfig`文件， 使得编译系统可以找到**驱动程序**`freg`的`Kconfig`文件。 
+
+
+
+Arm架构下: 
+
+```makefile
 # arch/arm/Kconfig
 
 menu "Device Drivers"
 
 # 将驱动程序freg的Kconfig文件包含进来
 source "drivers/freg/Kconfig"
-
 source "drivers/base/Kconfig"
-
 source "drivers/connector/Kconfig"
 
 # ...
@@ -514,26 +566,28 @@ source "drivers/connector/Kconfig"
 endmenu
 ```
 
-```text
+
+
+x86体系架构下的Kconfig文件  :
+
+```shell
 # drivers/Kconfig
 
-menu "Device Drivers"
-
-# 将驱动程序 freg 的 Kconfig 文件包含进来
-source "drivers/freg/Kconfig"
-
-source "drivers/base/Kconfig"
-
-# ...
+# 把drivers目录下的Kconfig文件包含进去
+source "drivers/Kconfig"
 
 endmenu
 ```
 
-----------------------------------
 
-### 修改内核Makefile文件
 
-```text
+修改内核`Makefile`文件  :
+
+在默认情况下， 在执行`make`命令编译内核时， 编译系统是无法找到这个`Makefile`文件的。 这时候， 就需要修改`drivers`目录下的`Makefile`文件， 使得编译系统能够找到驱动程序`freg`的`Makefile`文件  
+
+
+
+```shell
 # drivers/Makefile
 
 # 当 make 编译内核时，编译系统就会对驱动程序 freg 进行编译
@@ -549,15 +603,27 @@ obj-$(CONFIG_PCI)        += pci/
 
 ### 编译内核驱动程序模块
 
-在编译驱动程序freg之前， 我们需要执行make menuconfig命令来配置它的编译方式
+在编译驱动程序`freg`之前， 我们需要执行`make menuconfig`命令来配置它的编译方式
 
-```text
+```shell
 make menuconfig
 ```
 
-执行make命令来编译驱动程序freg
+第一个配置界面中用上下箭头键选择“`Device Drivers`”项， 按`Enter`键  
 
-```text
+第二个配置界面中继续用上下箭头键选择“`Fake Register Driver`”项， 按`Y`键或 `M`键， 就可以看到选项前面方括号中的字符变成“ `*` ”或者“`M`”符号， 它们分别表示将驱动程序`freg`编译到**内核**中 或 以**模块**的方式来编译  
+
+如果我们要以**模块**的方式来编译驱动程序freg， 那就必须在第一个配置界面中选择`“Enable loadable module support`”选项， 并且按 `Y` 键将它的值设置为`true`， 就是让内核可以支持**动态加载模块** . 
+
+如果要使得内核支持**动态卸载**模块， 那么就要在第一个配置界面中选择“`Enable loadable module support`”选项中的子选项“`Module unloading` ”， 并且按`Y`键将它的值设置为`true `。
+
+第二个配置界面中按`M` 键来配置“`Fake RegisterDriver`”选项配置完成后， 保存编译配置选项， 退出`make menuconfig`命令
+
+
+
+执行`make`命令来编译驱动程序`freg`
+
+```shell
 make
 ```
 
@@ -565,13 +631,17 @@ make
 
 ![image-20200713165801391](https://gitee.com/cpu_code/picture_bed/raw/master//20200713165801.png)
 
+编译得到的内核镜像文件`zImage`保存在`arch/arm/boot目录下`  
+
 
 
 ---------------------------------------------
 
 ### 验证内核驱动程序模块
 
-```text
+通过`proc`文件系统和`devfs`文件系统来验证它的功能是否正确  
+
+```shell
 # 使用 得到的内核镜像文件zImage来启动Android模拟器
 emulator -kernel kernel/goldfish/arch/arm/boot/zImage &
 
@@ -581,11 +651,12 @@ adb shell
 # 进入 /dev目录下
 cd dev
 
-# 查看 一个设备文件freg
+# 查看 一个设备文件freg 
+# 存在，说明成功的注册到设备文件系统中
 ls freg
 ```
 
-```text
+```shell
 # 进入到/proc
 cd proc
 
@@ -597,9 +668,11 @@ echo '5' > freg
 
 # 将文件freg的内容读取出来
 cat freg
+
+# 值一样 , 说明 proc文件系统接口成功
 ```
 
-```text
+```shell
 # 进入到/sys/class/freg/freg
 cd sys/class/freg/freg
 
@@ -607,10 +680,12 @@ cd sys/class/freg/freg
 cat val
 
 # 往文件val中写入一个新的内容
-echo '' > freg
+echo '0' > freg
 
 # 将文件val中的内容读取出
 cat freg
+
+# 值一样 , 说明 devfs文件系统接口成功
 ```
 
 
@@ -619,19 +694,29 @@ cat freg
 
 ## 开发C可执行程序验证Android硬件驱动程序
 
-在Android源代码工程环境中开发的C可执行程序源文件一般保存在external目录中，因此， 我们进入到external目录中， 并且创建一个freg目录， 用来保存我们将要开发的C可执行程序源文件。
+通过编写一个**C可执行程序**来验证驱动程序`freg`所提供的**dev文件系统接口**的正确性， 这是通过调用`read`和`write`函数读写设备文件`/dev/freg`的内容来实现  
+
+在`Android`源代码工程环境中， 不仅可以用`C/C++`语言来开发**可执行程序**，还可以开发**动态链接库**， 也就是 `so`文件。 
+
+使用`adb`工具命令连接上`Android`模拟器之后， 进入到`/system/bin`或者`/system/lib`目录中， 就可以看到很多**可执行程序**或者**动态链接库**文件。   
+
+
+
+在`Android`源代码工程环境中开发的**C可执行程序**源文件一般保存在`external`目录中，因此， 需要进入到`external`目录中， 并且创建一个`freg`目录， 用来保存我们将要开发的**C可执行程序源文件**。
 
 目录结构 :
 
-```text
+```shell
 ~/Android
     exiternal
         freg
-            freg.c
-            Android.mk
+            freg.c	# 源文件
+            Android.mk # 编译脚本文件
 ```
 
-源文件freg.c :
+
+
+源文件 freg.c :
 
 ```c
 #include <stdio.h>
@@ -673,32 +758,43 @@ int main(int argc, char** argv)
     printf("%d.\n\n", val);
 
     close(fd);
-
     return 0;
 }
 ```
 
-编译脚本文件Android.mk :
 
-```
+
+编译脚本文件`Android.mk` :
+
+```makefile
 # 将编译结果保存在 out/target/product/gerneric/system/bin 目录中
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := optional
+# 源文件
 LOCAL_MODULE := freg
 LOCAL_SRC_FILES := $(call all-subdir-c-files)
+
 # 当前要编译的是一个可执行应用程序模块
 include $(BUILD_EXECUTABLE)
 ```
 
-```text
+
+
+```shell
 # 编译
 mmm ./external/freg/
 # 打包这个C可执行程序
 make snod
 ```
 
-```text
+**编译成功**后， 就可以在`out/target/product/gerneric/system/bin`目录下看到一个`freg`文件；
+
+**打包成功**后， **编译好的文件**就会包含在`out/target/product/gerneric`目录下的`Android`系统镜像文件`system.img`里
+
+
+
+```shell
 # 将得到的 system.img 文件启动 Android模拟器
 emulator -kernal kernel/goldfish/arch/arm/boot/zImage &
 
@@ -710,5 +806,7 @@ cd system/bin
 
 # 执行里面的freg文件
 ./freg
+
+# 验证驱动程序freg的dev文件系统访问接口的正确性
 ```
 
