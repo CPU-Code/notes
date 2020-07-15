@@ -1,4 +1,14 @@
+
 ## 开发Android硬件访问服务
+
+ * @Author: cpu_code
+ * @Date: 2020-07-15 12:31:07
+ * @LastEditTime: 2020-07-15 13:25:47
+ * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_access_service.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 ### 定义硬件访问服务接口
 
@@ -353,12 +363,12 @@ class ServerThread extends Thread
 //...
 ```
 
-```text
+```shell
 # 重新编译services模块
 mmm ./frameworks/base/services/java/
 ```
 
-```text
+```shell
 # 重新打包Android系统镜像文件system.img
 make snod
 ```

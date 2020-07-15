@@ -1,4 +1,15 @@
+
 ## 开发Android硬件抽象层模块
+
+ * @Author: cpu_code
+ * @Date: 2020-07-15 12:07:05
+ * @LastEditTime: 2020-07-15 13:25:36
+ * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_abstraction_layer_module.md
+ * @Gitee: https://gitee.com/cpu_code
+ * @Github: https://github.com/CPU-Code
+ * @CSDN: https://blog.csdn.net/qq_44226094
+ * @Gitbook: https://923992029.gitbook.io/cpucode/
+
 
 --------------------
 
@@ -196,7 +207,7 @@ typedef struct hw_device_t
 
 目录结构：
 
-```text
+```shell
 ~/Android/hardware/libhardware
     include
         hardware
@@ -748,7 +759,7 @@ gunzip ./ramdisk.img.gz
 
 #### 还原ramdisk.img镜像文件
 
-```text
+```shell
 # 创建目录
 mkdir ramdisk
 
