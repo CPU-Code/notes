@@ -19,7 +19,7 @@
   * [安卓应用](android_bottom/hardware_abstraction_layer/Android_application.md)
 
 * [智能指针](android_bottom/smart_pointer.md)
-* [AOSP源码开发](android_bottom/aosp.md)
+* [AOSP源码开发](android_bottom/AOSP.md)
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
 ## 操作系统 <a id="operating_system"></a>

@@ -36,7 +36,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 * [智能指针](android_bottom/smart_pointer.md)
 
-* [AOSP源码开发](android_bottom/aosp.md)
+* [AOSP源码开发](android_bottom/AOSP.md)
 
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
