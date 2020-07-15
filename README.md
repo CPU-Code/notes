@@ -17,7 +17,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 ## Linux驱动开发 <a id="linux_driver"></a>
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
-* [Linux驱动开发](https://github.com/CPU-Code/notes/tree/2348ce45ed24db16c5a191ec94b2d992df4e6cdf/linux/linux_driver.md)
+* [Linux驱动开发](linux_driver/linux_driver.md)
 
 ## 安卓底层开发 <a id="android_bottom"></a>
 
