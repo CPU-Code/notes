@@ -1,18 +1,10 @@
+# Android硬件抽象层模块
 
-## Android硬件抽象层模块
-
- * @Author: cpu_code
- * @Date: 2020-07-15 12:07:05
- * @LastEditTime: 2020-07-15 19:51:16
- * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_abstraction_layer_module.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
+<img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200715211412.png"/>
 
 --------------------
 
-### 硬件抽象层模块编写规范
+## 硬件抽象层模块编写规范
 
 `Android`系统为**硬件抽象层**中的模块接口定义了**编写规范**， 我们必须按照这个规范来编写自己的**硬件模块接口**， 否则就会导致无法正常访问硬件。   
 
@@ -28,7 +20,7 @@
 
 -------------------------------
 
-#### 硬件抽象层模块文件命名规范
+### 硬件抽象层模块文件命名规范
 
 
 
@@ -76,7 +68,7 @@ static const char *variant_keys[] = {
 
 --------------------------------------
 
-#### 硬件抽象层模块结构体定义规范
+### 硬件抽象层模块结构体定义规范
 
 结构体 `hw_module_t` :
 
@@ -229,7 +221,7 @@ typedef struct hw_device_t
 
 ---------------------------------------
 
-### 编写硬件抽象层模块接口
+## 编写硬件抽象层模块接口
 
 硬件抽象层中的**模块接口**源文件一般保存在`hardware/libhardware`目录中  
 
@@ -486,7 +478,7 @@ make snod
 
 -----------------------------------------
 
-### 硬件抽象层模块的加载过程
+## 硬件抽象层模块的加载过程
 
 Android系统中的硬件抽象层模块是由**系统统一加载**的， 当调用者需要加载这些模块时，只要指定它们的**ID值**就可以了  
 
@@ -695,7 +687,7 @@ done:
 
 -------------------------------------
 
-### 处理硬件设备访问权限问题
+## 处理硬件设备访问权限问题
 
 ```c
 // Android/hardware/libhardware/Modules/freg/freg.cpp
@@ -762,7 +754,7 @@ static int freg_device_open(const struct hw_module_t* module,
 
 -----------------------------------
 
-#### 解压ramdisk.img镜像文件
+### 解压ramdisk.img镜像文件
 
 镜像文件`ramdisk.img`是一个`gzip`文件  
 
@@ -778,7 +770,7 @@ gunzip ./ramdisk.img.gz
 
 -------------------------
 
-#### 还原ramdisk.img镜像文件
+### 还原ramdisk.img镜像文件
 
 解压后得到的`ramdisk.img`文件是一个`cpio`格式的归档文件  
 
@@ -797,7 +789,7 @@ cpio -i -F ../ramdisk.img
 
 ---------------
 
-#### 修改ueventd.rc文件
+### 修改ueventd.rc文件
 
 ```shell
 # 进入目录
@@ -830,7 +822,7 @@ vim ueventd.rc
 
 --------------------
 
-#### 重新打包ramdisk.img镜像文件
+### 重新打包ramdisk.img镜像文件
 
 ```shell
 # 删除
@@ -856,3 +848,13 @@ mv ./ramdisk.img.gz ./out/target/product/generic/ramdisk.img
 重新打包后得到的`ramdisk.img`镜像文件中的`ueventd.rc`文件就修改好了
 
 系统在启动之后就会通过`init`进程来赋予系统中的所有用户访问设备文件`/dev/freg`的权限
+
+> 由于个人水平有限, 难免有些错误, 希望各位点评
+> * @Author: cpu_code
+> * @Date: 2020-07-15 12:07:05
+> * @LastEditTime: 2020-07-15 19:51:16
+> * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_abstraction_layer_module.md
+> * @Gitee: https://gitee.com/cpu_code
+> * @Github: https://github.com/CPU-Code
+> * @CSDN: https://blog.csdn.net/qq_44226094
+> * @Gitbook: https://923992029.gitbook.io/cpucode/
