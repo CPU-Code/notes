@@ -1,24 +1,13 @@
-<!--
- * @Author: cpu_code
- * @Date: 2020-07-11 16:10:23
- * @LastEditTime: 2020-07-12 21:08:12
- * @FilePath: \note\linux_driver\linux_driver.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
---> 
-
 # Linux驱动开发
 
- * @Author: cpu_code
- * @Date: 2020-07-11 16:10:23
- * @LastEditTime: 2020-07-12 21:08:01
- * @FilePath: \note\linux_driver\linux_driver.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
+* @Author: cpu\_code
+* @Date: 2020-07-11 16:10:23
+* @LastEditTime: 2020-07-12 21:08:01
+* @FilePath: \note\linux\_driver\linux\_driver.md
+* @Gitee: [https://gitee.com/cpu\_code](https://gitee.com/cpu_code)
+* @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+* @CSDN: [https://blog.csdn.net/qq\_44226094](https://blog.csdn.net/qq_44226094)
+* @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
 
 文件目录 :
 
@@ -58,7 +47,7 @@
              ProcessKeyInt(); /* 处理按键中断 */
              keyInt = 0; /* 中断标志变量清0 */
          }
-         
+
          status = CheckXXX();
          switch (status)
          {
@@ -174,7 +163,7 @@ C库函数是通过系统调用接口而实现， 如C库函数 `fopen()` 、 `f
 
 **Linux设备驱动的重点、 难点**
 
- 懂得SRAM、Flash、 SDRAM、 磁盘的读写方式， UART、 I2C、 USB等设备的接口以及轮询、 中断、 DMA的原理， PCI总线工作方式以及CPU的内存管理单元（MMU）
+懂得SRAM、Flash、 SDRAM、 磁盘的读写方式， UART、 I2C、 USB等设备的接口以及轮询、 中断、 DMA的原理， PCI总线工作方式以及CPU的内存管理单元（MMU）
 
 运用C语言的结构体、 指针、 函数指针及内存动态申请和释放等
 
@@ -190,11 +179,11 @@ C库函数是通过系统调用接口而实现， 如C库函数 `fopen()` 、 `f
 
 **源代码阅读和编辑**
 
-[http://lxr.free-electrons.com](http://lxr.free-electrons.com)、 [http://lxr.oss.org.cn/](%20http://lxr.oss.org.cn/) , 这样的网站提供了Linux内核源代码的交叉索引
+[http://lxr.free-electrons.com](http://lxr.free-electrons.com)、 [http://lxr.oss.org.cn/](../) , 这样的网站提供了Linux内核源代码的交叉索引
 
 Linux主机上阅读和编辑Linux源码的常用方式是 `vim` + `cscope`或者 `vim`+ `ctags`， `vim` 是一个文本编辑器， 而 `cscope` 和 `ctags` 则可建立代码索引
 
- vscode使用
+vscode使用
 
 #### 设备驱动Hello World： LED驱动
 
@@ -210,7 +199,7 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
 
 如：
 
-在　`GPIO_REG_CTRL`　物理地址中**控制寄存器**处的第 `n` 位写入 `1` 可设置 `GPIO` 口为输出，
+在 `GPIO_REG_CTRL` 物理地址中**控制寄存器**处的第 `n` 位写入 `1` 可设置 `GPIO` 口为输出，
 
 在地址 `GPIO_REG_DATA` 物理地址中**数据寄存器**的第 `n` 位写入`1` 或 `0` 可在引脚上产生 高 或 低电平．
 
@@ -259,12 +248,12 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
  int light_open(struct inode *inode, struct file *filp)
  {
      struct light_dev *dev;
-     
+
      /* 获得设备结构体指针 */
      dev = container_of(inode->i_cdev, struct light_dev, cdev);
      /* 让设备结构体作为设备的私有信息 */
      filp->private_data = dev;
-     
+
      return 0;
  }
  ​
@@ -277,24 +266,24 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
  ssize_t light_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
  {
      struct light_dev *dev = filp->private_data; /* 获得设备结构体 */
-     
+
      if(copy_to_user(buf, &(dev->value), 1))
      {
          return -EFAULT;
      }
-     
+
      return 1;
  }
  ​
  ssize_t light_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos)
  {
      struct light_dev *dev = filp->private_data;
-     
+
      if(copy_from_user(&(dev->value), buf, 1))
      {
          return -EFAULT;
      }
-     
+
      /* 根据写入的值点亮和熄灭LED */
      if(dev->value == 1)
      {
@@ -304,7 +293,7 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
      {
          light_off()
      }
-     
+
      return 1;
  }
  ​
@@ -312,14 +301,14 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
  int light_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
  {
      struct light_dev *dev = filp->private_data;
-     
+
      switch(cmd) 
      {
          case LIGHT_ON:
              dev->value = 1;
              light_on();
              break;
-             
+
          case LIGHT_OFF:
              dev->value = 0;
              light_off();
@@ -329,7 +318,7 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
              /* 不能支持的命令 */
              return -ENOTTY;
      }
-    
+
      return 0;
  }
  ​
@@ -347,11 +336,11 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
  {
      int err;
      int devno = MKDEV(light_major, index);
-     
+
      cdev_init(&dev->cdev, &light_fops);
      dev->cdev.owner = THIS_MODULE;
      dev->cdev.ops = &light_fops;
-     
+
      err = cdev_add(&dev->cdev, devno, 1);
      if(err)
      {
@@ -376,12 +365,12 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
          result = alloc_chrdev_region(&dev, 0, 1, "LED");
          light_major = MAJOR(dev);
      }
-     
+
      if((result < 0)
      {
          return result;
      }
-        
+
      /* 分配设备结构体的内存 */
      light_devp = kmalloc(sizeof(struct light_dev), GFP_KERNEL);
      if(!light_devp)
@@ -389,13 +378,13 @@ GPIO一般由 两组寄存器控制， 一组**控制寄存器** 和 一组**数
          result = -ENOMEM;
          goto fail_malloc;
      }
-        
-        
+
+
  fail_malloc:
      unregister_chrdev_region(dev, light_devp);
      return result;
  }
-        
+
  /* 模块卸载函数 */
  void light_cleanup(void)
  {
@@ -759,9 +748,9 @@ SDIO单模块读、 写的典型时序 :
 
 **eMMC**（ Embedded Multi Media Card） 是当前移动设备本地存储的主流解决方案， 目的在于简化手机存储器的设计。
 
- eMMC就是**NAND Flash**、 **闪存控制芯片**和**标准接口封装**的集合， 它把NAND和控制芯片封装成为一个多芯片封装（ Multi-Chip Package， MCP） 芯片。
+eMMC就是**NAND Flash**、 **闪存控制芯片**和**标准接口封装**的集合， 它把NAND和控制芯片封装成为一个多芯片封装（ Multi-Chip Package， MCP） 芯片。
 
- eMMC支持 DAT\[0\] ~ DAT\[7\] 8位的数据线。
+eMMC支持 DAT\[0\] ~ DAT\[7\] 8位的数据线。
 
 上电或者复位后， 默认处于1位模式， 只使用DAT\[0\]， 后续可以配置为4位或者8位模式。
 

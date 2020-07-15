@@ -1,27 +1,15 @@
-<!--
- * @Author: cpu_code
- * @Date: 2020-07-11 16:18:27
- * @LastEditTime: 2020-07-12 21:08:49
- * @FilePath: \note\android_bottom\summary.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
---> 
-
 # Android底层软硬件结合开发概述
 
- * @Author: cpu_code
- * @Date: 2020-07-11 16:18:27
- * @LastEditTime: 2020-07-12 21:08:41
- * @FilePath: \note\android_bottom\summary.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
+* @Author: cpu\_code
+* @Date: 2020-07-11 16:18:27
+* @LastEditTime: 2020-07-12 21:08:41
+* @FilePath: \note\android\_bottom\summary.md
+* @Gitee: [https://gitee.com/cpu\_code](https://gitee.com/cpu_code)
+* @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+* @CSDN: [https://blog.csdn.net/qq\_44226094](https://blog.csdn.net/qq_44226094)
+* @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
 
-
-### Android底层软硬件结合开发概述
+## Android底层软硬件结合开发概述
 
 Android是 个开源的智能移动平台 一个开源的智能移动平台， 任何 个厂商拿 一个厂商拿到 Android Source 都可以基于自己的硬件架构设计
 
@@ -43,7 +31,7 @@ NDK开发:
 
 从应用角度来开发软硬结合代码
 
- 适用于单个应用程序的底层结合需求
+适用于单个应用程序的底层结合需求
 
 HAL硬件抽象层开发:
 
@@ -51,7 +39,7 @@ HAL硬件抽象层开发:
 
 适用于共享功能软硬结合代码
 
-#### HAL 概念
+### HAL 概念
 
 HAL（ **Hardware Abstract Layer**）硬件抽象层是Google开发的Android系统里上层应用对底层硬件操作屏蔽的一个软件层次，说白了，就是上层的应用不用关心底层硬件具体是如何工作的，只要向上提供一个统一的接口即可，这种设计思想广泛的存在于当前的**软件架构设计**里。
 
@@ -130,7 +118,7 @@ HAL stub的框架比较简单： 三个结构体、 两个常量、 一个函数
 
 ```text
  hardware/libhardware/include/hardware/hardware.h
- hardware/libhardware/hardware.c  
+ hardware/libhardware/hardware.c
 ```
 
 HAL Stub架构分析
@@ -183,7 +171,7 @@ HAL Stub架构分析
 
 ![image-20200706135949036](https://gitee.com/cpu_code/picture_bed/raw/master//20200706135949.png)
 
-#### Android里的Jni调用机制
+### Android里的Jni调用机制
 
 JVM 很好的解决java的可移植性问题，使得java软件可以在不同的硬件平台下运行，但是JVM不是万能的，毕竟它只是一个模拟环境，对于一些外围的硬件就很难模拟， JVM只是模拟了一部分的寄存器， 栈结构， JVM储存器，这些都是软件运行的基础硬件结构。
 
