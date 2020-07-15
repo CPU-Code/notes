@@ -3,7 +3,7 @@
 
  * @Author: cpu_code
  * @Date: 2020-07-15 11:51:27
- * @LastEditTime: 2020-07-15 16:23:20
+ * @LastEditTime: 2020-07-15 19:50:05
  * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_driver.md
  * @Gitee: https://gitee.com/cpu_code
  * @Github: https://github.com/CPU-Code
