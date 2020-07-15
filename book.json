@@ -1,4 +1,17 @@
 {
+    "title": "GItBook笔记",
+    "description": "GitBook笔记",
+    "author": "cpucode",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "links": {
+        "sidebar": {
+            "首页": "https://blog.csdn.net/qq_44226094"
+        }
+    },
+
     "plugins": [
         "back-to-top-button",
         "chapter-fold",
@@ -17,7 +30,7 @@
     ],
     "pluginsConfig": {
         "insert-logo": {
-            "url": "https://file.smallzhiyun.com/%E4%B9%A6.png",
+            "url": "https://s1.ax1x.com/2020/06/18/Nnpxmj.png",
             "style": "background: none; max-height: 30px; min-height: 30px"
         },
         "favicon": "./icon/book.ico",
