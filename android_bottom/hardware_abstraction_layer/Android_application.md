@@ -1,14 +1,12 @@
 
 ## 开发Android应用程序来使用硬件访问服务
 
- * @Author: cpu_code
- * @Date: 2020-07-15 12:32:24
- * @LastEditTime: 2020-07-15 13:24:50
- * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_application.md
- * @Gitee: https://gitee.com/cpu_code
- * @Github: https://github.com/CPU-Code
- * @CSDN: https://blog.csdn.net/qq_44226094
- * @Gitbook: https://923992029.gitbook.io/cpucode/
+<img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200715211412.png"/>
+
+
+在`Android`应用程序框架层开发**硬件访问服务**的目的是为了让上层的`Android`应用程序能够**访问**对应的硬件设备。   
+
+目录结构  :
 
 
 ```shell
@@ -197,6 +195,7 @@ icon.png   图标文件
 AndroidManifest.xml   配置文件  
 
 ```xml
+<-- /Android/packages/experimental/Freg/AndroidManifest.xml -->
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="shy.luo.freg"
@@ -220,13 +219,15 @@ AndroidManifest.xml   配置文件
 Android.mk  编译脚本文件
 
 ```makefile
+# ~/Android/packages/experimental/Freg/Android.mk
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
-
+# 指定程序的名称为“Freg”
 LOCAL_PACKAGE_NAME := Freg
 
 include $(BUILD_PACKAGE)
@@ -242,7 +243,7 @@ mmm ./packages/experimental/Freg/
 make snod
 ```
 
-
+打包后得到的Android系统镜像文件system.img就包含有应用程序Freg  
 
 启动  
 
@@ -251,7 +252,15 @@ emulator -kernel kernel/goldfish/arch/arm/boot/zImage
 ```
 
 
-
+> 由于个人水平有限, 难免有些错误, 希望各位点评
+> * @Author: cpu_code
+> * @Date: 2020-07-15 12:32:24
+> * @LastEditTime: 2020-07-16 13:44:47
+> * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_application.md
+> * @Gitee: https://gitee.com/cpu_code
+> * @Github: https://github.com/CPU-Code
+> * @CSDN: https://blog.csdn.net/qq_44226094
+> * @Gitbook: https://923992029.gitbook.io/cpucode/
 
 
 
