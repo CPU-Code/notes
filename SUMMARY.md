@@ -19,7 +19,7 @@
   * [安卓应用](android_bottom/hardware_abstraction_layer/Android_application.md)
 
 * [智能指针](android_bottom/smart_pointer.md)
-* [AOSP源码开发](android_bottom/AOSP.md)
+* [AOSP源码开发](android_bottom/aosp.md)
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
 ## 操作系统 <a id="operating_system"></a>
@@ -34,4 +34,9 @@
 ## Linux内核0.12 <a id="linux_kernel_0_12"></a>
 
 * [微型计算机组成结构](linux_kernel_0_12/computer_composition.md)
+
+
+## QT <a id="QT"></a>
+
+* [第一个QT](QT/first_qt.md)
 

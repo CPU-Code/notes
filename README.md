@@ -60,5 +60,12 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 * [微型计算机组成结构](linux_kernel_0_12/computer_composition.md)
 
+--------------------------
+
+## QT <a id="QT"></a>
+
+* [第一个QT](QT/first_qt.md)
+
+
 ![cpucode.png](https://s1.ax1x.com/2020/06/18/Nnpxmj.png)
 
