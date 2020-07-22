@@ -33,11 +33,9 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
   * [安卓硬件访问服务](android_bottom/hardware_abstraction_layer/Android_hardware_access_service.md)
 
   * [安卓应用](android_bottom/hardware_abstraction_layer/Android_application.md)
-
 * [智能指针](android_bottom/smart_pointer.md)
-
+* [Logger日志系统](android_bottom/logger_log_system.md)
 * [AOSP源码开发](android_bottom/AOSP.md)
-
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
 --------------------------------
