@@ -2,7 +2,7 @@
 
 * [目录](README.md)
 
-* [学习路线](Learnig_route.md)
+* [学习路线](Learning_route.md)
 
 ## Linux驱动开发 <a id="linux_driver"></a>
 
