@@ -2,6 +2,8 @@
 
 * [目录](README.md)
 
+* [学习路线](Learnig_route.md)
+
 ## Linux驱动开发 <a id="linux_driver"></a>
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
@@ -11,16 +13,25 @@
 
 * [硬件抽象层](android_bottom/hardware_abstraction_layer/README.md)
   * [安卓硬件驱动](android_bottom/hardware_abstraction_layer/Android_hardware_driver.md)
-
   * [安卓硬件抽象层模块](android_bottom/hardware_abstraction_layer/Android_hardware_abstraction_layer_module.md)
-
   * [安卓硬件访问服务](android_bottom/hardware_abstraction_layer/Android_hardware_access_service.md)
-
   * [安卓应用](android_bottom/hardware_abstraction_layer/Android_application.md)
+
 * [智能指针](android_bottom/smart_pointer.md)
-* [Logger日志系统](android_bottom/logger_log_system.md)
+
+* [Logger日志系统](android_bottom/logger_log_system/README.md)
+  * [Logger日志](android_bottom/logger_log_system/Logger_log.md)
+  * [Logger写接口](android_bottom/logger_log_system/Log_interface.md)
+  * [Logcat](android_bottom/logger_log_system/logcat.md)
+
+
+* [binder](android_bottom/binder/README.md)
+  * [binder](android_bottom/binder/binder.md)
+
 * [AOSP源码开发](android_bottom/aosp.md)
+
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
+
 
 ## 操作系统 <a id="operating_system"></a>
 
@@ -39,4 +50,19 @@
 ## QT <a id="QT"></a>
 
 * [第一个QT](QT/first_qt.md)
+
+## ubuntu <a id="ubuntu"></a>
+
+* [Linux使用](ubuntu/linux_use.md)
+* [使用notebook](ubuntu/use_notebook.md)
+* [使用vscode](ubuntu/use_vscode.md)
+
+## shell <a id="shell"></a>
+
+* [自动打包](shell/Auto_packaging.md)
+
+## C <a id="C"></a>
+
+* [第一条Linux_c输出](C/print_cpucode.md)
+
 

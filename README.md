@@ -16,53 +16,69 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 -----------------------
 
+* [学习路线](Learnig_route.md)
+
 ## Linux驱动开发 <a id="linux_driver"></a>
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
 * [Linux驱动开发](linux_driver/linux_driver.md)
 
--------------------------------
-
 ## 安卓底层开发 <a id="android_bottom"></a>
 
-* [硬件抽象层](android_bottom/hardware_abstraction_layer/)
+* [硬件抽象层](android_bottom/hardware_abstraction_layer/README.md)
   * [安卓硬件驱动](android_bottom/hardware_abstraction_layer/Android_hardware_driver.md)
-
   * [安卓硬件抽象层模块](android_bottom/hardware_abstraction_layer/Android_hardware_abstraction_layer_module.md)
-
   * [安卓硬件访问服务](android_bottom/hardware_abstraction_layer/Android_hardware_access_service.md)
-
   * [安卓应用](android_bottom/hardware_abstraction_layer/Android_application.md)
+
 * [智能指针](android_bottom/smart_pointer.md)
-* [Logger日志系统](android_bottom/logger_log_system.md)
-* [AOSP源码开发](android_bottom/AOSP.md)
+
+* [Logger日志系统](android_bottom/logger_log_system/README.md)
+  * [Logger日志](android_bottom/logger_log_system/Logger_log.md)
+  * [Logger写接口](android_bottom/logger_log_system/Log_interface.md)
+  * [Logcat](android_bottom/logger_log_system/logcat.md)
+
+
+* [binder](android_bottom/binder/README.md)
+  * [binder](android_bottom/binder/binder.md)
+
+* [AOSP源码开发](android_bottom/aosp.md)
+
 * [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
---------------------------------
 
 ## 操作系统 <a id="operating_system"></a>
 
 * [操作系统的运行机制](operating_system/operat_mechanism.md)
-
 * [进程](operating_system/process.md)
-
-----------------------------
 
 ## linux一句话 <a id="linux_in_a_word"></a>
 
 * [与网络无关的Linux](linux_in_a_word/network_indepen.md)
 
-----------------------------
-
 ## Linux内核0.12 <a id="linux_kernel_0_12"></a>
 
 * [微型计算机组成结构](linux_kernel_0_12/computer_composition.md)
 
---------------------------
 
 ## QT <a id="QT"></a>
 
 * [第一个QT](QT/first_qt.md)
+
+## ubuntu <a id="ubuntu"></a>
+
+* [Linux使用](ubuntu/linux_use.md)
+* [使用notebook](ubuntu/use_notebook.md)
+* [使用vscode](ubuntu/use_vscode.md)
+
+## shell <a id="shell"></a>
+
+* [自动打包](shell/Auto_packaging.md)
+
+## C <a id="C"></a>
+
+* [第一条Linux_c输出](C/print_cpucode.md)
+
 
 
 ![cpucode.png](https://s1.ax1x.com/2020/06/18/Nnpxmj.png)
