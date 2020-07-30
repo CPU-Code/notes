@@ -56,6 +56,8 @@
 * [Linux使用](ubuntu/linux_use.md)
 * [使用notebook](ubuntu/use_notebook.md)
 * [使用vscode](ubuntu/use_vscode.md)
+* [使用ubuntu](ubuntu/use_ubuntu.md)
+* [Linux运行时格式](ubuntu/Format_problem.md)
 
 ## shell <a id="shell"></a>
 
