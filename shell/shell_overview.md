@@ -1,3 +1,13 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-31 09:46:09
+ * @LastEditTime: 2020-08-01 14:27:41
+ * @FilePath: \notes\shell\shell_overview.md
+ * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+ * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+ * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+ * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
+--> 
 
 
 <center>
@@ -210,7 +220,14 @@ echo "this is the first shell script"
 ![image-20200731101132522](https://gitee.com/cpu_code/picture_bed/raw/master//20200731101132.png)
 
 
-
+> * @Author: cpu_code
+> * @Date: 2020-07-31 09:46:09
+> * @LastEditTime: 2020-08-01 14:25:26
+> * @FilePath: \notes\shell\shell_overview.md
+> * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+> * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+> * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+> * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
 
 
 

@@ -1,3 +1,13 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-31 12:47:29
+ * @LastEditTime: 2020-08-01 14:27:24
+ * @FilePath: \notes\shell\condition.md
+ * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+ * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+ * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+ * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
+--> 
 
 
 <center>
@@ -349,7 +359,14 @@ test -r file -o -x file file
 test ! -x file
 ```
 
-
+> * @Author: cpu_code
+> * @Date: 2020-07-31 09:46:09
+> * @LastEditTime: 2020-08-01 14:25:26
+> * @FilePath: \notes\shell\condition.md
+> * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+> * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+> * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+> * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
 
 
 

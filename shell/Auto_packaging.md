@@ -1,3 +1,13 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-26 18:53:15
+ * @LastEditTime: 2020-08-01 14:25:16
+ * @FilePath: \notes\shell\Auto_packaging.md
+ * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+ * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+ * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+ * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
+--> 
 
 ```shell
 #使用方法

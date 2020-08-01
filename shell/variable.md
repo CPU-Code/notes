@@ -1,3 +1,13 @@
+<!--
+ * @Author: cpu_code
+ * @Date: 2020-07-31 10:28:51
+ * @LastEditTime: 2020-08-01 14:26:02
+ * @FilePath: \notes\shell\variable.md
+ * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+ * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+ * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+ * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
+--> 
 
 
 <center>
@@ -467,3 +477,12 @@ echo 2:$name
 
 
 ![image-20200801125540280](https://gitee.com/cpu_code/picture_bed/raw/master//20200801125540.png)
+
+> * @Author: cpu_code
+> * @Date: 2020-07-31 10:28:51
+> * @LastEditTime: 2020-08-01 14:25:28
+> * @FilePath: \notes\shell\variable.md
+> * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+> * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+> * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+> * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
