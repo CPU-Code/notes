@@ -4,15 +4,15 @@
 
 # 删除IPADir包
 
-if [ ! -d ./IPADir ];
-    then
-        mkdir -p IPADir;
+if [ ! -d ./IPADir ]; then
+	mkdir -p IPADir;
+	
 fi
 
 # 删除build包
 
 if [[ -d build ]]; then
-rm -rf build -r
+	rm -rf build -r
 
 fi
 
@@ -44,7 +44,6 @@ echo "请输入你想法发布的方式 ? [ 1:app-store 2:ad-hoc] "
 read number
 
     while([[ $number != 1 ]] && [[ $number != 2 ]])
-
     do
 
         echo "笨蛋，只能输入 1 or 2"
@@ -54,16 +53,13 @@ read number
 
     done
 
-if [ $number == 1 ];
-
-    then
+if [ $number == 1 ]; then
 
     development_mode=Release
     exportOptionsPlistPath=${project_path}/exportAppstore.plist
 
 ## 证书名字
-
-    else
+else
 
     development_mode=Release
     exportOptionsPlistPath=${project_path}/exportTest.plist

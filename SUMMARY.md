@@ -28,9 +28,6 @@
 * [binder](android_bottom/binder/README.md)
   * [binder](android_bottom/binder/binder.md)
 
-* [AOSP源码开发](android_bottom/aosp.md)
-
-* [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
 
 ## 操作系统 <a id="operating_system"></a>
@@ -62,9 +59,17 @@
 ## shell <a id="shell"></a>
 
 * [自动打包](shell/Auto_packaging.md)
+* [shell 概述](shell/shell_overview.md)
+* [变量](shell/variable.md)
+* [条件测试](shell/condition.md)
+* [控制](shell/control.md)
+
 
 ## C <a id="C"></a>
 
 * [第一条Linux_c输出](C/print_cpucode.md)
+
+
+
 
 

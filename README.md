@@ -42,9 +42,6 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [binder](android_bottom/binder/README.md)
   * [binder](android_bottom/binder/binder.md)
 
-* [AOSP源码开发](android_bottom/aosp.md)
-
-* [Android底层软硬件结合开发概述](android_bottom/summary.md)
 
 
 ## 操作系统 <a id="operating_system"></a>
@@ -70,10 +67,16 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [Linux使用](ubuntu/linux_use.md)
 * [使用notebook](ubuntu/use_notebook.md)
 * [使用vscode](ubuntu/use_vscode.md)
+* [使用ubuntu](ubuntu/use_ubuntu.md)
+* [Linux运行时格式](ubuntu/Format_problem.md)
 
 ## shell <a id="shell"></a>
 
 * [自动打包](shell/Auto_packaging.md)
+* [shell 概述](shell/shell_overview.md)
+* [变量](shell/variable.md)
+* [条件测试](shell/condition.md)
+* [控制](shell/control.md)
 
 ## C <a id="C"></a>
 
