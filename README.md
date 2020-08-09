@@ -102,6 +102,10 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [SQL语句进阶](sqlite/sql_improve.md)
 
 
+## 其他 <a id="other"></a>
+
+* [Typora图床](sqlite/typora_picture_bed.md)
+
 -------------------------------------------------------------------------------------
 
 ![cpucode.png](https://s1.ax1x.com/2020/06/18/Nnpxmj.png)
