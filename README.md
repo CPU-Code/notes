@@ -14,7 +14,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 个人学习笔记 , 涵盖C , C++, Linux驱动, Linux内核, 嵌入式, 数据结构, 算法, QT, Android安卓, 音视频, 物联网 , 正在逐步更新 , 使用的`typora`编辑 , 大家可以使用 `typora` 打开查看 , 床图为 `gitee`
 
------------------------
+--------------------------------------------------------------------------
 
 * [学习路线](Learnig_route.md)
 
@@ -38,10 +38,8 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
   * [Logger写接口](android_bottom/logger_log_system/Log_interface.md)
   * [Logcat](android_bottom/logger_log_system/logcat.md)
 
-
 * [binder](android_bottom/binder/README.md)
   * [binder](android_bottom/binder/binder.md)
-
 
 
 ## 操作系统 <a id="operating_system"></a>
@@ -49,9 +47,11 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [操作系统的运行机制](operating_system/operat_mechanism.md)
 * [进程](operating_system/process.md)
 
+
 ## linux一句话 <a id="linux_in_a_word"></a>
 
 * [与网络无关的Linux](linux_in_a_word/network_indepen.md)
+
 
 ## Linux内核0.12 <a id="linux_kernel_0_12"></a>
 
@@ -62,6 +62,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 
 * [第一个QT](QT/first_qt.md)
 
+
 ## ubuntu <a id="ubuntu"></a>
 
 * [Linux使用](ubuntu/linux_use.md)
@@ -69,6 +70,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [使用vscode](ubuntu/use_vscode.md)
 * [使用ubuntu](ubuntu/use_ubuntu.md)
 * [Linux运行时格式](ubuntu/Format_problem.md)
+
 
 ## shell <a id="shell"></a>
 
@@ -78,11 +80,29 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [条件测试](shell/condition.md)
 * [控制](shell/control.md)
 
+
 ## C <a id="C"></a>
 
 * [第一条Linux_c输出](C/print_cpucode.md)
 
 
+## GTK <a id="GTK"></a>
+
+* [GTK入门](GTK/GTK_overview.md)
+* [控制件](GTK/Control.md)
+* [事件](GTK/Event_handling.md)
+* [Glade使用](GTK/Glade.md)
+
+
+## sqlite <a id="sqlite"></a>
+
+* [数据库概述](sqlitesqlite/database_overview.md)
+* [SQL基础](sqlite/sql_basis.md)
+* [SQLite的C编程](sqlite/sqlite_c.md)
+* [SQL语句进阶](sqlite/sql_improve.md)
+
+
+-------------------------------------------------------------------------------------
 
 ![cpucode.png](https://s1.ax1x.com/2020/06/18/Nnpxmj.png)
 
