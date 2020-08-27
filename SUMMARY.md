@@ -3,7 +3,7 @@
  * @代码已经全部更新到了github 和gitee 中, 并持续更新:  
  * @Author: cpu_code
  * @Date: 2020-07-11 14:40:09
- * @LastEditTime: 2020-08-09 21:00:26
+ * @LastEditTime: 2020-08-27 13:23:55
  * @FilePath: \notes\SUMMARY.md
  * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
  * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
@@ -71,7 +71,7 @@
 * [使用vscode](ubuntu/use_vscode.md)
 * [使用ubuntu](ubuntu/use_ubuntu.md)
 * [Linux运行时格式](ubuntu/Format_problem.md)
-
+* [配置samba进行win和Linux文件访问](ubuntu/use_samba.md)
 
 ## shell <a id="shell"></a>
 
