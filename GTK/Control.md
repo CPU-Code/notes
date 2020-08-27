@@ -2,7 +2,7 @@
  * @由于个人水平有限, 难免有些错误, 还请指点:  
  * @Author: cpu_code
  * @Date: 2020-08-06 16:51:19
- * @LastEditTime: 2020-08-06 18:28:40
+ * @LastEditTime: 2020-08-06 18:29:15
  * @FilePath: \notes\GTK\Control.md
  * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
  * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)

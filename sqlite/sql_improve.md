@@ -4,7 +4,11 @@
 
 
 
-## 函数和聚合  
+------------------------------
+
+
+
+## 函数和聚合
 
 
 
@@ -53,9 +57,17 @@ select * from cpucode;
 
 
 
+![image-20200810143450457](https://gitee.com/cpu_code/picture_bed/raw/master//20200810143450.png)
+
+
+
 ```sqlite
 select id upper(name) from cpucode;
 ```
+
+
+
+![image-20200810143440630](https://gitee.com/cpu_code/picture_bed/raw/master//20200810143440.png)
 
 
 
@@ -65,13 +77,42 @@ select id upper(name) from cpucode;
 
 
 
-```c
-avg() 返回某列的平均值
+```sqlite
+--返回某列的平均值
+avg() 
 ```
 
 
 
+```sqlite
+--返回某列的行数
+count()
+```
 
+
+
+```sqlite
+-- 返回某列的最大值
+max() 
+```
+
+
+
+```sqlite
+-- 返回某列的最小值
+min() 
+```
+
+
+
+```sqlite
+-- 返回某列值之和
+sum() 
+```
+
+
+
+插入一列分数 score   
 
 ```sqlite
 alter table cpucode add score integer;
@@ -79,7 +120,81 @@ alter table cpucode add score integer;
 
 
 
+![image-20200810143923933](https://gitee.com/cpu_code/picture_bed/raw/master//20200810143924.png)
 
+
+
+修改内容  
+
+
+
+```sqlite
+update cpucode set score=66 where name='cpu';
+```
+
+
+
+```sqlite
+update cpucode set score=77 where name='code';
+```
+
+
+
+```sqlite
+update cpucode set score=88 where name='test';
+```
+
+
+
+![image-20200810144150470](https://gitee.com/cpu_code/picture_bed/raw/master//20200810144150.png)
+
+
+
+```sqlite
+select max(score) from cpucode;
+```
+
+
+
+![image-20200810144730589](https://gitee.com/cpu_code/picture_bed/raw/master//20200810144730.png)
+
+
+
+```sqlite
+select avg(score) from cpucode;
+```
+
+
+
+![image-20200810144806248](https://gitee.com/cpu_code/picture_bed/raw/master//20200810144806.png)
+
+
+
+```sqlite
+select count(*) from cpucode;
+```
+
+
+
+![image-20200810144817464](https://gitee.com/cpu_code/picture_bed/raw/master//20200810144817.png)
+
+
+
+判断数据库中是否有 `cpucode` 这张表  
+
+`sqlite_master` 是数据库自带的一个表。 当用户创建一张表时， 数据库会将用户新建的表的信息存放在 `sqlite_master` 这张表中  
+
+```sqlite
+select count(*) from sqlite_master where type = 'table' and name = 'cpucode';
+```
+
+
+
+![image-20200810152755590](https://gitee.com/cpu_code/picture_bed/raw/master//20200810152755.png)
+
+
+
+------------------------
 
 
 
@@ -87,7 +202,7 @@ alter table cpucode add score integer;
 
 
 
-分组数据， 以便能汇总表内容的子集， 常和聚集函数搭配使用。 例如查询每个班级中的人数、 平均分  
+分组数据， 以便能汇总表内容的子集， 常和聚集函数搭配使用。 
 
 
 
@@ -102,20 +217,32 @@ alter table cpucode add class text;
 
 update cpucode set class='class_a' where name='cpu';
 update cpucode set class='class_b' where name='code';
-update cpucode set class='class_c' where name='test';
+update cpucode set class='class_b' where name='test';
 ```
 
 
+
+![image-20200810155059089](https://gitee.com/cpu_code/picture_bed/raw/master//20200810155059.png)
 
 
 
 ```sqlite
-select * from cpucode;
-
-select class,count(*) from cpucode group by class;
-
-select class,avg(score) from cpucode group by class;
+select class, count(*) from cpucode group by class;
 ```
+
+
+
+![image-20200810155155413](https://gitee.com/cpu_code/picture_bed/raw/master//20200810155155.png)
+
+
+
+```sqlite
+select class, avg(score) from cpucode group by class;
+```
+
+
+
+![image-20200810155236737](https://gitee.com/cpu_code/picture_bed/raw/master//20200810155236.png)
 
 
 
@@ -124,10 +251,16 @@ group by 子句必须出现在 where 子句之后
 
 
 ```sqlite
-select class,avg(score) from cpucode where class='class_a' group by class;
+select class, avg(score) from cpucode where class='class_a' group by class;
 ```
 
 
+
+![image-20200810155318529](https://gitee.com/cpu_code/picture_bed/raw/master//20200810155318.png)
+
+
+
+-------------------------
 
 
 
@@ -135,9 +268,7 @@ select class,avg(score) from cpucode where class='class_a' group by class;
 
 
 
-除了能用 group by 分组数据外， 还可以包括哪些分组， 排除哪些分组。 例如： 查看班级平均分大于 90 的班级  
-
-
+除了能用 `group by` 分组数据外， 还可以包括哪些分组， 排除哪些分组。 
 
 通过 having 实现  
 
@@ -154,12 +285,16 @@ select 函数名（列名 1） [, 列名 2, ...] from 表名 group by 列名 hav
 
 
 ```sqlite
-select class,avg(score) from cpucode group by class having avg(score) >=90; 
+select class, avg(score) from cpucode group by class having avg(score) >=80; 
 ```
 
 
 
+![image-20200810155539900](https://gitee.com/cpu_code/picture_bed/raw/master//20200810155540.png)
 
+
+
+------------------------
 
 
 
@@ -173,21 +308,21 @@ select class,avg(score) from cpucode group by class having avg(score) >=90;
 
 常用约束分类 :
 
-主键、 唯一约束、 检查约束  
+**主键**、 **唯一约束**、 **检查约束**  
 
 
 
 主键：
 
-惟一的标识一行(一张表中只能有一个主键)
+惟一的标识一行( 一张表中只能有一个主键 )
 
-主键应当是对用户没有意义的（常用于索引）
+主键应当是对用户没有意义的（ 常用于索引 ）
 
 永远不要更新主键， 否则违反对用户没有意义原则
 
 主键不应包含动态变化的数据， 如时间戳、 创建时间列、 修改时间列等
 
-主键应当有计算机自动生成（保证唯一性）  
+主键应当有计算机自动生成（ 保证唯一性 ）  
 
 
 
@@ -220,26 +355,38 @@ create table 表名 (列名称 1 数据类型 unique[， 列名称 2 数据类�
 
 
 ```sqlite
-create table stu (id integer primary key, name text unique);
+create table test (id integer primary key, name text unique);
+```
+
+
+
+![image-20200810160122651](https://gitee.com/cpu_code/picture_bed/raw/master//20200810160122.png)
+
+
+
+```sqlite
+insert into test values(1, 'cpu');
 ```
 
 
 
 ```sqlite
-insert into stu values(1, 'cpu');
+insert into test values(1, 'code');
 ```
+
+
+
+![image-20200810164549086](https://gitee.com/cpu_code/picture_bed/raw/master//20200810164549.png)
 
 
 
 ```sqlite
-insert into stu values(1, 'code');
+insert into test values(2, 'cpu');
 ```
 
 
 
-```sqlite
-insert into stu values(2, 'cpu');
-```
+![image-20200810164626151](https://gitee.com/cpu_code/picture_bed/raw/master//20200810164626.png)
 
 
 
@@ -258,14 +405,22 @@ create table 表名 (列名 数据类型 check (判断语句));
 
 
 ```sqlite
-create table cpucode (id integer, age integer check(age > 0));
+create table test2 (id integer, age integer check(age > 0));
 ```
+
+
+
+![image-20200810164838299](https://gitee.com/cpu_code/picture_bed/raw/master//20200810164838.png)
 
 
 
 ```sqlite
-insert into cpucode values(1, 30);
+insert into test2 values(1, 30);
 ```
+
+
+
+![image-20200810164927303](https://gitee.com/cpu_code/picture_bed/raw/master//20200810164927.png)
 
 
 
@@ -275,7 +430,11 @@ insert into cpucode values(1, -20);
 
 
 
+![image-20200810164941123](https://gitee.com/cpu_code/picture_bed/raw/master//20200810164941.png)
 
+
+
+-------------------------------
 
 
 
@@ -394,6 +553,10 @@ select 语句中可以联结的表的数目没有限制
 
 
 
+-------------------------
+
+
+
 ## 视图（虚拟的表）  
 
 
@@ -418,7 +581,7 @@ select 语句中可以联结的表的数目没有限制
 
 
 
-
+--------------------------------
 
 
 
@@ -438,7 +601,7 @@ select 语句中可以联结的表的数目没有限制
 
 
 
-
+-------------------------------------
 
 
 

@@ -18,6 +18,10 @@
 
 
 
+------------------
+
+
+
 ## GUI  
 
 
@@ -62,7 +66,7 @@ GTK+特点：
 
 
 
-
+-------------------
 
 
 
@@ -70,7 +74,266 @@ GTK+特点：
 
 
 
+--------------------------
 
+
+
+linux 下
+
+
+
+1、安装
+
+gtk+2.0所需的所有文件统通下载安装完毕
+
+```bash
+sudo apt-get install libgtk2.0*
+```
+
+2、测试
+
+
+
+运行：
+
+```bash
+pkg-config --cflags --libs gtk+-2.0
+```
+
+现象：
+
+> -pthread -I/usr/local/include/gio-unix-2.0/ 
+> -I/usr/local/include/atk-1.0 
+> -I/usr/local/include/glib-2.0 
+> -I/usr/local/lib/glib-2.0/include 
+> -I/usr/include/gtk-2.0 -I/usr/include/pango-1.0 
+> -I/usr/include/cairo 
+> -I/usr/include/gdk-pixbuf-2.0 
+> -I/usr/include/freetype2 
+> -I/usr/include/pixman-1 
+> -I/usr/include/libpng12
+
+说明成功
+
+
+
+-----------------
+
+
+
+
+
+## GTK+数据类型之C语言类型
+
+
+
+*   整数类型：`gint8`、`guint8`、`gint16`、`guint16`、`gint32`、`guint32`、`gint64`、`guint64`。不是所有的平台都提供64位整型
+*   整数类型 `gshort`、`glong`、`gint` 和 `short`、`long`、`int` 相同
+*   布尔类型 `gboolean` ：`gboolean` 可以取两个值：`TRUE` 和 `FALSE`
+*   字符型 `gchar` 和 `char` 相同
+*   浮点型 `gfloat` 和 `gdouble` 和 `float`、`double` 完全等价
+*   指针 `gpointer` 对应于标准C的 `void *`
+*   `const gpointer` 对于于标准C的 `const void *`
+
+
+
+-------------------------------------
+
+
+
+## GTK+的面向对象机制
+
+
+
+面向对象编程语言（如C++、Java）把 **数据** 和 对数据的**操作**封装在一起构成**类**，由 **类**来 产生对象，由对象来构建程序。类中对数据的操作由**函数**来完成，这种函数被称为**成员函数**或**方法**。
+
+面向对象语言通过继承、重载、多态等机制大大增强软件的**可重用性**和**可维护性**。C语言虽然不是面向对象语言，但GTK+以及建立在其上的`GNOME`库却使C语言模拟出了一些典型的面向对象机制，如封装、继承和多态。 
+
+
+
+**对象**的一个主要特性是将**数据**和对数据的**操作**封装在一起，受保护的**私有数据**只能通过成员函数才能访问和修改。GTK+使用C语言的结构体来模拟对象，虽然有些缺陷但基本模拟出了对象的基本特征。
+
+有了对象作为基础，通过在对象中加入新的数据和对这些数据进行操作的函数，就实现了**继承**。被 继承的类（类相当于一种**自定义**数据类型，由类来定义对象）称为**父类**或**基类**，由基础类派生出来的类称为**子类**或**派生类**。子类继承了父类的数据和对这些数据进行 操作的成员函数，并加入了新的数据和成员函数，实现了对原有父类的重用和扩展，从而实现了**可重用性**和**可扩展性**。
+
+
+
+GTK+中有一个类，它是所有其他类的父类，这个类是`GtkObject`。GTK+中最常用的按钮控件也是一个类，它继承自`GtkObject`。它与GtkObject的继承关系是：
+
+>    GtkObject －>GtkWidget －>GtkContainer －>GtkBin －>GtkButton
+
+
+
+对象（类）是由结构体模拟的，每一个子类所在的结构体都包含了父类的结构体，子类结构体的第一个成员是其父类结构体，示例代码如下：
+
+
+
+```c
+struct GtkObject 
+{
+	//...
+};
+
+struct GtkWidget 
+{
+	GtkObject object;
+	//..
+};
+
+struct GtkContainer 
+{
+	GtkWidget widget;
+	//...
+};
+
+struct GtkBin 
+{
+	GtkContainer container;
+	//...
+};
+
+```
+
+
+
+每个子类都包含了其父类的所有数据，并且父类的数据位于子类结构体的开始。对于一个`GtkButton` 类型的 `button` 控件变量（它其实是一个指向`GtkButton` 结构体的指针），通过宏 `GTKBIN(button)` 就得到了其父类（GTK+预定义的 宏GTKBIN其实是进行了强制类型转换，把一个 GtkButton 类型的指针强制转化为 GtkBin 类型的指针）
+
+
+
+test.c 测试程序 :
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+
+#define FATHER(child) (struct Father *)(child)
+
+void print1(int i)
+{
+    printf("this is father and i = %d\n", i);
+}
+
+void print2(int i)
+{
+	printf("this is child  and i = %d\n", i);
+}
+
+// 模拟父类 
+struct Father 
+{
+   // 成员变量 
+	int a;
+   // 成员函数, 指向函数的指针
+	void (*pointer1_to_function)(int);
+};
+
+// 模拟子类
+struct Child 
+{
+   // 模拟继承 , 结构体 Father
+	struct Father f;
+	int b;
+	void (* pointer2_to_function)(int);
+};
+
+void father_member_funtion(struct Father *f, char *string)
+{
+	printf("\n");
+    
+ 	f->pointer1_to_function(f->a);
+
+	printf("%s\n\n", string);
+}
+
+int main()
+{
+    // 定义指向结构体 Child 的指针
+    struct Child *p_child;
+    p_child = (struct Child *)malloc(sizeof(struct Child));
+
+    // 成员初始化
+    p_child->f.a = 10;
+    p_child->f.pointer1_to_function = print1;
+
+    p_child->b = 20;
+    p_child->pointer2_to_function = print2;
+
+    // 调用成员函数
+    p_child->pointer2_to_function(p_child->b);
+
+    // 将指针p_child强制转换为指 向Father结构体的指针
+    struct Father *p_father = FATHER(p_child);
+
+    p_father->pointer1_to_function(p_father->a);
+
+    // 实现方法, 避免了在结构体Father中保存函数指针
+    father_member_funtion(p_father, "hello");
+
+    return 0;
+}
+```
+
+
+
+GTK+定义了很多生成对象 或 对对象进行操作的函数
+
+```c
+// 创建了一个对象
+GtkWidget *button;
+
+button = gtk_button_new_with_label("label");
+```
+
+
+
+所有创建对象的函数在其名称上都有“ new ”这个词。
+
+```c
+// 创建了一个显示文本的按钮
+gtk_button_new_with_label
+```
+
+
+
+
+
+可以当作父类来对待所有子类（多态），按钮 button 的真正类型是 GtkButton，却也可以作为一个指向 GtkWidget 类型的指针。
+
+
+
+当调用一个函数对一个对象进行相关操作时，该对象的地址作为第一个参数传给函数。
+
+```c
+//显示按钮的函数
+gtk_widget_show(button);
+```
+
+
+
+button 是一个指向 GtkWidget 结构体的指针，它也表示一个按钮控件。
+
+面向对象语言中子类可以调用父类的函数，在 GTK+ 中只要使用一些宏将子类强制转换为父类即可。
+
+```c
+gtk_container_add(GTK_CONTAINER(window), button);
+```
+
+
+
+gtk_container_add 函数是类 GtkContainer 的一个函数，而 window 代表一个窗口，它是 GtkWindow 类型的指针。
+
+GtkWindow 是 GtkContainer 的子类，也就是 GtkWindow 继承自 GtkContainer，当然它们都是从 GtkObject 派生出来的，GtkObject 是它们的祖先：
+
+>   GtkObject －> GtkWidget －> GtkContainer －> GtkBin －> GtkWindow
+
+ 
+
+
+
+
+
+
+
+--------------------------
 
 
 
@@ -290,7 +553,7 @@ int main(int argc, char *argv[])
 
 
 
-
+--------------
 
 ## 带按钮的窗口
 
@@ -374,6 +637,8 @@ int main( int argc,char *argv[] )
 <img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200802215312.png"/>
 
 
+
+--------------------
 
 
 
@@ -481,7 +746,7 @@ int main( int argc,char *argv[] )
 
 
 
-
+-----------------------
 
 ## 常用布局  
 
@@ -499,6 +764,10 @@ int main( int argc,char *argv[] )
 
 *   表格布局 `GtkTable`
 *   固定布局 `GtkFixed`  
+
+
+
+------------------
 
 
 
@@ -582,6 +851,8 @@ int main(int argc, char *argv[])
 <img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200803172641.png"/>
 
 
+
+--------------------
 
 
 
@@ -723,6 +994,8 @@ clean:
 
 
 
+--------------------
+
 
 
 ### 表格布局  
@@ -840,6 +1113,10 @@ clean:
 
 
 
+------------------------
+
+
+
 ### 固定布局  
 
 
@@ -921,6 +1198,8 @@ clead:
 
 
 
+
+----------------------------------
 
 ## 行编辑  
 

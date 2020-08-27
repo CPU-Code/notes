@@ -65,7 +65,7 @@ SQLite 特性：
 
 
 
-## SQL 语句基础  
+## SQL 语句基础
 
 
 
@@ -575,13 +575,55 @@ sqlitebrowser test.db
 
 
 
+查询
+
 ```sqlite
-update cpucode set addr='' where name='';
+select * from cpucode;
 ```
 
 
 
+![image-20200810095855079](https://gitee.com/cpu_code/picture_bed/raw/master//20200810095855.png)
 
+
+
+插入
+
+```sqlite
+insert into cpucode values (3, 'test', 'changsha');
+```
+
+
+
+查询
+
+```sqlite
+select * from cpucode;
+```
+
+
+
+![image-20200810095748022](https://gitee.com/cpu_code/picture_bed/raw/master//20200810095748.png)
+
+
+
+修改
+
+```sqlite
+update cpucode set name='cpu' where addr='changsha';
+```
+
+
+
+![image-20200810111341800](https://gitee.com/cpu_code/picture_bed/raw/master//20200810111342.png)
+
+
+
+查看
+
+```sqlite
+select * from cpucode;
+```
 
 
 
@@ -589,13 +631,17 @@ update cpucode set addr='' where name='';
 
 
 
+修改 : 
+
 ```sqlite
-update cpucode set addr='';
+update cpucode set addr='shenzhen';
 ```
 
 
 
+![image-20200810111523513](https://gitee.com/cpu_code/picture_bed/raw/master//20200810111523.png)
 
+ 
 
 
 
@@ -603,7 +649,7 @@ update cpucode set addr='';
 
 
 
-### 删除表中的数据： delete 语句  
+### 删除表中的数据： delete 语句
 
 
 
@@ -621,23 +667,45 @@ delete from 表名 [匹配条件];
 
 
 
+删除
+
 ```bash
 delete from cpucode where name='cpu';
 ```
 
 
 
+查看
+
+```sqlite
+select * from cpucode;
+```
 
 
 
+![image-20200810112210025](https://gitee.com/cpu_code/picture_bed/raw/master//20200810112210.png)
 
 
 
+```sqlite
+insert into cpucode values (1, 'code', 'changsha');
+```
 
 
 
+```sqlite
+insert into cpucode values (2, 'cpu', 'shenzhen');
+```
 
 
+
+```sqlite
+insert into cpucode values (3, 'test', 'beijing');
+```
+
+
+
+![image-20200810112452676](https://gitee.com/cpu_code/picture_bed/raw/master//20200810112452.png)
 
 
 
@@ -678,34 +746,74 @@ select 列名 1[, 列名 2, ...] from 表名 [匹配条件];
 
 
 ```sqlite
-insert into cpucode values (1, '');
-```
-
-
-
-```sqlite
 select * from cpucode
 ```
 
 
 
+![image-20200810112826421](https://gitee.com/cpu_code/picture_bed/raw/master//20200810112826.png)
+
+
+
+查看
+
+```sqlite
+select * from cpucode where id=2;
+```
+
+
+
+![image-20200810113213821](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113214.png)
+
+
+
+```sqlite
+select name from cpucode;
+```
+
+
+
+![image-20200810113232766](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113232.png)
+
+
+
+```sqlite
+select name from cpucode where id = 1;
+```
+
+
+
+![image-20200810113321806](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113321.png)
 
 
 
 
 
+列名显示
+
+```sqlite
+.headers on
+```
+
+
+
+左对齐
+
+```sqlite
+.mode column
+```
 
 
 
 
 
+```sqlite
+select * from cpucode where id = 3;
+```
 
 
 
-
-
-
-
+![image-20200810113454155](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113454.png)
 
 
 
@@ -718,6 +826,17 @@ select * from cpucode
 
 
 数据库提供了丰富的操作符配合 where 子句实现了多种多样的匹配方法。  
+
+
+
+*   in 操作符
+*    and 操作符
+*   or 操作符
+*   between and 操作符
+*   like 操作符
+*   not 操作符  
+
+
 
 
 
@@ -745,25 +864,360 @@ select 列名 1[,列名 2,...] from 表名 where 列名 in (列值 1, 列值 2, 
 
 
 
+```sqlite
+select * from cpucode where id in (1, 2);
+```
+
+
+
+![image-20200810113901131](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113901.png)
+
+
+
+```sqlite
+select name from cpucode where id in(2, 3);
+```
+
+
+
+![image-20200810113915934](https://gitee.com/cpu_code/picture_bed/raw/master//20200810113916.png)
+
 
 
 `and` 可在 where 子语句中把两个或多个条件结合起来（多个条件之间是与的关系） 。  
 
 
 
+匹配条件语法：  
+
+
+
+```sqlite
+where 列 1 = 值 1 [and 列 2 = 值 2 and ...]
+```
+
+
+
+```sqlite
+select * from 表名 where 列 1 = 值 1 [and 列 2 = 值 2 and ...];
+```
+
+
+
+```sqlite
+select 列名 1[, 列名 2, ...] from 表名 where 列 1 = 值 1 [and 列 2 = 值 2 and ...];
+```
 
 
 
 
 
+```sqlite
+select * from cpucode where	 id =1 and addr = 'changsha';
+```
+
+
+
+![image-20200810114705475](https://gitee.com/cpu_code/picture_bed/raw/master//20200810114705.png)
 
 
 
 
 
+```sqlite
+select addr from cpucode where id = 2 and name = 'cpu';
+```
 
 
 
+![image-20200810114823444](https://gitee.com/cpu_code/picture_bed/raw/master//20200810114823.png)
+
+
+
+
+
+`or` 可在 where 子语句中把两个或多个条件结合起来（多个条件之间是或的关系） 。  
+
+
+
+匹配条件语法：  
+
+
+
+```sqlite
+where 列 1 = 值 1 [or 列 2 = 值 2 or ...]
+```
+
+
+
+```sqlite
+select * from 表名 where 列 1 = 值 1 [or 列 2 = 值 2 or ...];
+```
+
+
+
+```sqlite
+select 列名 1[,列名 2,...] from 表名 列 1 = 值 1 [or 列 2 = 值 2 or ...];
+```
+
+
+
+```sqlite
+select * from cpucode where id = 1 or addr = 'beijing';
+```
+
+
+
+![image-20200810115842372](https://gitee.com/cpu_code/picture_bed/raw/master//20200810115842.png)
+
+
+
+```sqlite
+select name from cpucode where id = 3 or addr = 'shenzhen';
+```
+
+
+
+![image-20200810115958013](https://gitee.com/cpu_code/picture_bed/raw/master//20200810115958.png)
+
+
+
+
+
+`between A and B` 会选取介于 A、 B 之间的数据范围。 这些值可以是数值、 文本或者日期。  
+
+
+
+匹配字符串时会以 ascii 顺序匹配。  
+
+
+
+不同的数据库对 between A and B 操作符的处理方式是有差异的。  
+
+*   有些数据库包含 A 不包含 B。  
+*   有些包含 B 不包含 A  
+*   有些既不包括 A 也不包括 B。  
+*   有些既包括 A 又包括 B  
+
+
+
+匹配条件语法：  
+
+
+
+```sqlite
+where 列名 between A and B
+```
+
+
+
+```sqlite
+select * from 表名 where 列名 between A and B;
+```
+
+
+
+```sqlite
+select 列名 1[,列名 2,...] from 表名 where 列名 between A and B;
+```
+
+
+
+```sqlite
+select * from cpucode where id between 1 and 3;
+```
+
+
+
+![image-20200810120415025](https://gitee.com/cpu_code/picture_bed/raw/master//20200810120415.png)
+
+
+
+```sqlite
+select * from cpucode where addr between 'a' and 'f';
+```
+
+
+
+![image-20200810120425867](https://gitee.com/cpu_code/picture_bed/raw/master//20200810120426.png)
+
+
+
+
+
+`like` 用于模糊查找  
+
+
+
+
+
+匹配条件语法：  
+
+
+
+若列值为数字  , 相当于列名＝列值  
+
+
+
+若列值为字符串 ,  可以用通配符“ % ” 代表缺少的字符（一个或多个） 。  
+
+```sqlite
+where 列名 like 列值
+```
+
+
+
+```sqlite
+select * from cpucode where id like 2;
+```
+
+
+
+![image-20200810120638870](https://gitee.com/cpu_code/picture_bed/raw/master//20200810120639.png)
+
+
+
+```sqlite
+select * from cpucode where name like '%u%';
+```
+
+
+
+![image-20200810120653093](https://gitee.com/cpu_code/picture_bed/raw/master//20200810120653.png)
+
+
+
+`not` 可取出原结果集的补集  
+
+
+
+匹配条件语法：  
+
+```sqlite
+where 列名 not in 列值等
+```
+
+
+
+```sqlite
+where 列名 not in (列值 1, 列值 2, ...)
+```
+
+
+
+```sqlite
+where not (列 1 = 值 1 [and 列 2 = 值 2 and ...])
+```
+
+
+
+```sqlite
+where not (列 1 = 值 1 [or 列 2 = 值 2 or ...])
+```
+
+
+
+```sqlite
+ where 列名 not between A and B
+```
+
+
+
+```sqlite
+where 列名 not like 列值
+```
+
+
+
+
+
+```sqlite
+select * from cpucode where id not in (1);
+```
+
+
+
+![image-20200810123016883](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123017.png)
+
+
+
+```sqlite
+select * from cpucode where addr not like '%zhen';
+```
+
+
+
+![image-20200810123116343](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123116.png)
+
+
+
+order by 语句  
+
+
+
+根据指定的列对结果集进行排序。
+
+默认按照升序对结果集进行排序， 可使用 `desc` 关键字按照降序对结果集进行排序。  
+
+
+
+升序  
+
+```sqlite
+select * from 表名 order by 列名;
+```
+
+
+
+降序  
+
+```sqlite
+select * from 表名 order by 列名 desc;
+```
+
+
+
+
+
+```sqlite
+select * from cpucode order by name;
+```
+
+
+
+![image-20200810123322828](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123323.png)
+
+
+
+```sqlite
+select * from cpucode order by id;
+```
+
+
+
+![image-20200810123351083](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123351.png)
+
+
+
+```sqlite
+select * from cpucode order by addr;
+```
+
+
+
+
+
+![image-20200810123412496](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123412.png)
+
+
+
+```sqlite
+select * from cpucode order by id desc;
+```
+
+
+
+![image-20200810123337554](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123337.png)
 
 
 
@@ -774,6 +1228,42 @@ select 列名 1[,列名 2,...] from 表名 where 列名 in (列值 1, 列值 2, 
 
 
 ### 事务  
+
+
+
+事务（Transaction） 可以使用 `BEGIN TRANSACTION` 命令或简单的 `BEGIN` 命令来启动。 此类事务通常会持续执行下去， 直到遇到下一个 `COMMIT` 或 `ROLLBACK` 命令。 不过在数据库关闭或发生错误时， 事务处理也会回滚。 以下是启动一个事务的简单语法：  
+
+
+
+在 SQLite 中， 默认情况下， 每条 SQL 语句自成事务。  
+
+
+
+`begin`： 开始一个事务， 之后的所有操作都可以取消
+
+`commit`： 使 begin 后的所有命令得到确认。
+
+`rollback`： 取消 begin 后的所有操作。  
+
+
+
+```sqlite
+begin;
+
+delete from cpucode;
+
+rollback;
+
+select * from cpucode;
+```
+
+
+
+![image-20200810123809245](https://gitee.com/cpu_code/picture_bed/raw/master//20200810123809.png)
+
+
+
+
 
 
 

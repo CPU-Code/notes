@@ -621,7 +621,7 @@ who mom likes
 
 
 
-#### su，su- 与 sudo
+##### su，su- 与 sudo
 
 
 
@@ -707,35 +707,73 @@ pwd
 
 
 
-### 用户组
+#### 用户组
 
 
 
-在 `Linux` 里面每个用户都有一个归属（**用户组**），用户组简单地理解就是一组用户的集合，它们共享一些资源和权限，同时拥有私有资源，就跟家的形式差不多，你的兄弟姐妹（不同的用户）属于同一个家（用户组），你们可以共同拥有这个家（共享资源），爸妈对待你们都一样（共享权限），你偶尔写写日记，其他人未经允许不能查看（私有资源和权限）。当然一个用户是可以属于多个用户组的，正如你既属于家庭，又属于学校或公司。
+在 `Linux` 里面每个用户都有一个归属（**用户组**），用户组简单地理解就是一组用户的集合，它们共享一些资源和权限，同时拥有私有资源 .
 
-在 Linux 里面如何知道自己属于哪些用户组呢？
+比如 家，你的姐姐弟弟（不同的用户）属于同一个家（用户组），你们可以共同拥有这个家（共享资源），爸妈对待你们都一样（共享权限），你的私密的东西 ，别人未经允许不能查看（私有资源和权限）。
+
+一个用户是可以属于多个用户组的，如 : 你既属于家庭，又属于学校 或 公司。
 
 
 
-####  groups 命令
+查看 用户的用户组
+
+
+
+#####  groups 命令
 
 ```bash
-groups shiyanlou
+groups test
 ```
 
 
 
-其中冒号之前表示用户，后面表示该用户所属的用户组。这里可以看到 shiyanlou 用户属于 shiyanlou 用户组，每次新建用户如果不指定用户组的话，默认会自动创建一个与用户名相同的用户组（差不多就相当于家长的意思）。
-
-默认情况下在 sudo 用户组里的可以使用 sudo 命令获得 root 权限。shiyanlou 用户也可以使用 sudo 命令，为什么这里没有显示在 sudo 用户组里呢？可以查看下 `/etc/sudoers.d/shiyanlou` 文件，我们在 `/etc/sudoers.d` 目录下创建了这个文件，从而给 shiyanlou 用户赋予了 sudo 权限：
+![groups](https://gitee.com/cpu_code/picture_bed/raw/master//20200826150136.png)
 
 
 
-#### 查看 `/etc/group` 文件
+其中冒号之前表示用户，后面表示该用户所属的用户组。
+
+这里可以看到 test用户属于 test用户组，每次新建用户如果不指定用户组的话，默认会自动创建一个与用户名相同的用户组（差不多就相当于家长的意思）。
+
+默认情况下在 sudo 用户组里的可以使用 sudo 命令获得 root 权限。
+
+test 用户也可以使用 sudo 命令，为什么这里没有显示在 sudo 用户组里呢？
+
+可以查看下 `/etc/sudoers.d/test` 文件 : 
+
+
+
+![etc/sudoers.d](https://gitee.com/cpu_code/picture_bed/raw/master//20200826150724.png)
+
+
+
+![etc/sudoers.d](https://gitee.com/cpu_code/picture_bed/raw/master//20200826150707.png)
+
+
+
+我们在 `/etc/sudoers.d` 目录下创建了这个文件，
+
+从而给 test 用户赋予了 sudo 权限：
+
+
+
+
+
+##### 查看 `/etc/group` 文件
 
 ```bash
 cat /etc/group | sort
 ```
+
+
+
+![image-20200826150625793](https://gitee.com/cpu_code/picture_bed/raw/master//20200826150626.png)
+
+
 
 这里 `cat` 命令用于读取指定文件的内容并打印到终端输出，后面会详细讲它的使用。 `| sort` 表示将读取的文本进行一个字典排序再输出，然后你将看到如下一堆输出，你可以在最下面看到 shiyanlou 的用户组信息：
 
@@ -744,8 +782,20 @@ cat /etc/group | sort
 没找到？没关系，你可以使用 `grep` 命令过滤掉一些你不想看到的结果：
 
 ```bash
-cat /etc/group | grep -E "shiyanlou"
+cat /etc/group | grep -E "test"
 ```
+
+
+
+```bash
+cat /etc/group | grep -E "cpucode"
+```
+
+
+
+![image-20200826150524508](https://gitee.com/cpu_code/picture_bed/raw/master//20200826150524.png)
+
+
 
 
 
@@ -753,57 +803,344 @@ cat /etc/group | grep -E "shiyanlou"
 
 /etc/group 的内容包括用户组（Group）、用户组口令、GID（组 ID） 及该用户组所包含的用户（User），每个用户组一条记录。格式如下：
 
->   group_name:password:GID:user_list
+>   group_name : password : GID : user_list
 
-你看到上面的 password 字段为一个 `x`，并不是说密码就是它，只是表示密码不可见而已。
+ password 字段为一个 `x`，表示密码不可见
 
-这里需要注意，如果用户的 GID 等于用户组的 GID，那么最后一个字段 `user_list` 就是空的，这里的 GID 是指用户默认所在组的 GID，可以使用 `id` 命令查看。比如 shiyanlou 用户，在 `/etc/group` 中的 shiyanlou 用户组后面是不会显示的。lilei 用户，在 `/etc/group` 中的 lilei 用户组后面是不会显示的。
+这里需要注意，如果用户的 GID  == 用户组的 GID，那么最后一个字段 `user_list` 就是空的，
 
-#### 将其它用户加入 sudo 用户组
+这里的 GID 是指用户默认所在组的 GID，可以使用 `id` 命令查看。
+
+
+
+![id](https://gitee.com/cpu_code/picture_bed/raw/master//20200826152458.png)
+
+
+
+##### 将其它用户加入 sudo 用户组
 
 默认情况下新创建的用户是不具有 root 权限的，也不在 sudo 用户组，可以让其加入 sudo 用户组从而获取 root 权限：
 
 ```bash
-# 注意 Linux 上输入密码是不会显示的
-su -l lilei
+su -l test
+```
+
+
+
+```bash
 sudo ls
 ```
 
 
 
-会提示 lilei 不在 sudoers 文件中，意思就是 lilei 不在 sudo 用户组中，至于 sudoers 文件（/etc/sudoers）你现在最好不要动它，操作不慎会导致比较麻烦的后果。
+![image-20200826152836633](https://gitee.com/cpu_code/picture_bed/raw/master//20200826152836.png)
+
+
+
+会提示 test 不在 sudoers 文件中，意思就是 test 不在 sudo 用户组中
+
+
 
 使用 `usermod` 命令可以为用户添加用户组，同样使用该命令你必需有 root 权限，你可以直接使用 root 用户为其它用户添加用户组，或者用其它已经在 sudo 用户组的用户使用 sudo 命令获取权限来执行该命令。
 
-这里我用 shiyanlou 用户执行 sudo 命令将 lilei 添加到 sudo 用户组，让它也可以使用 sudo 命令获得 root 权限，首先我们切换回 shiyanlou 用户。
+
+
+这里我用 cpucode 用户执行 sudo 命令将 test 添加到 sudo 用户组，让它也可以使用 sudo 命令获得 root 权限
+
+
+
+切换回 cpucode 用户 :
 
 ```bash
-su - shiyanlou
-```
-
-此处需要输入 shiyanlou 用户密码，shiyanlou 的密码可以在右侧工具栏的环境信息里看到。
-
-
-
-当然也可以通过 `sudo passwd shiyanlou` 进行设置，或者你直接关闭当前终端打开一个新的终端。
-
-```bash
-groups lilei
-
-sudo usermod -G sudo lilei
-
-groups lilei
+su - cpucode
 ```
 
 
 
-然后你再切换回 lilei 用户，现在就可以使用 sudo 获取 root 权限了。
+![image-20200826153604518](https://gitee.com/cpu_code/picture_bed/raw/master//20200826153604.png)
+
+
+
+或
+
+```bash
+exit
+```
+
+
+
+![image-20200826153640481](https://gitee.com/cpu_code/picture_bed/raw/master//20200826153640.png)
+
+
+
+或 直接关闭当前终端打开一个新的终端
+
+
+
+```bash
+groups test
+```
+
+
+
+```bash
+sudo usermod -G sudo test
+```
+
+
+
+```bash
+groups test
+```
+
+
+
+![image-20200826153314463](https://gitee.com/cpu_code/picture_bed/raw/master//20200826153314.png)
+
+
+
+然后你再切换回 test 用户，现在就可以使用 sudo 获取 root 权限了
+
+
+
+```bash
+su - test
+```
+
+
+
+```bash
+sudo ls /
+```
 
 
 
 
+
+![image-20200826154039642](https://gitee.com/cpu_code/picture_bed/raw/master//20200826154039.png)
+
+
+
+
+
+#### 删除用户和用户组
+
+
+
+```bash
+sudo deluser test --remove-home
+```
+
+
+
+使用 `--remove-home` 参数在删除用户时候会一并将该用户的工作目录一并删除。
+
+如果不使用那么系统会自动在 /home 目录为该用户保留工作目录
+
+
+
+
+
+```bash
+cat /etc/group | grep "test"
+```
+
+
+
+```bash
+ls /home
+```
+
+
+
+这个地方有一个错误, 我搜索一下, 并不知道这个原因, 如果你知道, 希望你能告诉我, 谢谢 !
+
+![image-20200826155822302](https://gitee.com/cpu_code/picture_bed/raw/master//20200826155822.png)
+
+
+
+找到原因 : 
+
+
+
+删除这个用户
+
+```bash
+sudo userdel -r test
+```
+
+
+
+杀死这个进程
+
+```bash
+sudo kill -9 17490
+```
+
+
+
+![image-20200826160747068](https://gitee.com/cpu_code/picture_bed/raw/master//20200826160747.png)
+
+
+
+![image-20200826160709455](https://gitee.com/cpu_code/picture_bed/raw/master//20200826160709.png)
 
 
 
 ### linux文件权限
 
+
+
+文件权限就是文件的访问控制权限，即哪些用户和组群可以访问文件以及可以执行什么样的操作。
+
+`Unix/Linux` 系统是一个典型的多用户系统，不同的用户处于不同的地位，对文件和目录有不同的访问权限。
+
+\为了保护系统的安全性，Unix/Linux 系统除了对用户权限作了严格的界定外，还在用户身份认证、访问控制、传输安全、文件读写权限等方面作了周密的控制。
+
+在 Unix/Linux 中的每一个文件或目录都包含有访问权限，这些访问权限决定了谁能访问和如何访问这些文件和目录。
+
+
+
+#### 查看文件权限
+
+
+
+ `ls` 命令，用它来列出并显示当前目录下的文件
+
+```bash
+ls -l
+```
+
+
+
+![image-20200826161048127](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161048.png)
+
+
+
+![image-20200826162424821](https://gitee.com/cpu_code/picture_bed/raw/master//20200826162425.png)
+
+
+
+文件类型和权限 : 
+
+
+
+![img](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161132.png)
+
+
+
+
+
+-   文件类型
+
+关于文件类型，就必需时刻牢记 **Linux 里面一切皆文件**，就是因为这一点才有了设备文件（ `/dev` 目录下有各种设备文件，大都跟具体的硬件设备相关）这一说。 
+
+`socket`：网络套接字
+
+`pipe ` : 管道
+
+`软链接文件`：链接文件是分为两种的，另一种是“ 硬链接 ”（软链接 等同于 Windows 上的快捷方式）。
+
+
+
+-   文件权限
+
+读权限，表示你可以使用 `cat <file name>` 之类的命令来读取某个文件的内容；
+
+写权限，表示你可以编辑和修改某个文件的内容； 
+
+执行权限，通常指可以运行的二进制程序文件或者脚本文件，如同 Windows 上的 `exe` 后缀的文件，不过 Linux 上不是通过文件后缀名来区分文件的类型。
+
+你需要注意的一点是，**一个目录同时具有读权限和执行权限才可以打开并查看内部文件，而一个目录要有写权限才允许在其中创建其它文件**，这是因为目录文件实际保存着该目录里面的文件的列表等信息。
+
+所有者权限，这一点相信你应该明白了，至于所属用户组权限，是指你所在的用户组中的所有其它用户对于该文件的权限，
+
+比如，你有一个 iPad，那么这个用户组权限就决定了你的兄弟姐妹有没有权限使用它破坏它和占有它。
+
+
+
+-   链接数
+
+>   链接到该文件所在的 inode 结点的文件名数目（关于这个概念涉及到 Linux 文件系统的相关概念知识，不在本课程的讨论范围，感兴趣的用户可以查看 [硬链接和软链接的联系与区别](https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html#major2)）。
+
+-   文件大小
+
+>   以 inode 结点大小为单位来表示的文件大小，你可以给 ls 加上 `-lh` 参数来更直观的查看文件的大小。
+
+明白了文件权限的一些概念，我们顺带补充一下关于 `ls` 命令的一些其它常用的用法：
+
+
+
+-   显示除了 `.`（当前目录）和 `..`（上一级目录）之外的所有文件，包括隐藏文件（Linux 下以 `.` 开头的文件为隐藏文件）。
+
+```bash
+$ ls -a
+```
+
+
+
+![image-20200826161337430](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161337.png)
+
+
+
+当然，你可以同时使用 `-a` 和 `-l` 参数：
+
+```bash
+ls -al
+```
+
+
+
+![image-20200826161413484](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161413.png)
+
+
+
+查看某一个目录的完整属性，而不是显示目录里面的文件属性：
+
+```bash
+ls -dl <目录名>
+```
+
+
+
+
+
+显示所有文件大小，并以普通人类能看懂的方式呈现：
+
+```bash
+ls -asSh
+```
+
+
+
+![image-20200826161435442](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161435.png)
+
+
+
+其中小 s 为显示文件大小，大 S 为按文件大小排序，若需要知道如何按其它方式排序，可以使用 `man ls` 命令查询。
+
+
+
+![image-20200826161523882](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161524.png)
+
+![image-20200826161536552](https://gitee.com/cpu_code/picture_bed/raw/master//20200826161536.png)
+
+
+
+
+
+#### 变更文件所有者
+
+
+
+
+
+
+
+
+
+#### 修改文件权限
+
+
+
+\

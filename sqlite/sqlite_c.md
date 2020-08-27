@@ -120,7 +120,7 @@ int main(int argc,char **argv)
     int result = 0;
     char *errmsg;
     
-    result = sqlite3_open("stu_info.db",&db);
+    result = sqlite3_open("test.db",&db);
     
     if(result != SQLITE_OK)
     {
@@ -128,9 +128,9 @@ int main(int argc,char **argv)
         return -1;
     }
     
-	sql = "insert into stu_info values (2012,'test','beijing',100);";
+	sql = "insert into cpucode values (4,'test','beijing');";
     
-    sqlite3_exec(db,sql,NULL,NULL,&errmsg);
+    sqlite3_exec(db,sql ,NULL, NULL, &errmsg);
     if(errmsg)
     {
         printf("errmsg = %s\n", errmsg);
@@ -138,7 +138,6 @@ int main(int argc,char **argv)
     
     sqlite3_close(db);
     return 0;
-    
 }
 ```
 
@@ -149,7 +148,20 @@ Makefile
 
 
 ```makefile
+OBJ += sqlite3_exec.o
+OBJ += sqlite3.o
+ 
+FLAGS = -Wall
+CC = gcc
 
+example:$(OBJ)  
+	$(CC) $(OBJ) -o $@ $(FLAGS) -lpthread -ldl
+%.o:%.c
+	$(CC) -c $^ -o $@ $(FLAGS)
+
+.PHONY:clean
+clean:
+	rm example *.o -rfv	
 ```
 
 
