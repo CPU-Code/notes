@@ -1,16 +1,14 @@
 <!--
  * @由于个人水平有限, 难免有些错误, 还请指点:  
- * @代码已经全部更新到了github 和gitee 中, 并持续更新:  
  * @Author: cpu_code
  * @Date: 2020-07-11 14:40:09
- * @LastEditTime: 2020-08-27 13:23:55
+ * @LastEditTime: 2020-09-23 18:47:05
  * @FilePath: \notes\SUMMARY.md
  * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
  * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
  * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
  * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
---> 
-
+-->
 
 # Table of contents
 
@@ -73,6 +71,8 @@
 * [Linux运行时格式](ubuntu/Format_problem.md)
 * [配置samba进行win和Linux文件访问](ubuntu/use_samba.md)
 
+
+
 ## shell <a id="shell"></a>
 
 * [自动打包](shell/Auto_packaging.md)
@@ -82,9 +82,13 @@
 * [控制](shell/control.md)
 
 
+
+
 ## C <a id="C"></a>
 
 * [第一条Linux_c输出](C/print_cpucode.md)
+
+
 
 
 ## GTK <a id="GTK"></a>
@@ -101,6 +105,23 @@
 * [SQL基础](sqlite/sql_basis.md)
 * [SQLite的C编程](sqlite/sqlite_c.md)
 * [SQL语句进阶](sqlite/sql_improve.md)
+
+
+
+## web <a id="web"></a>
+
+* [CGI通用网关接口](web/CGI.md)
+
+
+
+## 物联网 <a id="IOT"></a>
+
+* [物联网概述](IOT/iot_overview.md)
+* [射频识别技术RFID](IOT/RFID.md)
+
+## MySQL <a id="MySQL"></a>
+
+* [mysql配置](MySQL/MySQL_make.md)
 
 
 ## 其他 <a id="other"></a>
