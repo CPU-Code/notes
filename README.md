@@ -36,6 +36,8 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
 * [Linux驱动开发](linux_driver/linux_driver.md)
 
+----------------
+
 ## 安卓底层开发 <a id="android_bottom"></a>
 
 * [硬件抽象层](android_bottom/hardware_abstraction_layer/)
@@ -51,22 +53,32 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [binder](android_bottom/binder/)
   * [binder](android_bottom/binder/binder.md)
 
+---------------
+
 ## 操作系统 <a id="operating_system"></a>
 
 * [操作系统的运行机制](operating_system/operat_mechanism.md)
 * [进程](operating_system/process.md)
 
+------------------
+
 ## linux一句话 <a id="linux_in_a_word"></a>
 
 * [与网络无关的Linux](linux_in_a_word/network_indepen.md)
+
+-------------------
 
 ## Linux内核0.12 <a id="linux_kernel_0_12"></a>
 
 * [微型计算机组成结构](linux_kernel_0_12/computer_composition.md)
 
+------------------
+
 ## QT <a id="QT"></a>
 
 * [第一个QT](qt/first_qt.md)
+
+--------------------
 
 ## ubuntu <a id="ubuntu"></a>
 
@@ -76,6 +88,8 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [使用ubuntu](ubuntu/use_ubuntu.md)
 * [Linux运行时格式](ubuntu/format_problem.md)
 
+------------------
+
 ## shell <a id="shell"></a>
 
 * [自动打包](shell/auto_packaging.md)
@@ -84,10 +98,14 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [条件测试](shell/condition.md)
 * [控制](shell/control.md)
 
+----------------
+
 ## C <a id="C"></a>
 
 * [第一条Linux\_c输出](c/print_cpucode.md)
 * [C语言概述](https://github.com/CPU-Code/notes/tree/d2b8ca415c6a46d6ac5b4f5b1962c15f8bc0d494/C/C_Overview.md)
+
+---------------
 
 ## GTK <a id="GTK"></a>
 
@@ -96,12 +114,18 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 * [事件](gtk/event_handling.md)
 * [Glade使用](gtk/glade.md)
 
+
+-------------
+
 ## sqlite <a id="sqlite"></a>
 
 * [数据库概述](https://github.com/CPU-Code/notes/tree/d2b8ca415c6a46d6ac5b4f5b1962c15f8bc0d494/sqlitesqlite/database_overview.md)
 * [SQL基础](sqlite/sql_basis.md)
 * [SQLite的C编程](sqlite/sqlite_c.md)
 * [SQL语句进阶](sqlite/sql_improve.md)
+
+
+-----------
 
 ## 其他 <a id="other"></a>
 
