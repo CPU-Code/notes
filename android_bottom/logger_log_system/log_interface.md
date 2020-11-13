@@ -1,32 +1,24 @@
-
-
------------------------
+# Logger写接口
 
 ## C/C++日志写入接口
 
-
-
 `Android`系统就提供了三组常用的C/C++宏来封装日志写入接口， 这些宏有的在程序的**非调试**版本中只是一个空定义， 因此， 可以避免在程序的发布版本中输出日志。
 
-LOGV、 LOGD、 LOGI、 LOGW和LOGE， 它们用来写入类型为`main`的日志记录； 
+LOGV、 LOGD、 LOGI、 LOGW和LOGE， 它们用来写入类型为`main`的日志记录；
 
-SLOGV、 SLOGD、 SLOGI、 SLOGW和SLOGE， 它们用来写入类型为`system`的日志记录； 
+SLOGV、 SLOGD、 SLOGI、 SLOGW和SLOGE， 它们用来写入类型为`system`的日志记录；
 
-LOG_EVENT_INT、 LOG_EVENT_LONG和LOG_EVENT_STRING， 它们用来写入类型为`events`的日志记录  
+LOG\_EVENT\_INT、 LOG\_EVENT\_LONG和LOG\_EVENT\_STRING， 它们用来写入类型为`events`的日志记录
 
-
-
-目录 : 
+目录 :
 
 ```c
 ~/Android/system/core/include
     cutils
-    	log.h
+        log.h
 ```
 
-
-
-区分程序是调试版本还是发布版本  : 
+区分程序是调试版本还是发布版本 :
 
 ```c
 // system\core\include\cutils\log.h
@@ -41,8 +33,6 @@ LOG_EVENT_INT、 LOG_EVENT_LONG和LOG_EVENT_STRING， 它们用来写入类型�
 #endif
 ```
 
-
-
 ```c
 // system\core\include\cutils\log.h
 
@@ -53,13 +43,7 @@ LOG_EVENT_INT、 LOG_EVENT_LONG和LOG_EVENT_STRING， 它们用来写入类型�
 #endif
 ```
 
-
-
-
-
-LOGV 、 LOGD 、 LOGI 、 LOGW 和LOGE  
-
-
+LOGV 、 LOGD 、 LOGI 、 LOGW 和LOGE
 
 ```c
 // system\core\include\cutils\log.h
@@ -98,11 +82,7 @@ LOGV 、 LOGD 、 LOGI 、 LOGW 和LOGE
 #endif
 ```
 
-
-
-使用宏LOG来实现日志写入功能  :
-
-
+使用宏LOG来实现日志写入功能 :
 
 ```c
 // system\core\include\cutils\log.h
@@ -128,9 +108,7 @@ LOGV 、 LOGD 、 LOGI 、 LOGW 和LOGE
     __android_log_print(prio, tag, fmt)
 ```
 
-
-
-android_LogPriority的枚举值  : 
+android\_LogPriority的枚举值 :
 
 ```c
 // system\core\include\android\log.h
@@ -148,11 +126,7 @@ typedef enum android_LogPriority {
 } android_LogPriority;
 ```
 
-
-
-
-
-SLOGV 、 SLOGD 、 SLOGI 、 SLOGW 和SLOGE  :
+SLOGV 、 SLOGD 、 SLOGI 、 SLOGW 和SLOGE :
 
 ```c
 // system\core\include\cutils\log.h
@@ -186,11 +160,7 @@ SLOGV 、 SLOGD 、 SLOGI 、 SLOGW 和SLOGE  :
 #endif
 ```
 
-
-
-LOG_EVENT_INT 、 LOG_EVENT_LONG 和LOG_EVENT_STRING  :
-
-
+LOG\_EVENT\_INT 、 LOG\_EVENT\_LONG 和LOG\_EVENT\_STRING :
 
 ```c
 // system\core\include\cutils\log.h
@@ -232,25 +202,15 @@ typedef enum
     __android_log_print(prio, tag, fmt)
 ```
 
-
-
-
-
----------------
-
 ## Java日志写入接口
 
-Android系统在应用程序框架层中定义了三个Java日志写入接口， 
+Android系统在应用程序框架层中定义了三个Java日志写入接口，
 
-android.util.Log`、 `android.util.Slog`和`android.util.EventLog， 写入的日志记录类型分别为main、 system和events。 
+android.util.Log`、`android.util.Slog`和`android.util.EventLog， 写入的日志记录类型分别为main、 system和events。
 
 这三个Java日志写入接口是通过`JNI`方法来调用日志库liblog提供的函数来实现日志记录的写入功能的。
 
-
-
-android.util.Log  :
-
-
+android.util.Log :
 
 ```java
 // frameworks\base\core\java\android\util\Log.java
@@ -288,9 +248,9 @@ public final class Log
      * Priority constant for the println method.
      */
     public static final int ASSERT = 7;
-    
-	//...
-    
+
+    //...
+
     public static int v(String tag, String msg) 
     {
         // 实现日志记录写入功能
@@ -336,8 +296,8 @@ public final class Log
     public static int e(String tag, String msg, Throwable tr) {
         return println_native(LOG_ID_MAIN, ERROR, tag, msg + '\n' + getStackTraceString(tr));
     }
-    
-	//...
+
+    //...
 
     /** @hide */ public static final int LOG_ID_MAIN = 0;
     /** @hide */ public static final int LOG_ID_RADIO = 1;
@@ -350,11 +310,7 @@ public final class Log
 }
 ```
 
-
-
-
-
-```c++
+```cpp
 // frameworks\base\core\jni\android_util_Log.cpp
 
 static jint android_util_Log_println_native(JNIEnv* env, jobject clazz,
@@ -404,11 +360,7 @@ static jint android_util_Log_println_native(JNIEnv* env, jobject clazz,
 }
 ```
 
-
-
-android.util.Slog  :
-
-
+android.util.Slog :
 
 ```java
 // frameworks\base\core\java\android\util\Slog.java
@@ -421,13 +373,13 @@ android.util.Slog  :
 public final class Slog 
 {
     // 写入的日志记录的类型为system
-    
+
     private Slog() {
     }
 
     // 成员函数有v、 d、 i、w和e
     // 优先级分别为VERBOSE、 DEBUG、 INFO、 WARN和ERROR
-    
+
     public static int v(String tag, String msg) {
         return Log.println_native(Log.LOG_ID_SYSTEM, Log.VERBOSE, tag, msg);
     }
@@ -483,11 +435,7 @@ public final class Slog
 }
 ```
 
-
-
-android.util.EventLog  :
-
-
+android.util.EventLog :
 
 ```java
 // frameworks\base\core\java\android\util\EventLog.java
@@ -509,16 +457,14 @@ public class EventLog
 
     // 列表
     public static native int writeEvent(int tag, Object... list);
-    
+
     //...
 }
 ```
 
+写入**整数**和**长整数**类型日志记录的`JNI`方法`writeEvent`的实现 :
 
-
-写入**整数**和**长整数**类型日志记录的`JNI`方法`writeEvent`的实现  : 
-
-```c++
+```cpp
 //frameworks\base\core\jni\android_util_EventLog.cpp
 
 static jint android_util_EventLog_writeEvent_Integer(JNIEnv* env, jobject clazz,
@@ -536,26 +482,19 @@ static jint android_util_EventLog_writeEvent_Long(JNIEnv* env, jobject clazz,
     // EVENT_TYPE_LONG :  要写入的日志记录的内容为一个长整数
     return android_btWriteLog(tag, EVENT_TYPE_LONG, &value, sizeof(value));
 }
-
 ```
 
-
-
-整数的日志记录的内存布局  : 
+整数的日志记录的内存布局 :
 
 ![image-20200720151030266](https://gitee.com/cpu_code/picture_bed/raw/master//20200720151030.png)
 
-
-
-长整数的日志记录的内存布局  : 
+长整数的日志记录的内存布局 :
 
 ![image-20200720151039785](https://gitee.com/cpu_code/picture_bed/raw/master//20200720151039.png)
 
+宏android\_btWriteLog的定义 :
 
-
-宏android_btWriteLog的定义  :
-
-```c++
+```cpp
 // system\core\include\cutils\log.h
 
 // 往Logger日志驱动程序中写入日志记录
@@ -563,13 +502,9 @@ static jint android_util_EventLog_writeEvent_Long(JNIEnv* env, jobject clazz,
     __android_log_btwrite(tag, type, payload, len)
 ```
 
+写入字符串类型日志记录的JNI方法writeEvent的实现 :
 
-
-写入字符串类型日志记录的JNI方法writeEvent的实现  :
-
-
-
-```c++
+```cpp
 static jint android_util_EventLog_writeEvent_String(JNIEnv* env, jobject clazz,
                                    jint tag, jstring value) 
 {
@@ -601,29 +536,21 @@ static jint android_util_EventLog_writeEvent_String(JNIEnv* env, jobject clazz,
 }
 ```
 
-
-
-内容为字符串的日志记录的内存布局  :
+内容为字符串的日志记录的内存布局 :
 
 ![image-20200720151051111](https://gitee.com/cpu_code/picture_bed/raw/master//20200720151051.png)
 
+第一个字段记录日志记录内容的类型为字符串，
 
+第二个字段描述该字符串的长度，
 
-第一个字段记录日志记录内容的类型为字符串， 
+第三个字段保存的是字符串内容，
 
-第二个字段描述该字符串的长度， 
+第四个字段使用特殊字符‘\n'来结束该日志记录
 
-第三个字段保存的是字符串内容， 
+写入列表类型日志记录的JNI方法`writeEvent`的实现 :
 
-第四个字段使用特殊字符‘\n'来结束该日志记录  
-
-
-
-写入列表类型日志记录的JNI方法`writeEvent`的实现  :
-
-
-
-```c++
+```cpp
 static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
                                   jint tag, jobjectArray value) 
 {
@@ -642,7 +569,7 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
     {
         // 依次取出列表中的元素， 且根据它们的值类型来组织缓冲区buf的内存布局
         jobject item = env->GetObjectArrayElement(value, copied);
-        
+
         if (item == NULL || env->IsInstanceOf(item, gStringClass)) 
         {
             // 值类型为字符串
@@ -659,7 +586,7 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
             memcpy(&buf[pos], &len, sizeof(len));
             // 字符串的内容
             memcpy(&buf[pos + sizeof(len)], str, len);
-            
+
             pos += sizeof(len) + len;
             if (item != NULL) 
                 env->ReleaseStringUTFChars((jstring) item, str);
@@ -667,11 +594,11 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
         else if (env->IsInstanceOf(item, gIntegerClass)) 
         {
             // 值类型为整数
-            
+
             jint intVal = env->GetIntField(item, gIntegerValueID);
             if (pos + 1 + sizeof(intVal) > max) 
                 break;
-                
+
             // 第一个字节设置为一个EVENT_TYPE_INT值
             buf[pos++] = EVENT_TYPE_INT;
             // 整数值
@@ -681,11 +608,11 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
         else if (env->IsInstanceOf(item, gLongClass)) 
         {
             // 值类型为长整数
-            
+
             jlong longVal = env->GetLongField(item, gLongValueID);
             if (pos + 1 + sizeof(longVal) > max) 
                 break;
-            
+
             // buf的内容就为一个EVENT_TYPE_LONG值
             buf[pos++] = EVENT_TYPE_LONG;
             // 长整数值
@@ -695,7 +622,7 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
         else 
         {
             // 抛出一个异常
-            
+
             jniThrowException(env,
                     "java/lang/IllegalArgumentException",
                     "Invalid payload item type");
@@ -715,9 +642,7 @@ static jint android_util_EventLog_writeEvent_Array(JNIEnv* env, jobject clazz,
 }
 ```
 
-
-
-内容为列表的日志记录的内存布局  :
+内容为列表的日志记录的内存布局 :
 
 ![image-20200720151100719](https://gitee.com/cpu_code/picture_bed/raw/master//20200720151100.png)
 

@@ -1,29 +1,14 @@
-<!--
- * @Author: cpu_code
- * @Date: 2020-07-31 12:47:29
- * @LastEditTime: 2020-08-01 14:27:24
- * @FilePath: \notes\shell\condition.md
- * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
- * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
- * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
- * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
---> 
+# 条件测试
 
-
-<center>
-<img src="https://s1.ax1x.com/2020/06/18/Nnpxmj.png" alt="Nnpxmj.png" title="Nnpxmj.png" />
+![Nnpxmj.png](https://s1.ax1x.com/2020/06/18/Nnpxmj.png)
 
 ## 条件测试语句
-
-
 
 判断字符串是否相等， 可能还要检查文件状态或进行数字测试， 只有这些测试完成才能做下一步动作
 
 test 命令： 用于测试**字符串**、 **文件状态**和**数字**
 
 test 命令有两种格式:
-
-
 
 ```bash
 test condition
@@ -35,31 +20,19 @@ test condition
 [ condition ]
 ```
 
-
-
 shell 脚本中的条件测试如下：**文件测试**、 **字符串测试**、 **数字测试**、 **复合测试**
-
-
 
 ### 文件
 
+文件测试： 测试文件状态的条件表达式
 
-
-文件测试： 测试文件状态的条件表达式  
-
-
-
-| -e 是否存在 |    -d 是目录    |   -f 是文件   |
-| :---------: | :-------------: | :-----------: |
-|   -r 可读   |     -w 可写     |   -x 可执行   |
+| -e 是否存在 | -d 是目录 | -f 是文件 |
+| :---: | :---: | :---: |
+| -r 可读 | -w 可写 | -x 可执行 |
 | -L 符号连接 | -c 是否字符设备 | -b 是否块设备 |
-| -s 文件非空 |                 |               |
+| -s 文件非空 |  |  |
 
-
-
-栗子 : test_file.sh
-
-
+栗子 : test\_file.sh
 
 ```bash
 #!/bin/bash
@@ -101,19 +74,11 @@ echo $?
 echo $?
 ```
 
-
-
 ![image-20200801140435708](https://gitee.com/cpu_code/picture_bed/raw/master//20200801140435.png)
 
-
-
-### 字符串  
-
-
+### 字符串
 
 字符串测试
-
-
 
 ```bash
 test str_operator “str”
@@ -124,19 +89,13 @@ test “str1” str_operator “str2”
 [ “str1” str_operator “str2” ]
 ```
 
-
-
-其中 str_operator 可以是:
+其中 str\_operator 可以是:
 
 | = 两个字符串相等 | != 两个字符串不相等 |
-| :--------------: | :-----------------: |
-|     -z 空串      |      -n 非空串      |
+| :---: | :---: |
+| -z 空串 | -n 非空串 |
 
-
-
-栗子 : test_string.sh
-
-
+栗子 : test\_string.sh
 
 ```bash
 #!/bin/bash
@@ -155,38 +114,24 @@ echo 1:$?
 echo 2:$?
 ```
 
-
-
 ![image-20200801140332504](https://gitee.com/cpu_code/picture_bed/raw/master//20200801140332.png)
 
-
-
-### 数字  
-
-
+### 数字
 
 测试数值格式如下:
-
-
 
 ```bash
 test num1 num_operator num2
 [ num1 num_operator num2 ]
 ```
 
+num\_operator 可以是 :
 
-
-num_operator 可以是 :
-
-
-
- 数值相等
+数值相等
 
 ```bash
 -eq
 ```
-
-
 
 数值不相等
 
@@ -194,15 +139,11 @@ num_operator 可以是 :
 -ne
 ```
 
-
-
- 数 1 大于数 2
+数 1 大于数 2
 
 ```bash
 -gt
 ```
-
- 
 
 数 1 大于等于数 2
 
@@ -210,37 +151,21 @@ num_operator 可以是 :
 -ge
 ```
 
-
-
 数 1 小于等于数 2
 
 ```bash
--le 
+-le
 ```
 
-
-
- 数 1 小于数 2  
+数 1 小于数 2
 
 ```bash
 -lt
 ```
 
-
-
-
-
 ![image-20200731125644070](https://gitee.com/cpu_code/picture_bed/raw/master//20200731125644.png)
 
-
-
-
-
-
-
-栗子 : test_num.sh  
-
-
+栗子 : test\_num.sh
 
 ```bash
 #!/bin/bash
@@ -267,49 +192,29 @@ echo $?
 echo $?
 ```
 
-
-
 ![image-20200801140308980](https://gitee.com/cpu_code/picture_bed/raw/master//20200801140309.png)
-
-
 
 ### 复合测试
 
-
-
-命令执行控制:  
-
-
+命令执行控制:
 
 `&&`
-
-
 
 ```bash
 command1 && command2
 ```
 
+&&左边命令（command1） 执行成功\( 即返回 0 ）, shell 才执行 && 右边的命令（command2）
 
-
-&&左边命令（command1） 执行成功( 即返回 0 ）,  shell 才执行 && 右边的命令（command2）
-
-
-
- `||` 
+`||`
 
 ```bash
 command1 || command2
 ```
 
+\|\|左边的命令（command1） 执行失败 \( 即返回非 0 ）, shell 才执行 \|\| 右边的命令（command2）
 
-
-||左边的命令（command1） 执行失败 ( 即返回非 0 ）,  shell 才执行 || 右边的命令（command2）  
-
-
-
-
-
-栗子 : 
+栗子 :
 
 ```bash
 test -e /home && test -d /home && echo "true"
@@ -319,56 +224,38 @@ test 2 -lt 3 && test 5 -gt 3 && echo "equal"
 test "aaa" = "aaa" || echo "not equal" && echo "equal"
 ```
 
+多重条件判定
 
+`-a`
 
-
-
-多重条件判定  
-
-
-
-`-a`   
-
-
-
-( and )两状况同时成立！ 同时具有 r 与 x 权限时， 才为 true.
-
-
+\( and \)两状况同时成立！ 同时具有 r 与 x 权限时， 才为 true.
 
 ```bash
-test -r file -a -x file file 
+test -r file -a -x file file
 ```
 
+`-o`
 
-
-`-o` 
-
-(or)两状况任何一个成立！ 具有 r 或 x 权限时， 就传回 true.
+\(or\)两状况任何一个成立！ 具有 r 或 x 权限时， 就传回 true.
 
 ```bash
-test -r file -o -x file file 
+test -r file -o -x file file
 ```
 
+!
 
-
-! 
-
-相反状态  ,  当 file 不具有 x 时， 回传 true
+相反状态 , 当 file 不具有 x 时， 回传 true
 
 ```bash
 test ! -x file
 ```
 
-> * @Author: cpu_code
+> * @Author: cpu\_code
 > * @Date: 2020-07-31 09:46:09
 > * @LastEditTime: 2020-08-01 14:25:26
 > * @FilePath: \notes\shell\condition.md
-> * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
+> * @Gitee: [https://gitee.com/cpu\_code](https://gitee.com/cpu_code)
 > * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
-> * @CSDN: [https://blog.csdn.net/qq_44226094](https://blog.csdn.net/qq_44226094)
+> * @CSDN: [https://blog.csdn.net/qq\_44226094](https://blog.csdn.net/qq_44226094)
 > * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
-
-
-
-
 

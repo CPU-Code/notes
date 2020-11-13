@@ -1,28 +1,20 @@
-# Android硬件抽象层模块
+# 安卓硬件抽象层模块
 
-<img src="https://gitee.com/cpu_code/picture_bed/raw/master//20200715211412.png"/>
-
---------------------
+![](https://gitee.com/cpu_code/picture_bed/raw/master//20200715211412.png)
 
 ## 硬件抽象层模块编写规范
 
-`Android`系统为**硬件抽象层**中的模块接口定义了**编写规范**， 我们必须按照这个规范来编写自己的**硬件模块接口**， 否则就会导致无法正常访问硬件。   
+`Android`系统为**硬件抽象层**中的模块接口定义了**编写规范**， 我们必须按照这个规范来编写自己的**硬件模块接口**， 否则就会导致无法正常访问硬件。
 
-流程 : 
+流程 :
 
 ![image-20200715170256132](https://gitee.com/cpu_code/picture_bed/raw/master//20200715170256.png)
 
 `Android`系统的**硬件抽象层**以**模块**的形式来**管理各个硬件访问接口**。 **每一个硬件模块**都对应有一个**动态链接库**文件， 这些动态链接库文件的命名都需要符合编写规范。
 
-在系统内部， **每一个硬件抽象层模块**都要使用结构体`hw_module_t`来描述， 而**硬件设备**则使用结构体`hw_device_t`来描述。 
-
-
-
--------------------------------
+在系统内部， **每一个硬件抽象层模块**都要使用结构体`hw_module_t`来描述， 而**硬件设备**则使用结构体`hw_device_t`来描述。
 
 ### 硬件抽象层模块文件命名规范
-
-
 
 ```c
 // hardware/libhardware/hardware.c
@@ -54,19 +46,13 @@ static const char *variant_keys[] = {
 };
 ```
 
+系统属性`ro.hardware`是在系统启动时， 由`init`进程负责设置的。
 
+它会首先读取`/proc/cmdline`文件， 然后检查里面是否有`androidboot.hardware`的属性， 如果有，就把它的值作为属性`ro.hardware`的值； 否则， 就将`/proc/cpuinfo`文件里面的**硬件信息**解析出来， 也就是 将`Hardware`字段的内容作为属性`ro.hardware`的值。
 
-系统属性`ro.hardware`是在系统启动时， 由`init`进程负责设置的。 
+系统属性`ro.product.board`、`ro.board.platform`和 `ro.arch`是从`/system/build.prop`文件读取出来的。
 
-它会首先读取`/proc/cmdline`文件， 然后检查里面是否有`androidboot.hardware`的属性， 如果有，就把它的值作为属性`ro.hardware`的值； 否则， 就将`/proc/cpuinfo`文件里面的**硬件信息**解析出来， 也就是 将`Hardware`字段的内容作为属性`ro.hardware`的值。 
-
-系统属性`ro.product.board`、`ro.board.platform`和 `ro.arch`是从`/system/build.prop`文件读取出来的。 
-
-文件`/system/build.prop`是由编译系统中的**编译**脚本 `build/core/Makefile` 和 `Shell`脚本 `build/tools/buildinfo.sh` 生成的  
-
-
-
---------------------------------------
+文件`/system/build.prop`是由编译系统中的**编译**脚本 `build/core/Makefile` 和 `Shell`脚本 `build/tools/buildinfo.sh` 生成的
 
 ### 硬件抽象层模块结构体定义规范
 
@@ -215,21 +201,17 @@ typedef struct hw_device_t
 } hw_device_t;
 ```
 
-硬件抽象层中的**硬件设备**是由其所在的**模块提供接口来打开**的， 而**关闭**则是由硬件设备**自身提供接口**来完成的  
-
-
-
----------------------------------------
+硬件抽象层中的**硬件设备**是由其所在的**模块提供接口来打开**的， 而**关闭**则是由硬件设备**自身提供接口**来完成的
 
 ## 编写硬件抽象层模块接口
 
-硬件抽象层中的**模块接口**源文件一般保存在`hardware/libhardware`目录中  
+硬件抽象层中的**模块接口**源文件一般保存在`hardware/libhardware`目录中
 
 将虚拟硬件设备`freg`在硬件抽象层中的模块名称定义为`freg`
 
 目录结构：
 
-```shell
+```text
 ~/Android/hardware/libhardware
     include
         hardware
@@ -275,7 +257,7 @@ struct freg_device_t
 {
     // 第一个成员变量的类型必须为 hw_device_t
     struct hw_device_t common;
-    
+
     // 一个文件描述符 , 用来描述打开的设备文件/dev/freg
     int fd;
 
@@ -444,7 +426,7 @@ static int freg_get_val(struct freg_device_t* dev, int* val)
 
 Android.mk 编译脚本文件 :
 
-```shell
+```text
 # Android/hardware/libhardware/Modules/freg/Android.mk
 
 LOCAL_PATH := $(call my-dir)
@@ -464,7 +446,7 @@ include $(BUILD_SHARED_LIBRARY)
 # 系统就会根据一定的规则成功地找到要加载的 freg.default.so 文件
 ```
 
-```shell
+```text
 # 编译
 mmm ./hardware/libhardware/moduels/freg/
 
@@ -474,15 +456,9 @@ make snod
 # 在 out/target/product/generic/system/lib/hw 目录下得到一个 freg.default.so 文件
 ```
 
-
-
------------------------------------------
-
 ## 硬件抽象层模块的加载过程
 
-Android系统中的硬件抽象层模块是由**系统统一加载**的， 当调用者需要加载这些模块时，只要指定它们的**ID值**就可以了  
-
-
+Android系统中的硬件抽象层模块是由**系统统一加载**的， 当调用者需要加载这些模块时，只要指定它们的**ID值**就可以了
 
 负责**加载硬件抽象层模块**的函数 `hw_get_module` :
 
@@ -573,7 +549,7 @@ int hw_get_module(const char *id, const struct hw_module_t **module)
         else 
         {
             // 都没有找到的情况
-            
+
             snprintf(path, sizeof(path), "%s/%s.default.so", HAL_LIBRARY_PATH1, id);
             // 在/system/lib/hw目录中检查是否存在一个freg.default.so文件
             if (access(path, R_OK) == 0) 
@@ -683,10 +659,6 @@ done:
 }
 ```
 
-
-
--------------------------------------
-
 ## 处理硬件设备访问权限问题
 
 ```c
@@ -700,7 +672,7 @@ static int freg_device_open(const struct hw_module_t* module,
     // 判断 id 与虚拟硬件设备freg的ID值是否 匹配
     if(!strcmp(id, FREG_HARDWARE_DEVICE_ID))
     {
-		//...
+        //...
 
         // 打开虚拟硬件设备文件/dev/freg ， 且将得到的文件描述符保存在结构体 freg_device_t 的成员变量 fd 中
         // 不修改设备文件/dev/freg的访问权限 , 打不开
@@ -712,7 +684,7 @@ static int freg_device_open(const struct hw_module_t* module,
 
             return -EFAULT;
         }
-		//...
+        //...
     }
 
     return -EFAULT;
@@ -725,7 +697,7 @@ static int freg_device_open(const struct hw_module_t* module,
 
 `Android`提供了另外的一个`uevent`机制， 可以在系统启动时修改设备文件的访问权限
 
-```shell
+```text
 # system\core\rootdir\ueventd.rc
 # ...
 /dev/binder               0666   root       root
@@ -744,21 +716,19 @@ static int freg_device_open(const struct hw_module_t* module,
 #...
 ```
 
-修改了`ueventd.rc`文件后， 需要重新编译`Android`源代码工程  
+修改了`ueventd.rc`文件后， 需要重新编译`Android`源代码工程
 
-也可以不用重新编译`Android`源代码工程就可以让设备文件`/dev/freg`的访问权限生效  
+也可以不用重新编译`Android`源代码工程就可以让设备文件`/dev/freg`的访问权限生效
 
-编译`Android`源代码工程时， 文件`system/core/rootdir/ueventd.rc`会被复制到 `out/target/product/generic/root`目录下， 并且最终打包在`ramdisk.img`镜像文件中。 
+编译`Android`源代码工程时， 文件`system/core/rootdir/ueventd.rc`会被复制到 `out/target/product/generic/root`目录下， 并且最终打包在`ramdisk.img`镜像文件中。
 
-当Android系统启动时， 会把`ramdisk.img`镜像文件中的`ueventd.rc`文件安装在设备根目录中， 并且由`init`进程来解析它的内容和修改相应的设备文件的**访问权限**。 所以， 只要我们能够修改`ramdisk.img`镜像文件中`ueventd.rc`文件的内容， 就可以修改设备文件`/dev/freg`的访问权限  
-
------------------------------------
+当Android系统启动时， 会把`ramdisk.img`镜像文件中的`ueventd.rc`文件安装在设备根目录中， 并且由`init`进程来解析它的内容和修改相应的设备文件的**访问权限**。 所以， 只要我们能够修改`ramdisk.img`镜像文件中`ueventd.rc`文件的内容， 就可以修改设备文件`/dev/freg`的访问权限
 
 ### 解压ramdisk.img镜像文件
 
-镜像文件`ramdisk.img`是一个`gzip`文件  
+镜像文件`ramdisk.img`是一个`gzip`文件
 
-```shell
+```text
 # 将ramdisk.img改名为ramdisk.img.gz
 mv ./out/target/product/generic/reamdisk.img ./reamdisk.img.gz
 
@@ -766,15 +736,11 @@ mv ./out/target/product/generic/reamdisk.img ./reamdisk.img.gz
 gunzip ./ramdisk.img.gz
 ```
 
-
-
--------------------------
-
 ### 还原ramdisk.img镜像文件
 
-解压后得到的`ramdisk.img`文件是一个`cpio`格式的归档文件  
+解压后得到的`ramdisk.img`文件是一个`cpio`格式的归档文件
 
-```shell
+```text
 # 创建目录
 mkdir ramdisk
 
@@ -785,13 +751,9 @@ cd ./ramdisk/
 cpio -i -F ../ramdisk.img
 ```
 
-
-
----------------
-
 ### 修改ueventd.rc文件
 
-```shell
+```text
 # 进入目录
 cd /ramdisk
 
@@ -799,7 +761,7 @@ cd /ramdisk
 vim ueventd.rc
 ```
 
-```shell
+```text
 # system\core\rootdir\ueventd.rc
 # ...
 /dev/binder               0666   root       root
@@ -818,13 +780,9 @@ vim ueventd.rc
 #...
 ```
 
-
-
---------------------
-
 ### 重新打包ramdisk.img镜像文件
 
-```shell
+```text
 # 删除
 rm -f ../ramdisk.img
 
@@ -850,11 +808,13 @@ mv ./ramdisk.img.gz ./out/target/product/generic/ramdisk.img
 系统在启动之后就会通过`init`进程来赋予系统中的所有用户访问设备文件`/dev/freg`的权限
 
 > 由于个人水平有限, 难免有些错误, 希望各位点评
-> * @Author: cpu_code
+>
+> * @Author: cpu\_code
 > * @Date: 2020-07-15 12:07:05
 > * @LastEditTime: 2020-07-15 19:51:16
-> * @FilePath: \notes\android_bottom\hardware_abstraction_layer\Android_hardware_abstraction_layer_module.md
-> * @Gitee: https://gitee.com/cpu_code
-> * @Github: https://github.com/CPU-Code
-> * @CSDN: https://blog.csdn.net/qq_44226094
-> * @Gitbook: https://923992029.gitbook.io/cpucode/
+> * @FilePath: \notes\android\_bottom\hardware\_abstraction\_layer\Android\_hardware\_abstraction\_layer\_module.md
+> * @Gitee: [https://gitee.com/cpu\_code](https://gitee.com/cpu_code)
+> * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
+> * @CSDN: [https://blog.csdn.net/qq\_44226094](https://blog.csdn.net/qq_44226094)
+> * @Gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cpucode/)
+
