@@ -1,8 +1,9 @@
 <!--
+
  * @由于个人水平有限, 难免有些错误, 还请指点:  
  * @Author: cpu_code
  * @Date: 2020-07-11 14:40:09
- * @LastEditTime: 2020-09-23 18:47:05
+ * @LastEditTime: 2020-08-27 13:24:58
  * @FilePath: \notes\SUMMARY.md
  * @Gitee: [https://gitee.com/cpu_code](https://gitee.com/cpu_code)
  * @Github: [https://github.com/CPU-Code](https://github.com/CPU-Code)
@@ -14,7 +15,7 @@
 
 * [目录](README.md)
 
-* [学习路线](Learning_route.md)
+* [嵌入式学习路线](Learning_route.md)
 
 ## Linux驱动开发 <a id="linux_driver"></a>
 
@@ -121,8 +122,7 @@
 
 ## MySQL <a id="MySQL"></a>
 
-* [mysql配置](MySQL/MySQL_make.md)
-
+* [MySQL的配置](MySQL/MySQL_make.md)
 
 ## 其他 <a id="other"></a>
 
