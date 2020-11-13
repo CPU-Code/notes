@@ -17,11 +17,16 @@
 
 * [嵌入式学习路线](Learning_route.md)
 
+----------------
+
+
 ## Linux驱动开发 <a id="linux_driver"></a>
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
 * [Linux驱动开发](linux_driver/linux_driver.md)
 
+
+---------------------
 
 ## 安卓底层开发 <a id="android_bottom"></a>
 
@@ -41,6 +46,8 @@
 * [binder](android_bottom/binder/README.md)
   * [binder](android_bottom/binder/binder.md)
 
+
+---------------
 
 ## 操作系统 <a id="operating_system"></a>
 

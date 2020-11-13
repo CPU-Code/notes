@@ -21,9 +21,17 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 ## 目录
 
 * [Linux驱动开发](#linux_driver)
-* [安卓底层开发](#安卓底层开发)
-* [操作系统](#操作系统)
-
+* [安卓底层开发](#android_bottom)
+* [操作系统](#operating_system)
+* [linux一句话](#linux_in_a_word)
+* [Linux内核0.12](#linux_kernel_0_12)
+* [QT](#QT)
+* [ubuntu](#ubuntu)
+* [shell](#shell)
+* [C](#C)
+* [GTK](#GTK)
+* [sqlite](#sqlite)
+* [其他](#other)
 
 ----------------------
 
@@ -109,7 +117,7 @@ gitbook: [https://923992029.gitbook.io/cpucode/](https://923992029.gitbook.io/cp
 ## C <a id="C"></a>
 
 * [第一条Linux_c输出](C/print_cpucode.md)
-
+* [C语言概述](C/C_Overview.md)
 
 ----------------
 
