@@ -20,7 +20,6 @@
 
 ----------------
 
-
 ## Linux驱动开发 <a id="linux_driver"></a>
 
 * [字符设备驱动开发](linux_driver/character_device_driver.md)
